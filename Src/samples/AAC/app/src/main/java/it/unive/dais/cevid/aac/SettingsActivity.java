@@ -28,6 +28,7 @@ import it.unive.dais.cevid.datadroid.lib.util.UnexpectedException;
  * Si noti che molti getter sono statici e presentano 2 metodi in overload: il primo
  *
  * @author Alvise Spanò, Università Ca' Foscari
+ * Fork creato per ingegneria del SW. Bunny Team 2017/2018
  */
 public class SettingsActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener, AppCompatCallback {
     /**

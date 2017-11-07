@@ -15,7 +15,7 @@ import it.unive.dais.cevid.aac.R;
  * Activity per la schermata di crediti e about.
  *
  * @author Alvise Spanò, Università Ca' Foscari
- * prova
+ * Fork creato per ingegneria del SW. Bunny Team 2017/2018
  */
 public class InfoActivity extends AppCompatActivity {
 

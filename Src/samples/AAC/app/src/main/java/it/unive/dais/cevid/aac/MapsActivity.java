@@ -74,6 +74,7 @@ import it.unive.dais.cevid.datadroid.lib.util.ProgressStepper;
  * Per scrivere una propria app è necessario modificare questa classe, aggiungendo campi, metodi e codice che svolge le funzionalità richieste.
  *
  * @author Alvise Spanò, Università Ca' Foscari
+ * Fork creato per ingegneria del SW. Bunny Team 2017/2018
  */
 public class MapsActivity extends AppCompatActivity
         implements OnMapReadyCallback,

@@ -22,6 +22,9 @@ import it.unive.dais.cevid.datadroid.lib.util.DataManipulation;
 import it.unive.dais.cevid.datadroid.lib.util.Function;
 import it.unive.dais.cevid.datadroid.lib.util.UnexpectedException;
 
+/*
+* Fork creato per ingegneria del SW. Bunny Team 2017/2018
+ */
 
 public class UniversityActivity extends AppCompatActivity {
     private static final String TAG = "UniversityActivity";
