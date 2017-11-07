@@ -15,6 +15,7 @@ import it.unive.dais.cevid.aac.R;
  * Activity per la schermata di crediti e about.
  *
  * @author Alvise Spanò, Università Ca' Foscari
+ * prova
  */
 public class InfoActivity extends AppCompatActivity {
 
