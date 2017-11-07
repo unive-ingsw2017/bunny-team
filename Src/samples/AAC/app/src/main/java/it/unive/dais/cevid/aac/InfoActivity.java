@@ -15,32 +15,26 @@ import it.unive.dais.cevid.aac.R;
  * Activity per la schermata di crediti e about.
  *
  * @author Alvise Spanò, Università Ca' Foscari
- * Fork creato per ingegneria del SW. Bunny Team 2017/2018
+ *         Fork creato per ingegneria del SW. Bunny Team 2017/2018
  */
 public class InfoActivity extends AppCompatActivity {
 
     /**
      * Produce la stringa completa coi crediti.
+     *
      * @param ctx oggetto Context, tipicamente {@code this} se chiamato da un'altra Activity.
      * @return ritorna la stringa completa.
      */
     public static String credits(Context ctx) {
         ApplicationInfo ai = ctx.getApplicationInfo();
         StringBuffer buf = new StringBuffer();
-        buf.append("\tVERSION.RELEASE {").append(Build.VERSION.RELEASE).append("}");
-        buf.append("\n\tVERSION.INCREMENTAL {").append(Build.VERSION.INCREMENTAL).append("}");
-        buf.append("\n\tVERSION.SDK {").append(Build.VERSION.SDK_INT).append("}");
-        buf.append("\n\tBOARD {").append(Build.BOARD).append("}");
-        buf.append("\n\tBRAND {").append(Build.BRAND).append("}");
-        buf.append("\n\tDEVICE {").append(Build.DEVICE).append("}");
-        buf.append("\n\tFINGERPRINT {").append(Build.FINGERPRINT).append("}");
-        buf.append("\n\tHOST {").append(Build.HOST).append("}");
-        buf.append("\n\tID {").append(Build.ID).append("}");
+        buf.append("\n\tEMAIL 857763@stud.unive.it");
+        buf.append("\n\tFAQ\thttps://www.google.it");
         return String.format(
                 "--- APP ---\n" +
                         "%s v%s [%s]\n" +
                         "(c) %s %s @ %s - %s \n\n" +
-                        "--- ANDROID ---\n%s",
+                        "--- INFORMAZIONI ---\n%s",
                 ctx.getString(ai.labelRes),
                 BuildConfig.VERSION_NAME,
                 BuildConfig.BUILD_TYPE,
@@ -50,6 +44,7 @@ public class InfoActivity extends AppCompatActivity {
 
     /**
      * Metodo di creazione dell'activity che imposta il layout e la text view con la stringa con i crediti.
+     *
      * @param saveInstanceState
      */
     @Override
