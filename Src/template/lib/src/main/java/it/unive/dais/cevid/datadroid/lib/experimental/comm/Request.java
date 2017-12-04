@@ -12,10 +12,10 @@ implements Function<Receiver, Rep>, Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
-	public Rep eval(Receiver recv) { throw new UnsupportedOperationException(); }
+	public Rep apply(Receiver recv) { throw new UnsupportedOperationException(); }
 	
 	public void eval(Receiver recv, Function<Rep, Void> ret) {
-		ret.eval(eval(recv));
+		ret.apply(apply(recv));
 	}
 		
 }

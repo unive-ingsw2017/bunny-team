@@ -23,7 +23,7 @@ extends HalfDuplexActivityChannel<Sender, Receiver, Cmd> {
 			
 	public void evalCommand(Receiver recv) {
 		TyIntent<Cmd> i = TyIntent.create(recv.getIntent());
-		i.get().get().eval(recv);
+		i.get().get().apply(recv);
 	}
 	
 }

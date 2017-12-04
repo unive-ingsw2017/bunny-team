@@ -186,7 +186,7 @@ extends Activity implements IActivity<SavedInstanceState> {
 			switch (resultCode) {
 			case RESULT_OK:
 				TyIntent<Reply<IActivity<SavedInstanceState>>> ti = TyIntent.create(i);
-				ti.get().get().eval(_super);
+				ti.get().get().apply(_super);
 				break;
 	    	
 			default:

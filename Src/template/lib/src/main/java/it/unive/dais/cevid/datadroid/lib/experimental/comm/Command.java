@@ -10,6 +10,6 @@ public abstract class Command<Receiver extends IActivity<?>>
     private static final long serialVersionUID = 1L;
 
     @Override
-    public abstract Void eval(Receiver o);
+    public abstract Void apply(Receiver o);
 
 }

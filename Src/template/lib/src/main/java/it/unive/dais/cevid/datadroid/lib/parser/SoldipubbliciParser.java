@@ -18,7 +18,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
- * Sottoclasse di {@code AbstractAsyncCsvParser} che implementa un donwloader e parser per il sito soldipubblici.gov.it.
+ * Sottoclasse di {@code AbstractAsyncCsvParser} che implementa un downloader e parser per il sito soldipubblici.gov.it.
  * Questa classe è usabile direttamente e non necessita di essere ereditata.
  * Non richiede il generic FiltrableData perché utilizza una classe innestata apposita per rappresentare il risultato della richiesta in maniera untyped ma generale tramite un dizionario.
  * Un esempio d'uso con un file CSV con header e virgole come separatore:

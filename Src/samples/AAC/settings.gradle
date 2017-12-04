@@ -1,3 +1,0 @@
-include ':app'
-include ':datadroid.lib'
-project(':datadroid.lib').projectDir = new File('../../template/lib')

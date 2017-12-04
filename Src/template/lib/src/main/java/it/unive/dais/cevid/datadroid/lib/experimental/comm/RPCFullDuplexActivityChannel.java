@@ -25,7 +25,7 @@ extends FullDuplexActivityChannel<Sender, Receiver, Req, Rep> {
 		AbstractActivityChannel.<Request<Sender, IActivity<?>, Rep>>extractIntent(recv).eval(recv,
 				new Function<Rep, Void>() {
 					@Override
-					public Void eval(Rep rep) {
+					public Void apply(Rep rep) {
 						returnIntent(recv, rep);
 						return null;
 					}
