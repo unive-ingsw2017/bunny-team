@@ -5,145 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02b67859-4eca-40a8-84fd-bd677b7cfe8e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../.gitattributes" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/.idea/gradle.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/.idea/runConfigurations.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/proguard-rules.pro" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/debug/res/menu/maps_with_options.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/debug/res/values/array.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/debug/res/values/google_maps_api.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/java/it/unive/dais/cevid/aac/InfoActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/java/it/unive/dais/cevid/aac/MapsActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/java/it/unive/dais/cevid/aac/SearchActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/java/it/unive/dais/cevid/aac/SettingsActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/java/it/unive/dais/cevid/aac/UniversityActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/java/it/unive/dais/cevid/aac/util/AppaltiAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/java/it/unive/dais/cevid/aac/util/SoldiPubbliciAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/java/it/unive/dais/cevid/aac/util/University.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/drawable/button_car.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/drawable/button_here.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/layout/activity_info.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/layout/activity_maps.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/layout/activity_search.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/layout/activity_university.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/layout/appalti_element.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/layout/soldipubblici_element.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-hdpi/button_car.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-hdpi/button_car_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap/button_here.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap/button_here_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/mipmap/info_img.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/values/colors.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/values/dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/values/integers.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/values/strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/values/styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/main/res/xml/preferences.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/app/src/release/res/values/google_maps_api.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/allclasses-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/allclasses-noframe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/constant-values.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/deprecated-list.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/help-doc.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-1.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-10.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-11.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-12.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-13.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-14.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-15.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-16.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-17.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-18.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-2.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-3.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-4.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-5.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-6.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-7.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-8.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index-files/index-9.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/component/InfoActivity.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/component/MapsActivity.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/component/SettingsActivity.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/component/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/component/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/component/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/parser/AbstractCsvParser.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/parser/AbstractDataParser.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/parser/AbstractJsonParser.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/parser/CsvRowParser.Row.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/parser/CsvRowParser.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/parser/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/parser/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/parser/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/util/Function.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/util/MapItem.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/util/Prelude.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/util/UnexpectedException.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/util/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/util/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/it/unive/dais/cevid/datadroid/util/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/overview-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/overview-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/overview-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/package-list" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/serialized-form.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/doc/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/gradle.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/gradlew" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/gradlew.bat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../samples/AAC/settings.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/fileChanges/last-build.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/fileContent/fileContent.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/built.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-12-04-15-54-57-554.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-12-04-15-54-57-554.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-12-04-15-55-04-997.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-12-04-15-55-04-997.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-12-04-15-56-36-306.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-12-04-15-56-36-306.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-12-04-15-58-43-255.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-12-04-15-58-43-255.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-12-04-15-59-04-233.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-12-04-15-59-04-233.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/lib.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/local.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/template.iml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gradlew" afterPath="$PROJECT_DIR$/lib/gradlew" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/gradlew.bat" afterPath="$PROJECT_DIR$/lib/gradlew.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/SimpleActivity.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/SimpleActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/comm/Command.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/comm/Command.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/comm/RPCFullDuplexActivityChannel.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/comm/RPCFullDuplexActivityChannel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/comm/RPCHalfDuplexActivityChannel.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/comm/RPCHalfDuplexActivityChannel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/comm/Reply.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/comm/Reply.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/comm/Request.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/experimental/comm/Request.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/parser/AbstractAsyncParser.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/parser/AbstractAsyncParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/parser/SoldipubbliciParser.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/parser/SoldipubbliciParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/util/DataManipulation.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/util/DataManipulation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/util/Function.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/util/Function.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/util/MapItem.java" afterPath="$PROJECT_DIR$/lib/src/main/java/it/unive/dais/cevid/datadroid/lib/util/MapItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -2724,9 +2617,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="-6" />
+    <option name="x" value="-141" />
+    <option name="y" value="1050" />
     <option name="width" value="1920" />
-    <option name="height" value="1086" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -2745,10 +2639,10 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2838,7 +2732,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1512399582863" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1512467707612" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2938,7 +2832,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1512399582863" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1512467707613" />
       </method>
     </configuration>
     <list size="1">
@@ -2977,38 +2871,38 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-6" width="1920" height="1086" extended-state="6" />
+    <frame x="-141" y="1050" width="1920" height="1056" extended-state="0" />
     <layout>
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34075725" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
