@@ -135,7 +135,7 @@ public class MapsActivity extends AppCompatActivity
         setContentView(R.layout.activity_maps);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-
+        setSupportActionBar(toolbar);
         //toolbar.inflateMenu(R.menu.maps_with_options); TODO
 
         // creo il menu laterale tramite il utilizzando il framework MaterialDrawer
@@ -171,6 +171,8 @@ public class MapsActivity extends AppCompatActivity
                 )
                 .build();
         // inizializza le preferenze
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
         // trova gli oggetti che rappresentano i bottoni e li salva come campi d'istanza
