@@ -113,6 +113,7 @@ public class MapsActivity extends AppCompatActivity
      */
     @Nullable
     protected LatLng currentPosition = null;
+    protected LatLng defaultPosition = null;
     /**
      * Il marker che viene creato premendo il pulsante button_here (cioè quello dell'app, non quello di Google Maps).
      * E' utile avere un campo d'istanza che tiene il puntatore a questo marker perché così è possibile rimuoverlo se necessario.
@@ -204,6 +205,10 @@ public class MapsActivity extends AppCompatActivity
                     Log.d(TAG, "no current position available");
             }
         });
+
+        //sposto la telecamera sopra l'italia
+        currentPosition = new LatLng(41.87, 12.56);
+        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultPosition,25));
     }
 
 
