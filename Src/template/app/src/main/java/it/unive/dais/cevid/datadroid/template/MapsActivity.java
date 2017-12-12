@@ -133,11 +133,10 @@ public class MapsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
-        toolbar.setTitle("Applicazione");
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
 
         //toolbar.inflateMenu(R.menu.maps_with_options); TODO
-        
+
         // creo il menu laterale tramite il utilizzando il framework MaterialDrawer
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
