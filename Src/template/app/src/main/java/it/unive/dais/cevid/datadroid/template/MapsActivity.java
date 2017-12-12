@@ -19,6 +19,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuBuilder;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -130,12 +132,18 @@ public class MapsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        toolbar.setTitle("Applicazione");
+
+
+
         // creo il menu laterale tramite il utilizzando il framework MaterialDrawer
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.background)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Bunny Team").withEmail("mikepenz@gmail.com").withIcon(getResources().getDrawable(R.drawable.user))
+                        new ProfileDrawerItem().withName("Bunny Team").withEmail("bunnyteam@gmail.com").withIcon(getResources().getDrawable(R.drawable.user))
                 )
                 .build();
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Anal");
@@ -157,13 +165,11 @@ public class MapsActivity extends AppCompatActivity
         Drawer result = new DrawerBuilder()
                 .withActivity(this)
                 .withAccountHeader(headerResult)
-                .withTranslucentNavigationBar(false)
-                .withActionBarDrawerToggle(false)
+                .withToolbar(toolbar)
                 .addDrawerItems(
                         item1, item2, new DividerDrawerItem()
                 )
                 .build();
-
         // inizializza le preferenze
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
