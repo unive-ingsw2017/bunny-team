@@ -205,10 +205,6 @@ public class MapsActivity extends AppCompatActivity
                     Log.d(TAG, "no current position available");
             }
         });
-
-        //sposto la telecamera sopra l'italia
-        currentPosition = new LatLng(41.87, 12.56);
-        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultPosition,25));
     }
 
 
@@ -494,6 +490,10 @@ public class MapsActivity extends AppCompatActivity
         uis.setMapToolbarEnabled(true);
 
         applyMapSettings();
+
+        //sposto la telecamera sopra l'italia
+        defaultPosition = new LatLng(41.87, 12.56);
+        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultPosition,5));
 
         demo();
     }
