@@ -137,12 +137,6 @@ public class MapsActivity extends AppCompatActivity
                 .addProfiles(
                         new ProfileDrawerItem().withName("Bunny Team").withEmail("mikepenz@gmail.com").withIcon(getResources().getDrawable(R.drawable.user))
                 )
-                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
-                    @Override
-                    public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
-                        return false;
-                    }
-                })
                 .build();
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Anal");
         SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Beat");
@@ -164,9 +158,9 @@ public class MapsActivity extends AppCompatActivity
                 .withActivity(this)
                 .withAccountHeader(headerResult)
                 .withTranslucentNavigationBar(false)
+                .withActionBarDrawerToggle(false)
                 .addDrawerItems(
-                        item1, new DividerDrawerItem(),
-                        item2, new SecondaryDrawerItem()
+                        item1, item2, new DividerDrawerItem()
                 )
                 .build();
 
