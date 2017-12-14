@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="it.unive.dais.cevid.datadroid.template" >
+    package="it.unive.dais.bunnyteam.unfinitaly.app" >
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -36,7 +36,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity"
             android:label="@string/title_activity_maps" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,19 +45,19 @@
         </activity>
 
         <activity
-            android:name=".InfoActivity"
-            android:parentActivityName=".MapsActivity">
+            android:name="it.unive.dais.bunnyteam.unfinitaly.app.InfoActivity"
+            android:parentActivityName="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MapsActivity" />
+                android:value="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity" />
         </activity>
 
         <activity
-            android:name=".SettingsActivity"
-            android:parentActivityName=".MapsActivity">
+            android:name="it.unive.dais.bunnyteam.unfinitaly.app.SettingsActivity"
+            android:parentActivityName="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MapsActivity" />
+                android:value="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity" />
         </activity>
 
     </application>
