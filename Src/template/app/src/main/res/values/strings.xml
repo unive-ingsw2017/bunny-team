@@ -1,7 +1,7 @@
 <resources>
     <!-- Customize your app's name here. -->
-    <string name="app_name">Datadroid Sample App</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="app_name">Unfinitaly</string>
+    <string name="title_activity_maps">UnfinItaly</string>
     <!-- -->
 
     <string name="gps_disabled">GPS disattivato</string>

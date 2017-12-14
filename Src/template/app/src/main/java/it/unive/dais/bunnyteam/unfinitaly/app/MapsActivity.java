@@ -657,6 +657,7 @@ public class MapsActivity extends AppCompatActivity
                         return r.get("Titolo minerario");
                     }
 
+
                     @Override
                     public String getDescription() {
                         return r.get("Denominazione");
