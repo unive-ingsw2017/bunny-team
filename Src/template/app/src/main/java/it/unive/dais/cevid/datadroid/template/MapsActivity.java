@@ -643,7 +643,7 @@ public class MapsActivity extends AppCompatActivity
 
     private void demo() {
         try {
-            InputStream is = getResources().openRawResource(R.raw.piattaforme);
+            InputStream is = getResources().openRawResource(R.raw.cartel1);
             CsvRowParser p = new CsvRowParser(new InputStreamReader(is), true, ";");
             List<CsvRowParser.Row> rows = p.getAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
             List<MapItem> l = new ArrayList<>();
@@ -651,18 +651,18 @@ public class MapsActivity extends AppCompatActivity
                 l.add(new MapItem() {
                     @Override
                     public LatLng getPosition() {
-                        String lat = r.get("Latitudine (WGS84)"), lng = r.get("Longitudine (WGS 84)");
+                        String lat = r.get("lat"), lng = r.get("lon");
                         return new LatLng(Double.parseDouble(lat), Double.parseDouble(lng));
                     }
 
                     @Override
                     public String getTitle() {
-                        return r.get("Codice");
+                        return r.get("titolo");
                     }
 
                     @Override
                     public String getDescription() {
-                        return r.get("Denominazione");
+                        return r.get("descrizione");
                     }
                 });
             }
