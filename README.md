@@ -9,10 +9,10 @@ Si vuole sviluppare unâ€™applicazione per la piattaforma Android che informi lâ€
 
 ## Authors 
 Bunny Team
-- Giacomo Zanatta
-- Enrico Vettori
-- Fatjona Ismailaj
-- Elena Rossetto
+- [Giacomo Zanatta](https://github.com/giacomozanatta)
+- [Enrico Vettori](https://github.com/enricovettori93)
+- [Fatjona Ismailaj](https://github.com/jonais)
+- [Elena Rossetto](https://github.com/elenaross)
 
 
 
