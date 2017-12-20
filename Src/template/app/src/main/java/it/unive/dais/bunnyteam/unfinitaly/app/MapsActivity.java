@@ -149,6 +149,9 @@ public class MapsActivity extends AppCompatActivity
             @Override
             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                 Toast.makeText(getApplicationContext(), "Bottone 1", Toast.LENGTH_LONG).show();
+                Intent intent_info = new Intent(MapsActivity.this,SettingsActivity.class);
+                startActivity(intent_info);
+                overridePendingTransition(R.xml.slide_up_info,R.xml.no_change);
                 return false;
             }
         });
