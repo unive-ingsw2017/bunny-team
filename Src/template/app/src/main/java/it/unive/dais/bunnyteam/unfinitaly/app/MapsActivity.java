@@ -647,7 +647,12 @@ public class MapsActivity extends AppCompatActivity
             CsvRowParser p = new CsvRowParser(new InputStreamReader(is), true, ";");
             List<CsvRowParser.Row> rows = p.getAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
             List<MapItem> l = new ArrayList<>();
+            int i=0;
             for (final CsvRowParser.Row r : rows) {
+                //MAPPO TEMPORANEAMENTE I PRIMI 100 PER NON FAR TROPPO PESANTE L'APP IN FASE DI SCRITTURA
+                i+=1;
+                if(i>20)
+                    break;
                 l.add(new MapItem() {
                     @Override
                     public LatLng getPosition() {
@@ -657,7 +662,7 @@ public class MapsActivity extends AppCompatActivity
 
                     @Override
                     public String getTitle() {
-                        return r.get("anno_rif");
+                        return r.get("titolo");
                     }
 
 
