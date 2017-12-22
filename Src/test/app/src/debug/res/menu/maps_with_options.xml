@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/MENU_SETTINGS"
+        android:title="@string/action_impostazioni" />
+    <item android:id="@+id/MENU_INFO"
+        android:title="@string/action_info" />
+<!--
+    <item android:id="@+id/search"
+        android:title="@string/search_title"
+        android:showAsAction="always|collapseActionView"
+        android:actionViewClass="android.widget.SearchView" />
+-->
+</menu>
