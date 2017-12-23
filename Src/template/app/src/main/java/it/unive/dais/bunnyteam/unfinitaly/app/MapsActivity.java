@@ -541,6 +541,7 @@ public class MapsActivity extends AppCompatActivity
     @Override
     public boolean onMarkerClick(final Marker marker) {
         marker.showInfoWindow();
+        Toast.makeText(getApplicationContext(), "Premuto il marker con ID: " + marker.getId(),Toast.LENGTH_LONG).show();
         button_car.setVisibility(View.VISIBLE);
         button_car.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -659,12 +660,8 @@ public class MapsActivity extends AppCompatActivity
                         String lat = r.get("lat"), lng = r.get("lon");
                         return new LatLng(Double.parseDouble(lat), Double.parseDouble(lng));
                     }
-
                     @Override
-                    public String getTitle() {
-                        return r.get("titolo");
-                    }
-
+                    public String getTitle() { return r.get("titolo");}
 
                     @Override
                     public String getDescription() {
