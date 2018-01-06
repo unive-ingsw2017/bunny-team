@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author Alvise Spanò, Università Ca' Foscari
  */
-public abstract class MapItem implements Serializable, ClusterItem {
+public abstract class MapItem implements Serializable {
 
     /**
      * Ritorna la posizione.
