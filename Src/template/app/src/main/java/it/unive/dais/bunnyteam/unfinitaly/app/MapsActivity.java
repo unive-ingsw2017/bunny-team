@@ -49,6 +49,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.maps.android.clustering.ClusterManager;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -59,11 +60,13 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import it.unive.dais.bunnyteam.unfinitaly.lib.parser.AsyncParser;
@@ -119,6 +122,9 @@ public class MapsActivity extends AppCompatActivity
     @Nullable
     protected Marker hereMarker = null;
 
+
+    private ClusterManager<MapMarker> mClusterManager;
+    private MapMarkerList mapMarkers = null;
     /**
      * Questo metodo viene invocato quando viene inizializzata questa activity.
      * Si tratta di una sorta di "main" dell'intera activity.
@@ -130,8 +136,43 @@ public class MapsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        /*
+            qui vanno letti i marker. Prima di creare la mappa.
+         */
+        mapMarkers = MapMarkerList.getInstance();
+        if(mapMarkers.getMapMarkers().size() == 0) {
+            /*non ci sono markers*/
+            if (MapsItemIO.isCached(this)) {
+                try {
+                    mapMarkers.loadFromCache(this);
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            /*else{
+            i marker non sono in cache. È necessario quindi prelevarli dal CSV.
+                L'idea è quella di lanciare una nuova Activity (LoadingActivity),
+                dove viene presentato un Loader e dove vengono letti ASINCRONAMENTE i marker dal csv
+                e salvati in cache (NB: la chiamata Asincrona viene fatta si nella lettura del CSV, ma non
+                nel parsing dei Doble. Ed è questo che rende lenta la creazione dei Marker. Nell'Async).
+                Quando finisce, il controllo torna alla MapsActivity, che così può rieseguire l'OnCreate e trovare i
+                marker.
+                Quindi qui va chiamata l'activity con startACtivity
+                Nell'activity va fatto:
+                    MapMarkerList.getInstance().loadFromCsv().
+                    Terminare l'activity (?)
+                    Nell'OnDestroy (o nell'OnCreate, dipende da come Android gestisce le chiamate alle Activity),
+                        richiamare la MapsAcitivty, così troverà i Marker nel MapMarkerList.
+            }*/
+            else { //provvisorio
+                try {
+                    mapMarkers.loadFromCsv(this);
+                } catch (InterruptedException | ExecutionException | IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //toolbar.inflateMenu(R.menu.maps_with_options); TODO
 
@@ -143,15 +184,15 @@ public class MapsActivity extends AppCompatActivity
                         new ProfileDrawerItem().withName("Bunny Team").withEmail("bunnyteam@gmail.com").withIcon(getResources().getDrawable(R.drawable.user))
                 )
                 .build();
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Anal");
-        SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Beat");
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Impostazioni");
+        SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Bohh");
         item1.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
             @Override
             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                 Toast.makeText(getApplicationContext(), "Bottone 1", Toast.LENGTH_LONG).show();
-                Intent intent_info = new Intent(MapsActivity.this,SettingsActivity.class);
+                Intent intent_info = new Intent(MapsActivity.this, SettingsActivity.class);
                 startActivity(intent_info);
-                overridePendingTransition(R.xml.slide_up_info,R.xml.no_change);
+                overridePendingTransition(R.xml.slide_up_info, R.xml.no_change);
                 return false;
             }
         });
@@ -494,8 +535,13 @@ public class MapsActivity extends AppCompatActivity
 
         //sposto la telecamera sopra l'italia
         defaultPosition = new LatLng(41.87, 12.56);
-        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultPosition,5));
-
+        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultPosition, 5));
+        /*prepare the cluster*/
+        mClusterManager = new ClusterManager<>(this, googleMap);
+        googleMap.setOnCameraIdleListener(mClusterManager);
+        googleMap.setOnMarkerClickListener(mClusterManager);
+        googleMap.setOnInfoWindowClickListener(mClusterManager);
+        mClusterManager.cluster();
         demo();
     }
 
@@ -541,7 +587,6 @@ public class MapsActivity extends AppCompatActivity
     @Override
     public boolean onMarkerClick(final Marker marker) {
         marker.showInfoWindow();
-        Toast.makeText(getApplicationContext(), "Premuto il marker con ID: " + marker.getId(),Toast.LENGTH_LONG).show();
         button_car.setVisibility(View.VISIBLE);
         button_car.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -559,7 +604,8 @@ public class MapsActivity extends AppCompatActivity
      * Metodo di utilità che permette di posizionare rapidamente sulla mappa una lista di MapItem.
      * Attenzione: l'oggetto gMap deve essere inizializzato, questo metodo va pertanto chiamato preferibilmente dalla
      * callback onMapReady().
-     * @param l la lista di oggetti di tipo I tale che I sia sottotipo di MapItem.
+     *
+     * @param l   la lista di oggetti di tipo I tale che I sia sottotipo di MapItem.
      * @param <I> sottotipo di MapItem.
      * @return ritorna la collection di oggetti Marker aggiunti alla mappa.
      */
@@ -583,6 +629,7 @@ public class MapsActivity extends AppCompatActivity
      * @return ritorna una collection di marker se tutto va bene; null altrimenti.
      */
     @Nullable
+    /*QUESTO METODO NON CI SERVE*/
     protected <I extends MapItem> Collection<Marker> putMarkersFromData(@NonNull AsyncParser<I, ?> parser) {
         try {
             List<I> l = parser.getAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
@@ -643,37 +690,10 @@ public class MapsActivity extends AppCompatActivity
     private Collection<Marker> markers;
 
     private void demo() {
-        try {
-            InputStream is = getResources().openRawResource(R.raw.csv_ok);
-            CsvRowParser p = new CsvRowParser(new InputStreamReader(is), true, ";");
-            List<CsvRowParser.Row> rows = p.getAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
-            List<MapItem> l = new ArrayList<>();
-            int i=0;
-            for (final CsvRowParser.Row r : rows) {
-                //MAPPO TEMPORANEAMENTE I PRIMI 100 PER NON FAR TROPPO PESANTE L'APP IN FASE DI SCRITTURA
-                i+=1;
-                if(i>20)
-                    break;
-                l.add(new MapItem() {
-                    @Override
-                    public LatLng getPosition() {
-                        String lat = r.get("lat"), lng = r.get("lon");
-                        return new LatLng(Double.parseDouble(lat), Double.parseDouble(lng));
-                    }
-                    @Override
-                    public String getTitle() { return r.get("titolo");}
-
-                    @Override
-                    public String getDescription() {
-                        return r.get("descrizione");
-                    }
-                });
-            }
-            markers = putMarkersFromMapItems(l);
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+        for (MapMarker item : mapMarkers.getMapMarkers()) {
+            Log.i("MapItem", "adding to cluster");
+            mClusterManager.addItem(item);
         }
     }
-
-
 }
+
