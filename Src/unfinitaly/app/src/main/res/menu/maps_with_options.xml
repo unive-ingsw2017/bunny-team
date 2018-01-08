@@ -4,10 +4,10 @@
         android:title="@string/action_impostazioni" />
     <item android:id="@+id/MENU_INFO"
         android:title="@string/action_info" />
-<!--
-    <item android:id="@+id/search"
-        android:title="@string/search_title"
-        android:showAsAction="always|collapseActionView"
-        android:actionViewClass="android.widget.SearchView" />
--->
+    <!--
+        <item android:id="@+id/search"
+            android:title="@string/search_title"
+            android:showAsAction="always|collapseActionView"
+            android:actionViewClass="android.widget.SearchView" />
+    -->
 </menu>
