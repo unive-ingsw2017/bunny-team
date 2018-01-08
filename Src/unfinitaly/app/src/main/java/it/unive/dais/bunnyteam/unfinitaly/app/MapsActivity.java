@@ -85,7 +85,7 @@ import it.unive.dais.bunnyteam.unfinitaly.lib.util.MapItem;
  *
  * @author Alvise Spanò, Università Ca' Foscari
  */
-public class MapsActivity extends AppCompatActivity
+public class MapsActivity extends BaseActivity
         implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -173,7 +173,7 @@ public class MapsActivity extends AppCompatActivity
             }
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        /*setSupportActionBar(toolbar);
         //toolbar.inflateMenu(R.menu.maps_with_options); TODO
 
         // creo il menu laterale tramite il utilizzando il framework MaterialDrawer
@@ -213,7 +213,8 @@ public class MapsActivity extends AppCompatActivity
                 .build();
         // inizializza le preferenze
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
+        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);*/
+        buildDrawer(toolbar);
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
         // trova gli oggetti che rappresentano i bottoni e li salva come campi d'istanza
@@ -693,7 +694,19 @@ public class MapsActivity extends AppCompatActivity
         for (MapMarker item : mapMarkers.getMapMarkers()) {
             Log.i("MapItem", "adding to cluster");
             mClusterManager.addItem(item);
+            mClusterManager.setOnClusterItemInfoWindowClickListener(new ClusterManager.OnClusterItemInfoWindowClickListener<MapMarker>() {
+                @Override
+                public void onClusterItemInfoWindowClick(MapMarker mapMarker) {
+                    showMarkerInfo(mapMarker);
+                }
+            });
         }
+    }
+
+    private void showMarkerInfo(MapMarker mapMarker){
+        Intent i = new Intent(this, MarkerInfoActivity.class);
+        i.putExtra("TITLE", mapMarker.getTitle());
+        startActivity(i);
     }
 }
 

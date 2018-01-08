@@ -6,7 +6,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.coreutils.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
+
+import com.mikepenz.materialdrawer.Drawer;
 
 
 /**
@@ -14,7 +18,7 @@ import android.widget.TextView;
  *
  * @author Alvise Spanò, Università Ca' Foscari
  */
-public class InfoActivity extends AppCompatActivity {
+public class InfoActivity extends BaseActivity {
 
     /**
      * Produce la stringa completa coi crediti.
@@ -53,8 +57,19 @@ public class InfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_info);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        buildDrawer(toolbar);
         TextView tv_1 = (TextView) findViewById(R.id.textView_1);
         tv_1.setText(credits(this));
+        drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        drawer.setOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
+            @Override
+            public boolean onNavigationClickListener(View clickedView) {
+                onBackPressed();
+                return true;
+            }
+        });
     }
 
 }

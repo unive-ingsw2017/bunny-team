@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="it.unive.dais.bunnyteam.unfinitaly.app" >
+    package="it.unive.dais.bunnyteam.unfinitaly.app">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -13,15 +13,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/BunnyTheme"
-    >
+        android:theme="@style/BunnyTheme">
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -36,30 +34,31 @@
             android:value="AIzaSyA7_DiJwBOBEaYpBz-cL9VeHnAV4yVR8W0" />
 
         <activity
-            android:name="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity"
-            android:label="@string/title_activity_maps" >
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="it.unive.dais.bunnyteam.unfinitaly.app.InfoActivity"
-            android:parentActivityName="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity">
+            android:name=".InfoActivity"
+            android:parentActivityName=".MapsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity" />
         </activity>
-
         <activity
-            android:name="it.unive.dais.bunnyteam.unfinitaly.app.SettingsActivity"
-            android:parentActivityName="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity">
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MapsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity" />
         </activity>
-
+        <activity android:name=".MarkerInfoActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".BaseActivity"></activity>
     </application>
 
 </manifest>
