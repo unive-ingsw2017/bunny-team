@@ -545,8 +545,13 @@ public class MapsActivity extends BaseActivity
         googleMap.setOnCameraIdleListener(mClusterManager);
         googleMap.setOnMarkerClickListener(mClusterManager);
         googleMap.setOnInfoWindowClickListener(mClusterManager);
-        mClusterManager.cluster();
+
+        //mClusterManager.setOnClusterClickListener(mClusterManager);
+        //mClusterManager.setOnClusterInfoWindowClickListener(this);
+        //mClusterManager.setOnClusterItemClickListener(this);
+        //mClusterManager.setOnClusterItemInfoWindowClickListener(this);
         mClusterManager.setRenderer(new it.unive.dais.bunnyteam.unfinitaly.app.ClusterRenderer<>(this, googleMap, mClusterManager));
+        mClusterManager.cluster();
         demo();
     }
 
