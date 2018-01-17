@@ -59,7 +59,7 @@ public class ClusterRenderer<T extends MapMarker> extends DefaultClusterRenderer
         if(descriptor == null) {
             this.mColoredCircleBackground.getPaint().setColor(this.getColor(bucket));
             //descriptor = BitmapDescriptorFactory.fromBitmap(this.mIconGenerator.makeIcon(String.valueOf(cluster.getSize()))); //real numbers
-            descriptor = BitmapDescriptorFactory.fromBitmap(this.mIconGenerator.makeIcon(/*this.getClusterText(bucket)*/)); //number +
+            descriptor = BitmapDescriptorFactory.fromBitmap(this.mIconGenerator.makeIcon(this.getClusterText(bucket))); //number +
 
             this.mIcons.put(bucket, descriptor);
         }

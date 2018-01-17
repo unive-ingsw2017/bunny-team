@@ -1,0 +1,97 @@
+package it.unive.dais.bunnyteam.unfinitaly.app;
+
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+
+
+
+public class LoadingActivity extends AppCompatActivity {
+    WebView webview;
+    TextView tv_status;
+    TextView tvCountLoad;
+    ProgressBar progressBar;
+    int status = 0;
+    FloatingActionButton fab;
+
+    @Override
+    public void onBackPressed() {
+        if(webview.getVisibility()==View.VISIBLE)
+            unshowWebView();
+        else
+            super.onBackPressed();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loading);
+        tv_status = (TextView)findViewById(R.id.tv_status);
+        tvCountLoad =(TextView)findViewById(R.id.tvCountLoad);
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        webview = (WebView)findViewById(R.id.webview);
+        webview.loadUrl("http://unfinitaly.altervista.org/");
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.setWebViewClient(new WebViewClient());
+        fab = (FloatingActionButton)findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showWebView();
+            }
+        });
+        if(MapMarkerList.getInstance().getMapMarkers().size() == 0) {
+            /*non ci sono markers*/
+            if (MapsItemIO.isCached(this)) {
+                try {
+                    MapMarkerList.getInstance().loadFromCache(this);
+                    startMapsActivity();
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    MapMarkerList.getInstance().loadFromCsv(this);
+                } catch (InterruptedException | IOException | ExecutionException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    public void showWebView(){
+        webview.setVisibility(View.VISIBLE);
+        tv_status.setVisibility(View.INVISIBLE);
+        tvCountLoad.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
+        fab.setVisibility(View.INVISIBLE);
+    }
+    public void unshowWebView(){
+        webview.setVisibility(View.INVISIBLE);
+        tv_status.setVisibility(View.VISIBLE);
+        tvCountLoad.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+        fab.setVisibility(View.VISIBLE);
+        if(status == 1)
+            startMapsActivity();
+    }
+    public void startMapsActivity() {
+        startActivity(new Intent(this, MapsActivity.class));
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+}

@@ -139,12 +139,13 @@ public class MapsActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        mapMarkers = MapMarkerList.getInstance();
         /*
             qui vanno letti i marker. Prima di creare la mappa.
          */
-        mapMarkers = MapMarkerList.getInstance();
+        /*mapMarkers = MapMarkerList.getInstance();
         if(mapMarkers.getMapMarkers().size() == 0) {
-            /*non ci sono markers*/
+            /*non ci sono markers
             if (MapsItemIO.isCached(this)) {
                 try {
                     mapMarkers.loadFromCache(this);
@@ -166,15 +167,12 @@ public class MapsActivity extends BaseActivity
                     Terminare l'activity (?)
                     Nell'OnDestroy (o nell'OnCreate, dipende da come Android gestisce le chiamate alle Activity),
                         richiamare la MapsAcitivty, così troverà i Marker nel MapMarkerList.
-            }*/
-            else { //provvisorio
-                try {
-                    mapMarkers.loadFromCsv(this);
-                } catch (InterruptedException | ExecutionException | IOException e) {
-                    e.printStackTrace();
-                }
             }
-        }
+            else {
+                Intent i = new Intent(this, LoadingActivity.class);
+                startActivity(i);
+            }
+        }*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         /*setSupportActionBar(toolbar);
         //toolbar.inflateMenu(R.menu.maps_with_options); TODO
