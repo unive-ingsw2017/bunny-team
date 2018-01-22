@@ -17,21 +17,29 @@ import it.unive.dais.bunnyteam.unfinitaly.lib.util.MapItem;
 public class MapMarker extends MapItem implements ClusterItem, Serializable {
     private double lat;
     private double lng;
+    private double percentage;
     private String title;
     private String snippet;
+    private String categoria;
+    private String sottosettore;
+
 
     public MapMarker(double lat, double lng) {
         this.lat = lat;
         this.lng = lng;
+        this.percentage = percentage;
         title = "";
         snippet = "";
     }
 
-    public MapMarker(double lat, double lng, String title, String snippet) {
+    public MapMarker(double lat, double lng, double percentage, String title, String snippet, String categoria, String sottosettore) {
         this.lat = lat;
         this.lng = lng;
+        this.percentage = percentage;
         this.title = title;
         this.snippet = snippet;
+        this.categoria = categoria;
+        this.sottosettore = sottosettore;
     }
 
     @Override
@@ -60,5 +68,15 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         this.snippet = snippet;
     }
 
+    public double getPercentage(){
+        return this.percentage;
+    }
 
+    public String getCategoria(){
+        return this.categoria;
+    }
+
+    public String getSottosettore(){
+        return this.sottosettore;
+    }
 }

@@ -51,8 +51,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         PrimaryDrawerItem regione = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per regione").withIcon(R.drawable.regione);
         PrimaryDrawerItem categoria = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per categoria").withIcon(R.drawable.categoria);
         PrimaryDrawerItem percentuale = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
-        PrimaryDrawerItem informazioni = new PrimaryDrawerItem().withIdentifier(1).withName("Impostazioni").withIcon(R.drawable.info);
-        PrimaryDrawerItem impostazioni = new PrimaryDrawerItem().withIdentifier(1).withName("Informazioni").withIcon(R.drawable.settings);
+        PrimaryDrawerItem informazioni = new PrimaryDrawerItem().withIdentifier(1).withName("Informazioni").withIcon(R.drawable.info);
+        PrimaryDrawerItem impostazioni = new PrimaryDrawerItem().withIdentifier(1).withName("Impostazioni").withIcon(R.drawable.settings);
         //Associazione listener alle varie voci
         regione.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
             @Override
@@ -78,14 +78,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         informazioni.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
             @Override
             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                startSettingsActivity();
+                startInfoActivity();
                 return false;
             }
         });
         impostazioni.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
             @Override
             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                startInfoActivity();
+                startSettingsActivity();
                 return false;
             }
         });
