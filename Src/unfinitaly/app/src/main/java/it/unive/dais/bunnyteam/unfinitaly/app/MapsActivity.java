@@ -221,7 +221,7 @@ public class MapsActivity extends BaseActivity
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
         // trova gli oggetti che rappresentano i bottoni e li salva come campi d'istanza
-        button_here = (ImageButton) findViewById(R.id.button_here);
+        //button_here = (ImageButton) findViewById(R.id.button_here);
         button_car = (ImageButton) findViewById(R.id.button_car);
 
         // API per i servizi di localizzazione
@@ -232,7 +232,7 @@ public class MapsActivity extends BaseActivity
         mapFragment.getMapAsync(this);
 
         // quando viene premito il pulsante HERE viene eseguito questo codice
-        button_here.setOnClickListener(new View.OnClickListener() {
+        /*button_here.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "here button clicked");
@@ -250,7 +250,7 @@ public class MapsActivity extends BaseActivity
                 } else
                     Log.d(TAG, "no current position available");
             }
-        });
+        });*/
     }
 
 
@@ -362,14 +362,14 @@ public class MapsActivity extends BaseActivity
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        /*switch (item.getItemId()) {
             case R.id.MENU_SETTINGS:
                 startActivity(new Intent(this, SettingsActivity.class));
                 break;
             case R.id.MENU_INFO:
                 startActivity(new Intent(this, InfoActivity.class));
                 break;
-        }
+        }*/
         return false;
     }
 
@@ -474,7 +474,7 @@ public class MapsActivity extends BaseActivity
      */
     @Override
     public void onCameraMoveStarted(int reason) {
-        setHereButtonVisibility();
+        //setHereButtonVisibility();
     }
 
     /**
@@ -483,7 +483,7 @@ public class MapsActivity extends BaseActivity
      * impostanta nelle preferenze.
      * Questo comportamento è dimostrativo e non è necessario tenerlo quando si sviluppa un'applicazione modificando questo template.
      */
-    public void setHereButtonVisibility() {
+    /*public void setHereButtonVisibility() {
         if (gMap != null) {
             if (gMap.getCameraPosition().zoom < SettingsActivity.getZoomThreshold(this)) {
                 button_here.setVisibility(View.INVISIBLE);
@@ -491,7 +491,7 @@ public class MapsActivity extends BaseActivity
                 button_here.setVisibility(View.VISIBLE);
             }
         }
-    }
+    }*/
 
     /**
      * Questo metodo è molto importante: esso viene invocato dal sistema quando la mappa è pronta.
@@ -563,7 +563,7 @@ public class MapsActivity extends BaseActivity
             Log.d(TAG, "applying map settings");
             gMap.setMapType(SettingsActivity.getMapStyle(this));
         }
-        setHereButtonVisibility();
+        //setHereButtonVisibility();
     }
 
     /**

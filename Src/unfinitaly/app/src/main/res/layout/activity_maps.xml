@@ -43,7 +43,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/trans"
                 android:src="@drawable/button_here"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:layout_weight="1"
                 android:layout_marginTop="@dimen/button_margin"
                 />

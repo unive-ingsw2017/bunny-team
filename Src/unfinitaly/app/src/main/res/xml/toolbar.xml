@@ -7,7 +7,7 @@
     android:layout_alignParentTop="true"
     android:background="@color/colorPrimary"
     android:elevation="8dp"
-    app:title="BunnyTeam"
+    app:title="UnfinItaly App"
     app:titleTextColor="@color/white"
     android:theme="@style/BunnyTheme"
     xmlns:app="http://schemas.android.com/apk/res-auto"
