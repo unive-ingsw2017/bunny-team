@@ -54,7 +54,7 @@ public class InfoActivity extends BaseActivity {
                 "--- APP ---\n" +
                         "%s v%s [%s]\n" +
                         "(c) %s %s @ %s - %s \n\n" +
-                        "--- ANDROID ---\n%s",
+                        "--- ANDROID ---\n%s\n\n\n",
                 ctx.getString(ai.labelRes),
                 BuildConfig.VERSION_NAME,
                 BuildConfig.BUILD_TYPE,
