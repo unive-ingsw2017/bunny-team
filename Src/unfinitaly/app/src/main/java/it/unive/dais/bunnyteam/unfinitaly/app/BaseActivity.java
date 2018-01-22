@@ -77,4 +77,5 @@ public abstract class BaseActivity extends AppCompatActivity {
             overridePendingTransition(R.xml.slide_up_info, R.xml.no_change);
         }
     }
+
 }

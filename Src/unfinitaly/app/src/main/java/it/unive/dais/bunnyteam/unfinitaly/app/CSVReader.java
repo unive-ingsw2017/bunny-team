@@ -37,7 +37,7 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
         Log.i("CIAO", "SHOWING PROGRESS BAR!");
         ((AVLoadingIndicatorView)loadingAct.findViewById(R.id.avi)).smoothToShow();
         ((ProgressBar)loadingAct.findViewById(R.id.progressBar)).setMax(100);
-        ((TextView)loadingAct.findViewById(R.id.tv_status)).setText("Parsing this Fucking CSV...");
+        ((TextView)loadingAct.findViewById(R.id.tv_status)).setText("Parsing del CSV...");
         super.onPreExecute();
     }
 
@@ -66,7 +66,7 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
         int max = ints[0].intValue();
         int cur = ints[1].intValue();
         String count = cur + "/" + max;
-        ((TextView)loadingAct.findViewById(R.id.tv_status)).setText("Creating the Markers of To Sea Cow...");
+        ((TextView)loadingAct.findViewById(R.id.tv_status)).setText("Creazione Markers...");
         ((TextView) loadingAct.findViewById(R.id.tvCountLoad)).setText(count);
         ((ProgressBar) loadingAct.findViewById(R.id.progressBar)).setProgress(cur * 100 / max);
     }

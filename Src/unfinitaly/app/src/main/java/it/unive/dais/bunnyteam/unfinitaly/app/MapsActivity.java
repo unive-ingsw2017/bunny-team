@@ -720,8 +720,6 @@ public class MapsActivity extends BaseActivity
     public void onBackPressed(){
         if(onBackPressed){
             /*è stato premuto una volta. Lo ripremiamo, quindi dovremmo uscire*/
-            //super.onBackPressed();
-            //super.onDestroy();
             Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra("EXIT", true);

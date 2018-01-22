@@ -92,10 +92,6 @@ public class LoadingActivity extends AppCompatActivity {
         startActivity(new Intent(this, MapsActivity.class));
     }
 
-    public int getStatus() {
-        return status;
-    }
-
     public void setStatus(int status) {
         this.status = status;
     }
