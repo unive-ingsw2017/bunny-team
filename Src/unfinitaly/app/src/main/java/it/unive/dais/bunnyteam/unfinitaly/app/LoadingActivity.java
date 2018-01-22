@@ -34,6 +34,11 @@ public class LoadingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            finish();
+            System.exit(0);
+        }
+
         setContentView(R.layout.activity_loading);
         tv_status = (TextView)findViewById(R.id.tv_status);
         tvCountLoad =(TextView)findViewById(R.id.tvCountLoad);

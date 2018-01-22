@@ -7,8 +7,8 @@ android {
         applicationId "it.unive.dais.bunnyteam.unfinitaly.app"
         minSdkVersion 22
         targetSdkVersion 25
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.2.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

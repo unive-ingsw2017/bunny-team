@@ -13,6 +13,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -98,6 +99,7 @@ public class MapsActivity extends BaseActivity
     protected static final int PERMISSIONS_REQUEST_ACCESS_BOTH_LOCATION = 501;
     // alcune costanti
     private static final String TAG = "MapsActivity";
+    private boolean onBackPressed = false;
     /**
      * Questo oggetto è la mappa di Google Maps. Viene inizializzato asincronamente dal metodo {@code onMapsReady}.
      */
@@ -712,8 +714,29 @@ public class MapsActivity extends BaseActivity
 
     private void showMarkerInfo(MapMarker mapMarker){
         Intent i = new Intent(this, MarkerInfoActivity.class);
-        i.putExtra("TITLE", mapMarker.getTitle());
+        i.putExtra("MapMarker", mapMarker);
         startActivity(i);
+    }
+    public void onBackPressed(){
+        if(onBackPressed){
+            /*è stato premuto una volta. Lo ripremiamo, quindi dovremmo uscire*/
+            //super.onBackPressed();
+            //super.onDestroy();
+            Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("EXIT", true);
+            startActivity(intent);
+        }
+        else{
+            onBackPressed=true;
+            Toast.makeText(this, "Premi ancora per uscire", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    onBackPressed=false;
+                }
+            }, 2000);
+        }
     }
 }
 

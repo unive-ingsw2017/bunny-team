@@ -11,6 +11,23 @@
         layout="@xml/toolbar"
         android:layout_width="0dp" />
 
+    <fragment
+        class="com.google.android.gms.maps.StreetViewPanoramaFragment"
+        android:id="@+id/fragmentStreetView"
+
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="160dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_markerInfoAcitivity"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/tv_markerInfoAcitivity"
         android:layout_width="0dp"
@@ -22,6 +39,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+    <com.google.android.gms.maps.StreetViewPanoramaView
+        android:id="@+id/streetView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentStreetView" />
 
 </android.support.constraint.ConstraintLayout>
