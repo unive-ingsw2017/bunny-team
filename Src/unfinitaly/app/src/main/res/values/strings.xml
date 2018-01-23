@@ -9,6 +9,7 @@
     <string name="conn_failed">Connessione fallita</string>
     <string name="conn_suspended">Connessione sospesa</string>
 
+    <string name="benvenuto">Benvenuto su UnfinItaly! \nStiamo caricando per te i dati da rappresentare nella mappa. Tra poco inizierà il tuo viaggio tra le opere incompiute italiane!\nQuesta schermata di caricamento verrà visualizzata solo al primo avvio.</string>
 
     <string name="menu_mapStyle_title">Stile Mappa</string>
     <string name="menu_mapStyle_summary">Scegli il tipo di mappa di Google Maps</string>

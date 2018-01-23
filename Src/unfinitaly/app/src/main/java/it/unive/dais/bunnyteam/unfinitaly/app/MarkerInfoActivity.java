@@ -30,11 +30,13 @@ public class MarkerInfoActivity extends BaseActivity {
         toolbar.setTitle("Informazioni opera");
         thisMapMarker = (MapMarker)getIntent().getSerializableExtra("MapMarker");
         TextView tv = (TextView) findViewById(R.id.tv_markerInfoAcitivity);
-        String opera = "CATEGORIA:\n "+thisMapMarker.getCategoria();
+        String opera = "PUBBLICATA DA:\n "+thisMapMarker.getRegione();
+        opera+="\n\nCATEGORIA:\n"+thisMapMarker.getCategoria();
         opera+="\n\nSOTTOSETTORE:\n "+thisMapMarker.getSottosettore();
+        opera+="\n\nTIPOLOGIA CUP:\n "+thisMapMarker.getTipologia_cup();
         opera+="\n\nDESCRIZIONE:\n"+thisMapMarker.getTitle();
-        opera+="\n\nPUBBLICATA DA:\n"+thisMapMarker.getRegione();
-        opera+="\n\nPercentuale avanzamento dei lavori: "+thisMapMarker.getPercentage()+" %";
+        opera+="\n\nCAUSA DEL FALLIMENTO:\n"+thisMapMarker.getCausa();
+        opera+="\n\nPERCENTUALE AVANZAMENTO DEI LAVORI: "+thisMapMarker.getPercentage()+" %";
         tv.setText(opera);
         rc.setMax(100);
         rc.setProgress((int)thisMapMarker.getPercentage());

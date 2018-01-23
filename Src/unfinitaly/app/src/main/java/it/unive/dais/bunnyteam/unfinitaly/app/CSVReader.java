@@ -53,7 +53,7 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
         int i = 0;
         for (final CsvRowParser.Row r : rows) {
             Log.i("ItemReader", "adding elements");
-            items.add(new MapMarker(Double.parseDouble(r.get("lat")), Double.parseDouble(r.get("lon")), Double.parseDouble(r.get("perc_avanzamento")), r.get("titolo"), r.get("descrizione"), r.get("categoria"), r.get("sottosettore"), r.get("pubblicata_da")));
+            items.add(new MapMarker(Double.parseDouble(r.get("lat")), Double.parseDouble(r.get("lon")), Double.parseDouble(r.get("perc_avanzamento")), r.get("titolo"), r.get("descrizione"), r.get("categoria"), r.get("sottosettore"), r.get("pubblicata_da"),r.get("causa"),r.get("tipologia_cup")));
             i++;
             publishProgress(rows.size(), i);
         }
@@ -65,7 +65,7 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
     protected void onProgressUpdate(Integer... ints) {
         int max = ints[0].intValue();
         int cur = ints[1].intValue();
-        String count = cur + "/" + max;
+        String count = (cur * 100 / max) + "/100%";
         ((TextView)loadingAct.findViewById(R.id.tv_status)).setText("Creazione Markers...");
         ((TextView) loadingAct.findViewById(R.id.tvCountLoad)).setText(count);
         ((ProgressBar) loadingAct.findViewById(R.id.progressBar)).setProgress(cur * 100 / max);
