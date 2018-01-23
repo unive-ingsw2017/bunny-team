@@ -3,6 +3,7 @@ package it.unive.dais.bunnyteam.unfinitaly.app;
 
 import android.os.Bundle;
 
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,8 @@ import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.StreetViewPanoramaCamera;
+import com.google.android.gms.maps.model.StreetViewPanoramaLocation;
 import com.mikepenz.materialdrawer.Drawer;
 
 
@@ -47,15 +50,25 @@ public class MarkerInfoActivity extends BaseActivity {
                 return false;
             }
         });
-        StreetViewPanoramaFragment streetViewPanoramaFragment =
+        final StreetViewPanoramaFragment streetViewPanoramaFragment =
                 (StreetViewPanoramaFragment) getFragmentManager()
                         .findFragmentById(R.id.streetviewpanorama);
+        getFragmentManager().beginTransaction().hide(streetViewPanoramaFragment).commit();
         streetViewPanoramaFragment.getStreetViewPanoramaAsync(new OnStreetViewPanoramaReadyCallback() {
-            @Override
-            public void onStreetViewPanoramaReady(StreetViewPanorama panorama) {
-                panorama.setPosition(coordMapM);
-            }
+                @Override
+                public void onStreetViewPanoramaReady(StreetViewPanorama panorama) {
+                    panorama.setOnStreetViewPanoramaChangeListener(new StreetViewPanorama.OnStreetViewPanoramaChangeListener() {
+                            @Override
+                            public void onStreetViewPanoramaChange(StreetViewPanoramaLocation streetViewPanoramaLocation) {
+                                if (streetViewPanoramaLocation != null && streetViewPanoramaLocation.links != null) {
+                                    getFragmentManager().beginTransaction().show(streetViewPanoramaFragment).commit();
+                                }
+                            }
+                        });
+                    panorama.setPosition(coordMapM);
+                }
         });
+
     }
 
 }
