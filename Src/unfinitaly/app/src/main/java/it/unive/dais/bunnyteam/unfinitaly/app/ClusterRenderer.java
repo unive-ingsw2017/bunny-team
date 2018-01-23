@@ -29,7 +29,7 @@ public class ClusterRenderer<T extends MapMarker> extends DefaultClusterRenderer
     protected final float mDensity;
     protected ShapeDrawable mColoredCircleBackground;
     protected SparseArray<BitmapDescriptor> mIcons = new SparseArray();
-    protected int mMinClusterSize = 4;
+    protected int mMinClusterSize = 1;
     protected IconGenerator mIconGenerator;
 
     public ClusterRenderer(Context context, GoogleMap map, ClusterManager clusterManager) {
