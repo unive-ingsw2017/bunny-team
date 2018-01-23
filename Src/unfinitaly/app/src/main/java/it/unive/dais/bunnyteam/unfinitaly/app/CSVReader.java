@@ -29,7 +29,7 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
     public CSVReader(LoadingActivity loadingAct) {
         this.loadingAct = loadingAct;
         items = new ArrayList<>();
-        is = loadingAct.getResources().openRawResource(R.raw.csv_ok_backup);
+        is = loadingAct.getResources().openRawResource(R.raw.csv_ok);
     }
 
     protected void onPreExecute() {
@@ -53,7 +53,7 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
         int i = 0;
         for (final CsvRowParser.Row r : rows) {
             Log.i("ItemReader", "adding elements");
-            items.add(new MapMarker(Double.parseDouble(r.get("lat")), Double.parseDouble(r.get("lon")), Double.parseDouble(r.get("perc_avanzamento").replaceAll(",",".").replaceAll("%","")), r.get("titolo"), r.get("descrizione"), r.get("categoria"), r.get("sottosettore"), r.get("pubblicata_da")));
+            items.add(new MapMarker(Double.parseDouble(r.get("lat")), Double.parseDouble(r.get("lon")), Double.parseDouble(r.get("perc_avanzamento")), r.get("titolo"), r.get("descrizione"), r.get("categoria"), r.get("sottosettore"), r.get("pubblicata_da")));
             i++;
             publishProgress(rows.size(), i);
         }
