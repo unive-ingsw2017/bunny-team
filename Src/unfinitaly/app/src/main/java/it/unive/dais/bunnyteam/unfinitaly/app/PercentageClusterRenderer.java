@@ -4,9 +4,12 @@ import android.content.Context;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.clustering.ClusterItem;
+import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
+
+import java.util.Collection;
 
 /**
  * Created by giacomo on 23/01/18.
@@ -45,4 +48,6 @@ public class PercentageClusterRenderer<T extends MapMarker> extends ClusterRende
             }
         }
     }
+
+
 }

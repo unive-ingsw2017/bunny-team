@@ -26,11 +26,11 @@ import com.google.maps.android.ui.SquareTextView;
  */
 
 public class ClusterRenderer<T extends MapMarker> extends DefaultClusterRenderer<MapMarker> {
-    private final float mDensity;
-    private ShapeDrawable mColoredCircleBackground;
-    private SparseArray<BitmapDescriptor> mIcons = new SparseArray();
-    private int mMinClusterSize = 4;
-    private IconGenerator mIconGenerator;
+    protected final float mDensity;
+    protected ShapeDrawable mColoredCircleBackground;
+    protected SparseArray<BitmapDescriptor> mIcons = new SparseArray();
+    protected int mMinClusterSize = 4;
+    protected IconGenerator mIconGenerator;
 
     public ClusterRenderer(Context context, GoogleMap map, ClusterManager clusterManager) {
         super(context, map, clusterManager);
