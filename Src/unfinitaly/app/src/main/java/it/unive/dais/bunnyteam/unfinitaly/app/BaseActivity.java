@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.TileOverlay;
+import com.google.android.gms.maps.model.TileOverlayOptions;
+import com.google.maps.android.heatmaps.HeatmapTileProvider;
 import com.mikepenz.materialdrawer.*;
 import com.mikepenz.materialdrawer.interfaces.OnCheckedChangeListener;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -80,6 +83,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             PrimaryDrawerItem categoria = new PrimaryDrawerItem().withIdentifier(3).withName("Filtro per categoria").withIcon(R.drawable.categoria);
             //PrimaryDrawerItem percentuale = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
             SwitchDrawerItem percentuale = new SwitchDrawerItem().withIdentifier(4).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
+            PrimaryDrawerItem distribuzione = new PrimaryDrawerItem().withIdentifier(3).withName("Distribuzione").withIcon(R.drawable.categoria);
             //Associazione listener alle varie voci
             tutte.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
@@ -125,12 +129,23 @@ public abstract class BaseActivity extends AppCompatActivity {
                     }
                 }
             });
+            distribuzione.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                @Override
+                public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                    Toast.makeText(getApplicationContext(), "Pulsante %", Toast.LENGTH_SHORT).show();
+                    HeatmapTileProvider mProvider = new HeatmapTileProvider.Builder()
+                            .data(((MapsActivity) thisActivity).getClusterManager().getCoordList())
+                            .build();
+                    TileOverlay mOverlay = ((MapsActivity) thisActivity).getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
+                    return false;
+                }
+            });
             drawer = new com.mikepenz.materialdrawer.DrawerBuilder()
                     .withActivity(this)
                     .withAccountHeader(headerResult)
                     .withToolbar(toolbar)
                     .addDrawerItems(
-                           tutte, regione, categoria, percentuale, new DividerDrawerItem(), informazioni, impostazioni, new DividerDrawerItem()
+                           tutte, regione, categoria, percentuale, distribuzione, new DividerDrawerItem(), informazioni, impostazioni, new DividerDrawerItem()
                     )
                     .build();
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);

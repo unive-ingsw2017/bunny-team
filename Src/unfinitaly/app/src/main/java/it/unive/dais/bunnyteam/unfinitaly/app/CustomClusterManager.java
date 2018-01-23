@@ -6,12 +6,14 @@ import android.content.DialogInterface;
 import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterItem;
 import com.google.maps.android.clustering.ClusterManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by giacomo on 23/01/18.
@@ -130,5 +132,11 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
     public void unsetPercentageRender(){
         setRenderer(new ClusterRenderer<>(context,map,this));
         resetMarkers();
+    }
+    public List<LatLng> getCoordList(){
+        ArrayList<LatLng> lL = new ArrayList<>();
+        for(MapMarker mM: mapMarkers.getMapMarkers())
+            lL.add(mM.getPosition());
+        return lL;
     }
 }

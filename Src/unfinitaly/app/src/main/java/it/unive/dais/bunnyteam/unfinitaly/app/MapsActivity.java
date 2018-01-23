@@ -593,6 +593,10 @@ public class MapsActivity extends BaseActivity
     }
     public CustomClusterManager getClusterManager(){
         return mClusterManager;
-}
+    }
+    public GoogleMap getMap(){
+        return gMap;
+    }
+
 }
 
