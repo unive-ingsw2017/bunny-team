@@ -116,9 +116,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                 @Override
                 public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
+                        drawer.closeDrawer();
                         ((MapsActivity)thisActivity).getClusterManager().setPercentageRenderer();
                     }
                     else{
+                        drawer.closeDrawer();
                         ((MapsActivity)thisActivity).getClusterManager().unsetPercentageRender();
                     }
                     //Toast.makeText(getApplicationContext(), "Pulsante %: "+isChecked, Toast.LENGTH_SHORT).show();

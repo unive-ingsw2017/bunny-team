@@ -124,9 +124,11 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         cluster();
     }
     public void setPercentageRenderer(){
-        new PercentageClusterRenderer<>(context,map,this);
+        setRenderer(new PercentageClusterRenderer<>(context,map,this));
+        resetMarkers();
     }
     public void unsetPercentageRender(){
-        new ClusterRenderer<>(context,map,this);
+        setRenderer(new ClusterRenderer<>(context,map,this));
+        resetMarkers();
     }
 }
