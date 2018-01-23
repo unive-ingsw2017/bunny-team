@@ -203,7 +203,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             final ArrayList<Integer> selectedItems = new ArrayList<>();
             final ArrayList<String> selectedCategory = new ArrayList<>();
             AlertDialog dialog = new AlertDialog.Builder(this)
-                    .setTitle("Scegli le regioni")
+                    .setTitle("Scegli le categorie")
                     .setMultiChoiceItems(allCategoryWithNumbers, null, new DialogInterface.OnMultiChoiceClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int indexSelected, boolean isChecked) {
