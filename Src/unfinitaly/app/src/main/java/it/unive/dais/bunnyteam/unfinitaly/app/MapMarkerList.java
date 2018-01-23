@@ -31,8 +31,8 @@ public class MapMarkerList implements Serializable{
         return instance.mapMarkers;
     }
     public void setMapMarkers(ArrayList<MapMarker> mapMarkers) { instance.mapMarkers = mapMarkers; }
-    public void loadFromCache(Context context) throws IOException, ClassNotFoundException {
-        MapsItemIO.readFromCache(context);
+    public boolean loadFromCache(Context context) throws IOException, ClassNotFoundException {
+        return MapsItemIO.readFromCache(context);
     }
     public void loadFromCsv(LoadingActivity loadAct) throws InterruptedException, ExecutionException, IOException {
         //instance.setMapMarkers(MapsItemIO.readFromCsvAsync(loadAct));
@@ -40,7 +40,6 @@ public class MapMarkerList implements Serializable{
     }
     public static void setInstance(MapMarkerList instance){
         MapMarkerList.instance = instance;
-
     }
 
 

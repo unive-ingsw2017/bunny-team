@@ -18,6 +18,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     private double lat;
     private double lng;
     private double percentage;
+    private String regione;
     private String title;
     private String snippet;
     private String categoria;
@@ -30,9 +31,10 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         this.percentage = percentage;
         title = "";
         snippet = "";
+        regione = "";
     }
 
-    public MapMarker(double lat, double lng, double percentage, String title, String snippet, String categoria, String sottosettore) {
+    public MapMarker(double lat, double lng, double percentage, String title, String snippet, String categoria, String sottosettore, String regione) {
         this.lat = lat;
         this.lng = lng;
         this.percentage = percentage;
@@ -40,6 +42,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         this.snippet = snippet;
         this.categoria = categoria;
         this.sottosettore = sottosettore;
+        this.regione = regione;
     }
 
     @Override
@@ -68,6 +71,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         this.snippet = snippet;
     }
 
+    public String getRegione(){ return this.regione; }
     public double getPercentage(){
         return this.percentage;
     }

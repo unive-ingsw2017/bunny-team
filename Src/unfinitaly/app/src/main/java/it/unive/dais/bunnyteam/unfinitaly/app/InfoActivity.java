@@ -100,8 +100,7 @@ public class InfoActivity extends BaseActivity {
 
     public void showWebView() {
         webview.setVisibility(View.VISIBLE);
-        //invisible tutti gli altri
-        toolbar.setVisibility(View.INVISIBLE);
+        //invisible tutti gli altri, toolbar rimane sempre visibile
         imV.setVisibility(View.INVISIBLE);
         tw.setVisibility(View.INVISIBLE);
         fab.setVisibility(View.INVISIBLE);
@@ -109,7 +108,6 @@ public class InfoActivity extends BaseActivity {
 
     public void unshowWebView() {
         webview.setVisibility(View.INVISIBLE);
-        toolbar.setVisibility(View.VISIBLE);
         imV.setVisibility(View.VISIBLE);
         tw.setVisibility(View.VISIBLE);
         fab.setVisibility(View.VISIBLE);

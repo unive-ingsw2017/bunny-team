@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -56,19 +57,20 @@ public class LoadingActivity extends AppCompatActivity {
         });
         if(MapMarkerList.getInstance().getMapMarkers().size() == 0) {
             /*non ci sono markers*/
+            try {
             if (MapsItemIO.isCached(this)) {
-                try {
-                    MapMarkerList.getInstance().loadFromCache(this);
-                    startMapsActivity();
-                } catch (IOException | ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                try {
-                    MapMarkerList.getInstance().loadFromCsv(this);
-                } catch (InterruptedException | IOException | ExecutionException e) {
-                    e.printStackTrace();
-                }
+
+                    Log.i("loading", "is on cache!");
+                    if(!(MapMarkerList.getInstance().loadFromCache(this)))
+                        MapMarkerList.getInstance().loadFromCsv(this);
+                    else{
+                        Log.i("loading", "starting app!");
+                        startMapsActivity();
+                    }
+            }else
+                MapMarkerList.getInstance().loadFromCsv(this);
+            } catch (InterruptedException | IOException | ExecutionException | ClassNotFoundException e) {
+                e.printStackTrace();
             }
         }
     }

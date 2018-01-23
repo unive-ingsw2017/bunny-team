@@ -6,6 +6,8 @@ package it.unive.dais.bunnyteam.unfinitaly.app;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -145,78 +147,8 @@ public class MapsActivity extends BaseActivity
         /*
             qui vanno letti i marker. Prima di creare la mappa.
          */
-        /*mapMarkers = MapMarkerList.getInstance();
-        if(mapMarkers.getMapMarkers().size() == 0) {
-            /*non ci sono markers
-            if (MapsItemIO.isCached(this)) {
-                try {
-                    mapMarkers.loadFromCache(this);
-                } catch (IOException | ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-            /*else{
-            i marker non sono in cache. È necessario quindi prelevarli dal CSV.
-                L'idea è quella di lanciare una nuova Activity (LoadingActivity),
-                dove viene presentato un Loader e dove vengono letti ASINCRONAMENTE i marker dal csv
-                e salvati in cache (NB: la chiamata Asincrona viene fatta si nella lettura del CSV, ma non
-                nel parsing dei Doble. Ed è questo che rende lenta la creazione dei Marker. Nell'Async).
-                Quando finisce, il controllo torna alla MapsActivity, che così può rieseguire l'OnCreate e trovare i
-                marker.
-                Quindi qui va chiamata l'activity con startACtivity
-                Nell'activity va fatto:
-                    MapMarkerList.getInstance().loadFromCsv().
-                    Terminare l'activity (?)
-                    Nell'OnDestroy (o nell'OnCreate, dipende da come Android gestisce le chiamate alle Activity),
-                        richiamare la MapsAcitivty, così troverà i Marker nel MapMarkerList.
-            }
-            else {
-                Intent i = new Intent(this, LoadingActivity.class);
-                startActivity(i);
-            }
-        }*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        /*setSupportActionBar(toolbar);
-        //toolbar.inflateMenu(R.menu.maps_with_options); TODO
 
-        // creo il menu laterale tramite il utilizzando il framework MaterialDrawer
-        AccountHeader headerResult = new AccountHeaderBuilder()
-                .withActivity(this)
-                .withHeaderBackground(R.drawable.background)
-                .addProfiles(
-                        new ProfileDrawerItem().withName("Bunny Team").withEmail("bunnyteam@gmail.com").withIcon(getResources().getDrawable(R.drawable.user))
-                )
-                .build();
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Impostazioni");
-        SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(2).withName("Bohh");
-        item1.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-            @Override
-            public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                Toast.makeText(getApplicationContext(), "Bottone 1", Toast.LENGTH_LONG).show();
-                Intent intent_info = new Intent(MapsActivity.this, SettingsActivity.class);
-                startActivity(intent_info);
-                overridePendingTransition(R.xml.slide_up_info, R.xml.no_change);
-                return false;
-            }
-        });
-        item2.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-            @Override
-            public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                Toast.makeText(getApplicationContext(), "Bottone 2", Toast.LENGTH_LONG).show();
-                return false;
-            }
-        });
-        Drawer result = new DrawerBuilder()
-                .withActivity(this)
-                .withAccountHeader(headerResult)
-                .withToolbar(toolbar)
-                .addDrawerItems(
-                        item1, item2, new DividerDrawerItem()
-                )
-                .build();
-        // inizializza le preferenze
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);*/
         buildDrawer(toolbar);
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
@@ -700,16 +632,21 @@ public class MapsActivity extends BaseActivity
     private Collection<Marker> markers;
 
     private void demo() {
-        for (MapMarker item : mapMarkers.getMapMarkers()) {
-            Log.i("MapItem", "adding to cluster");
-            mClusterManager.addItem(item);
-            mClusterManager.setOnClusterItemInfoWindowClickListener(new ClusterManager.OnClusterItemInfoWindowClickListener<MapMarker>() {
-                @Override
-                public void onClusterItemInfoWindowClick(MapMarker mapMarker) {
-                    showMarkerInfo(mapMarker);
-                }
-            });
-        }
+        mClusterManager.addItems(mapMarkers.getMapMarkers());
+        mClusterManager.setOnClusterItemInfoWindowClickListener(new ClusterManager.OnClusterItemInfoWindowClickListener<MapMarker>() {
+            @Override
+            public void onClusterItemInfoWindowClick(MapMarker mapMarker) {
+                showMarkerInfo(mapMarker);
+            }
+        });
+        mClusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<MapMarker>() {
+            @Override
+            public boolean onClusterClick(Cluster<MapMarker> cluster) {
+                    /*presentiamo una lista con i Marker dentro al cluster?*/
+                Toast.makeText(getApplicationContext(), "cliccato Cluster! Elementi nel cluster"+cluster.getSize(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
     }
 
     private void showMarkerInfo(MapMarker mapMarker){
@@ -735,6 +672,39 @@ public class MapsActivity extends BaseActivity
                 }
             }, 2000);
         }
+    }
+    protected void showOnlyMarkerByRegion(List<String> regions){
+        /*cleariamo il clusterManager*/
+        mClusterManager.clearItems();
+        /*aggiungiamo solo i marker che fanno parte delle regioni in regions*/
+        for (MapMarker item : mapMarkers.getMapMarkers()) {
+            if(regions.contains(item.getRegione())){
+                /*la regione fa parte della lista*/
+                mClusterManager.addItem(item);
+            }
+        }
+    }
+
+    /***
+     * mostra tutti i marker
+     */
+    protected void resetMarkers(){
+        mClusterManager.clearItems();
+        mClusterManager.addItems(mapMarkers.getMapMarkers());
+        mClusterManager.cluster();
+    }
+    protected void clearMarkers(){
+        mClusterManager.clearItems();
+        mClusterManager.cluster();
+    }
+
+    protected void showRegions(ArrayList<String> regions) {
+        /*qui devo far vedere le regioni.*/
+        mClusterManager.clearItems();
+        for(MapMarker mM: mapMarkers.getMapMarkers())
+            if(regions.contains(mM.getRegione()))
+                mClusterManager.addItem(mM);
+        mClusterManager.cluster();
     }
 }
 

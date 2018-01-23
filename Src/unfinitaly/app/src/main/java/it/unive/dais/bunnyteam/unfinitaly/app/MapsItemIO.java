@@ -29,32 +29,6 @@ import it.unive.dais.bunnyteam.unfinitaly.lib.parser.CsvRowParser;
  */
 
 public class MapsItemIO {
-    /**
-     * per ora non è asincrono, ma andrebbe fatto in modo async. LoadingActivity chiama readFromCsvAsync (che sarà asincrono).
-     *      TODO: Async pre: chiama metodo showStatusBar() di LoadingActivity
-     *      TODO: Async post: chiama metodo startMapsActivity da LoadingActivity
-     *      TODO: Async durante: chiama metodo showProgress(int progress, int total) di LoadingActivity che aggiorna testo su TextView di LoadingActivity
-     *                              es. Caricamento... 34/634 (oppure fare percentuale tipo Caricamento 56%)
-     * @param context
-     * @return
-     * @throws ExecutionException
-     * @throws InterruptedException
-     * @throws IOException
-     */
-    /*public static ArrayList<MapMarker> readFromCsvAsync(LoadingActivity loadAct) throws ExecutionException, InterruptedException, IOException {
-        /*VA FATTO ASYNCRONAMENTE
-        Log.i("ItemReader", "starting reading...");
-        ArrayList<MapMarker> items = new ArrayList<MapMarker>();
-        InputStream is = context.getResources().openRawResource(R.raw.csv_ok);
-        CsvRowParser p = new CsvRowParser(new InputStreamReader(is), true, ";");
-        List<CsvRowParser.Row> rows = p.getAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
-        for (final CsvRowParser.Row r : rows) {
-            Log.i("ItemReader", "adding elements");
-            items.add(new MapMarker(Double.parseDouble(r.get("lat")), Double.parseDouble(r.get("lon")), r.get("titolo"), r.get("descrizione")));
-        }
-        Log.i("ItemReader", "ending reading.. Readed : " + items.size());
-        return items;
-    }*/
 
     public static boolean isCached(Context context) {
         File cacheDir = new File(context.getCacheDir(), "files");
@@ -69,7 +43,7 @@ public class MapsItemIO {
     public void loadFromCsv(LoadingActivity loadingActivity){
         new CSVReader(loadingActivity).execute();
     }
-    public static void readFromCache(Context context) throws IOException, ClassNotFoundException {
+    public static boolean readFromCache(Context context) throws IOException, ClassNotFoundException {
         File cacheDir = new File(context.getCacheDir(), "files");
         Log.i("ReadFromCache", "start");
         if (!cacheDir.exists())
@@ -79,10 +53,14 @@ public class MapsItemIO {
         ObjectInputStream oIs = new ObjectInputStream(is);
         Log.i("ReadFromCache", "reading");
         Object readed = oIs.readObject();
+        Log.i("ciao", "instance of: "+readed.getClass());
         if (readed instanceof MapMarkerList) {
             MapMarkerList.setInstance((MapMarkerList) readed);
             Log.i("ReadFromCache", "readed "+MapMarkerList.getInstance().getMapMarkers().size());
+            return true;
         }
+        else
+            return false;
         }
 
     public static void saveToCache(MapMarkerList mmL, Context context) throws IOException {
