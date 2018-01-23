@@ -655,17 +655,6 @@ public class MapsActivity extends BaseActivity
             }, 2000);
         }
     }
-    protected void showOnlyMarkerByRegion(List<String> regions){
-        /*cleariamo il clusterManager*/
-        mClusterManager.clearItems();
-        /*aggiungiamo solo i marker che fanno parte delle regioni in regions*/
-        for (MapMarker item : mapMarkers.getMapMarkers()) {
-            if(regions.contains(item.getRegione())){
-                /*la regione fa parte della lista*/
-                mClusterManager.addItem(item);
-            }
-        }
-    }
 
 public CustomClusterManager getClusterManager(){
         return mClusterManager;
