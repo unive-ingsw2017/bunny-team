@@ -33,6 +33,7 @@ public class MarkerInfoActivity extends BaseActivity {
         String opera = "PUBBLICATA DA:\n "+thisMapMarker.getRegione();
         opera+="\n\nCATEGORIA:\n"+thisMapMarker.getCategoria();
         opera+="\n\nSOTTOSETTORE:\n "+thisMapMarker.getSottosettore();
+        opera+="\n\nCUP:\n "+thisMapMarker.getCup();
         opera+="\n\nTIPOLOGIA CUP:\n "+thisMapMarker.getTipologia_cup();
         opera+="\n\nDESCRIZIONE:\n"+thisMapMarker.getTitle();
         opera+="\n\nCAUSA DEL FALLIMENTO:\n"+thisMapMarker.getCausa();

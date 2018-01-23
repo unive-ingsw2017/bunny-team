@@ -25,6 +25,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     private String sottosettore;
     private String causa;
     private String tipologia_cup;
+    private String cup;
 
     public MapMarker(double lat, double lng) {
         this.lat = lat;
@@ -35,9 +36,10 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         regione = "";
         causa = "";
         tipologia_cup = "";
+        cup = "";
     }
 
-    public MapMarker(double lat, double lng, double percentage, String title, String snippet, String categoria, String sottosettore, String regione, String causa, String tipologia_cup) {
+    public MapMarker(double lat, double lng, double percentage, String title, String snippet, String categoria, String sottosettore, String regione, String causa, String tipologia_cup, String cup) {
         this.lat = lat;
         this.lng = lng;
         this.percentage = percentage;
@@ -48,6 +50,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         this.regione = regione;
         this.causa = causa;
         this.tipologia_cup = tipologia_cup;
+        this.cup = cup;
     }
 
     @Override
@@ -75,16 +78,13 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     public void setSnippet(String snippet) {
         this.snippet = snippet;
     }
-
     public String getRegione(){ return this.regione; }
     public double getPercentage(){
         return this.percentage;
     }
-
     public String getCategoria(){
         return this.categoria;
     }
-
     public String getSottosettore(){
         return this.sottosettore;
     }
@@ -92,6 +92,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         return this.causa;
     }
     public String getTipologia_cup(){
-        return tipologia_cup;
+        return this.tipologia_cup;
     }
+    public String getCup(){return this.cup;}
 }

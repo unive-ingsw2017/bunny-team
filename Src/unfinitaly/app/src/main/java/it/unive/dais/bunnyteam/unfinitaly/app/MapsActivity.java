@@ -29,6 +29,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -642,8 +643,28 @@ public class MapsActivity extends BaseActivity
         mClusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<MapMarker>() {
             @Override
             public boolean onClusterClick(Cluster<MapMarker> cluster) {
-                    /*presentiamo una lista con i Marker dentro al cluster?*/
-                Toast.makeText(getApplicationContext(), "cliccato Cluster! Elementi nel cluster"+cluster.getSize(), Toast.LENGTH_SHORT).show();
+                final String[] stringclusterlista = new String[cluster.getSize()];
+                final Collection<MapMarker> clusterlist = cluster.getItems();
+                Log.d("Grandezza",""+cluster.getSize());
+                for(int i=0;i<clusterlist.size();i++){
+                    stringclusterlista[i]= (String)"CUP:"+((MapMarker)clusterlist.toArray()[i]).getCup()+"\n"+((MapMarker)clusterlist.toArray()[i]).getTipologia_cup();
+                }
+                AlertDialog dialog = new AlertDialog.Builder(thisActivity)
+                        .setTitle("Elementi presenti: "+cluster.getSize())
+                        .setSingleChoiceItems(stringclusterlista, 0, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                showMarkerInfo((MapMarker)clusterlist.toArray()[id]);
+                                //Toast.makeText(getApplicationContext(), "cliccato Cluster!"+id, Toast.LENGTH_SHORT).show();
+                            }
+                        }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        }).create();
+                dialog.show();
+                //Toast.makeText(getApplicationContext(), "cliccato Cluster! Elementi nel cluster"+cluster.getSize(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
