@@ -10,6 +10,7 @@ import android.util.SparseArray;
 import android.view.ViewGroup;
 
 import com.google.android.gms.maps.GoogleMap;
+
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -66,8 +67,11 @@ public class ClusterRenderer<T extends MapMarker> extends DefaultClusterRenderer
 
         markerOptions.icon(descriptor);
     }
-
-
+/*
+    protected void onBeforeClusterItemRendered(MapMarker item,
+                                               MarkerOptions markerOptions) {
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.bunnylogo));
+    }*/
     private LayerDrawable makeClusterBackground() {
         this.mColoredCircleBackground = new ShapeDrawable(new OvalShape());
         ShapeDrawable outline = new ShapeDrawable(new OvalShape());
