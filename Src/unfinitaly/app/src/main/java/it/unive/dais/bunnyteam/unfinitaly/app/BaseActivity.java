@@ -14,6 +14,7 @@ import com.mikepenz.materialdrawer.*;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
@@ -71,7 +72,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             PrimaryDrawerItem tutte = new PrimaryDrawerItem().withIdentifier(1).withName("Standard").withIcon(R.drawable.regione);
             PrimaryDrawerItem regione = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per regione").withIcon(R.drawable.regione);
             PrimaryDrawerItem categoria = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per categoria").withIcon(R.drawable.categoria);
-            PrimaryDrawerItem percentuale = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
+            //PrimaryDrawerItem percentuale = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
+            SwitchDrawerItem percentuale = new SwitchDrawerItem().withIdentifier(1).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
             //Associazione listener alle varie voci
             tutte.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
