@@ -124,7 +124,9 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         cluster();
     }
     public void setPercentageRenderer(){
-        Log.i("Perc", "percRenderer");
+        new PercentageClusterRenderer<>(context,map,this);
     }
-    public void unsetPercentageRender(){Log.i("Perc","disabled");}
+    public void unsetPercentageRender(){
+        new ClusterRenderer<>(context,map,this);
+    }
 }
