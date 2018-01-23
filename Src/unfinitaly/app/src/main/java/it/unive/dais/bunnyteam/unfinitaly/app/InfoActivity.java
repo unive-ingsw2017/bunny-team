@@ -38,7 +38,8 @@ public class InfoActivity extends BaseActivity {
      * @return ritorna la stringa completa.
      */
     public static String credits(Context ctx) {
-
+        return "Email\nunfinitaly.app@gmail.com\n\nSito web:\nunfinitaly.@altervista.org";
+        /*
         ApplicationInfo ai = ctx.getApplicationInfo();
         StringBuffer buf = new StringBuffer();
         buf.append("\tVERSION.RELEASE {").append(Build.VERSION.RELEASE).append("}");
@@ -59,7 +60,7 @@ public class InfoActivity extends BaseActivity {
                 BuildConfig.VERSION_NAME,
                 BuildConfig.BUILD_TYPE,
                 R.string.credits_year, R.string.credits_project, R.string.credits_company, R.string.credits_authors,
-                buf);
+                buf);*/
     }
 
     /**
@@ -86,6 +87,7 @@ public class InfoActivity extends BaseActivity {
         });
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         buildDrawer(toolbar);
+        toolbar.setTitle("Informazioni");
         tw.setText(credits(this));
         drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

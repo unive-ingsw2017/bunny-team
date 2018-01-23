@@ -1,12 +1,13 @@
 package it.unive.dais.bunnyteam.unfinitaly.app;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -70,10 +71,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         });
         if (this instanceof MapsActivity) {
             PrimaryDrawerItem tutte = new PrimaryDrawerItem().withIdentifier(1).withName("Standard").withIcon(R.drawable.regione);
-            PrimaryDrawerItem regione = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per regione").withIcon(R.drawable.regione);
-            PrimaryDrawerItem categoria = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per categoria").withIcon(R.drawable.categoria);
+            PrimaryDrawerItem regione = new PrimaryDrawerItem().withIdentifier(2).withName("Filtro per regione").withIcon(R.drawable.regione);
+            PrimaryDrawerItem categoria = new PrimaryDrawerItem().withIdentifier(3).withName("Filtro per categoria").withIcon(R.drawable.categoria);
             //PrimaryDrawerItem percentuale = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
-            SwitchDrawerItem percentuale = new SwitchDrawerItem().withIdentifier(1).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
+            SwitchDrawerItem percentuale = new SwitchDrawerItem().withIdentifier(4).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
             //Associazione listener alle varie voci
             tutte.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
@@ -101,7 +102,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             percentuale.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                    Toast.makeText(getApplicationContext(), "Pulsante %", Toast.LENGTH_SHORT).show();
+                        Log.d("click","swith regione");
+                        Toast.makeText(getApplicationContext(), "Pulsante %", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             });
