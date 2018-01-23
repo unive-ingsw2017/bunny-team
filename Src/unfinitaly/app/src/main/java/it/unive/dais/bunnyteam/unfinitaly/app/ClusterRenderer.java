@@ -59,12 +59,11 @@ public class ClusterRenderer<T extends MapMarker> extends DefaultClusterRenderer
 
         markerOptions.icon(descriptor);
     }
-/*
+
     protected void onBeforeClusterItemRendered(MapMarker item, MarkerOptions markerOptions) {
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
     }
-    */
     private LayerDrawable makeClusterBackground() {
         this.mColoredCircleBackground = new ShapeDrawable(new OvalShape());
         ShapeDrawable outline = new ShapeDrawable(new OvalShape());
