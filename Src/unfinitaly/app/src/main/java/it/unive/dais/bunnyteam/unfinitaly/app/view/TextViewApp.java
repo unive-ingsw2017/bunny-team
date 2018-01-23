@@ -30,7 +30,7 @@ public class TextViewApp extends AppCompatTextView {
     }
 
     public void init() {
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/BALOO_REG.ttf");
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Montserrat-Regular.tff");
         setTypeface(tf ,1);
 
     }

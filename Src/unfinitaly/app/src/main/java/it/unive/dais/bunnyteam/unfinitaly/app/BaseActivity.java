@@ -27,6 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Activity thisActivity;
     final ArrayList<Integer> selectedRegionsItems = new ArrayList<>();
     final ArrayList<Integer> selectedCategoriesItems = new ArrayList<>();
+    boolean resetfilter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void buildDrawer(Toolbar toolbar) {
         thisActivity = this;
+        resetfilter = false;
         setSupportActionBar(toolbar);
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -81,6 +83,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                     ((MapsActivity)thisActivity).getClusterManager().resetMarkers();
+                    resetfilter = true;
                     return false;
                 }
             });
@@ -169,8 +172,14 @@ public abstract class BaseActivity extends AppCompatActivity {
             for (int i = 0; i < allRegionsWithNumbers.length; i++)
                 allRegionsWithNumbers[i] = allRegions[i] + " (" + ((MapsActivity) thisActivity).getClusterManager().countMarkerByRegion(allRegions[i]) + ")";
             final boolean[] selectedReg = new boolean[allRegions.length];
-            for(int i : selectedRegionsItems)
-                selectedReg[i] = true;
+            if(resetfilter){
+                for(int i : selectedRegionsItems)
+                    selectedReg[i] = false;
+                resetfilter = false;
+            }else{
+                for(int i : selectedRegionsItems)
+                    selectedReg[i] = true;
+            }
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Scegli le regioni")
                     .setMultiChoiceItems(allRegionsWithNumbers, selectedReg , new DialogInterface.OnMultiChoiceClickListener() {
@@ -210,8 +219,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                 allCategoryWithNumbers[i] = allCategory.get(i)+" ("+((MapsActivity)thisActivity).getClusterManager().countMarkerByCategory(allCategory.get(i))+")";
             final ArrayList<String> selectedCategory = new ArrayList<>();
             final boolean[] selectedCat = new boolean[allCategory.size()];
-            for(int i : selectedCategoriesItems)
-                selectedCat[i] = true;
+            if (resetfilter){
+                for(int i : selectedCategoriesItems)
+                    selectedCat[i] = false;
+                resetfilter = false;
+            }else{
+                for(int i : selectedCategoriesItems)
+                    selectedCat[i] = true;
+            }
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Scegli le categorie")
                     .setMultiChoiceItems(allCategoryWithNumbers, selectedCat, new DialogInterface.OnMultiChoiceClickListener() {
