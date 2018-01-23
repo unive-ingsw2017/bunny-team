@@ -75,7 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         });
         if (this instanceof MapsActivity) {
-            PrimaryDrawerItem tutte = new PrimaryDrawerItem().withIdentifier(1).withName("Reset filtri").withIcon(R.drawable.regione);
+            PrimaryDrawerItem tutte = new PrimaryDrawerItem().withIdentifier(1).withName("Reset filtri").withIcon(R.drawable.unset);
             PrimaryDrawerItem regione = new PrimaryDrawerItem().withIdentifier(2).withName("Filtro per regione").withIcon(R.drawable.regione);
             PrimaryDrawerItem categoria = new PrimaryDrawerItem().withIdentifier(3).withName("Filtro per categoria").withIcon(R.drawable.categoria);
             //PrimaryDrawerItem percentuale = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
@@ -123,7 +123,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                         drawer.closeDrawer();
                         ((MapsActivity)thisActivity).getClusterManager().unsetPercentageRender();
                     }
-                    //Toast.makeText(getApplicationContext(), "Pulsante %: "+isChecked, Toast.LENGTH_SHORT).show();
                 }
             });
             drawer = new com.mikepenz.materialdrawer.DrawerBuilder()
