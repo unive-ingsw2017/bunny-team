@@ -1,7 +1,6 @@
 package it.unive.dais.bunnyteam.unfinitaly.app;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
