@@ -48,18 +48,19 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:backgroundTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_markerInfoAcitivity"
-                app:rcBackgroundPadding="5dp"
+                app:rcBackgroundPadding="0dp"
                 app:rcMax="100"
                 app:rcProgress="0"
-                app:rcProgressColor="@color/md_blue_500"
+                app:rcProgressColor="@color/md_green_900"
                 app:rcRadius="6dp"
                 app:rcReverse="false"
                 app:rcSecondaryProgress="100"
-                app:rcSecondaryProgressColor="@color/md_red_200" />
+                app:rcSecondaryProgressColor="@color/md_red_800" />
 
             <fragment
                 android:id="@+id/streetviewpanorama"

@@ -3,7 +3,6 @@ package it.unive.dais.bunnyteam.unfinitaly.app;
 
 import android.os.Bundle;
 
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
@@ -14,7 +13,6 @@ import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.StreetViewPanoramaCamera;
 import com.google.android.gms.maps.model.StreetViewPanoramaLocation;
 import com.mikepenz.materialdrawer.Drawer;
 
