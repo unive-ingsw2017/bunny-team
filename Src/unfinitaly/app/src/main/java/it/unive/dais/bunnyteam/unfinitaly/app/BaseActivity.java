@@ -108,7 +108,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             percentuale.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        Log.d("click","swith regione");
                         Toast.makeText(getApplicationContext(), "Pulsante %", Toast.LENGTH_SHORT).show();
                     return false;
                 }
@@ -116,7 +115,13 @@ public abstract class BaseActivity extends AppCompatActivity {
             percentuale.withOnCheckedChangeListener(new OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
-                    Toast.makeText(getApplicationContext(), "Pulsante %: "+isChecked, Toast.LENGTH_SHORT).show();
+                    if(isChecked){
+                        ((MapsActivity)thisActivity).getClusterManager().setPercentageRenderer();
+                    }
+                    else{
+                        ((MapsActivity)thisActivity).getClusterManager().unsetPercentageRender();
+                    }
+                    //Toast.makeText(getApplicationContext(), "Pulsante %: "+isChecked, Toast.LENGTH_SHORT).show();
                 }
             });
             drawer = new com.mikepenz.materialdrawer.DrawerBuilder()

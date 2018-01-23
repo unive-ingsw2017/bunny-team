@@ -655,8 +655,7 @@ public class MapsActivity extends BaseActivity
             }, 2000);
         }
     }
-
-public CustomClusterManager getClusterManager(){
+    public CustomClusterManager getClusterManager(){
         return mClusterManager;
 }
 }

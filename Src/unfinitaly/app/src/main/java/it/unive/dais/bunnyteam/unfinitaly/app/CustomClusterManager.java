@@ -105,7 +105,6 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                             }
                         }).create();
                 dialog.show();
-                //Toast.makeText(getApplicationContext(), "cliccato Cluster! Elementi nel cluster"+cluster.getSize(), Toast.LENGTH_SHORT).show();
                 return false;
             }
         };
@@ -127,5 +126,5 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
     public void setPercentageRenderer(){
         Log.i("Perc", "percRenderer");
     }
-
+    public void unsetPercentageRender(){Log.i("Perc","disabled");}
 }
