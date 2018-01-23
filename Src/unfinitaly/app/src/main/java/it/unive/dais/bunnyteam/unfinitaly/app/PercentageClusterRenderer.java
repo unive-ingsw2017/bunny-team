@@ -19,12 +19,6 @@ public class PercentageClusterRenderer<T extends MapMarker> extends ClusterRende
 
     @Override
     protected void onBeforeClusterItemRendered(MapMarker item, MarkerOptions markerOptions) {
-        /*TO DO: in questo metodo si fa l'algoritmo che calcola il colore in base alla percentuale di completamento.*/
-        //quello che c'è qui è quello standard, va cancellato e sistemato il metodo
-        //markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-        /*la riga sopra colora l'icona del marker di rosso */
-        /*quando si clicca su percentuale, va cambiato il ClusterRenderer con questo,
-        quando si deseleziona percentuale, va rimesso il ClusterRenderer di default*/
         double percentage =  item.getPercentage();
         if(percentage >= 0 && percentage < 25){
             //Tra 0 e 25

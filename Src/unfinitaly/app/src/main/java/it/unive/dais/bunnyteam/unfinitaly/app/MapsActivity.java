@@ -412,22 +412,6 @@ public class MapsActivity extends BaseActivity
     }
 
     /**
-     * Metodo proprietario che imposta la visibilità del pulsante HERE.
-     * Si occupa di nascondere o mostrare il pulsante HERE in base allo zoom attuale, confrontandolo con la soglia di zoom
-     * impostanta nelle preferenze.
-     * Questo comportamento è dimostrativo e non è necessario tenerlo quando si sviluppa un'applicazione modificando questo template.
-     */
-    /*public void setHereButtonVisibility() {
-        if (gMap != null) {
-            if (gMap.getCameraPosition().zoom < SettingsActivity.getZoomThreshold(this)) {
-                button_here.setVisibility(View.INVISIBLE);
-            } else {
-                button_here.setVisibility(View.VISIBLE);
-            }
-        }
-    }*/
-
-    /**
      * Questo metodo è molto importante: esso viene invocato dal sistema quando la mappa è pronta.
      * Il parametro è l'oggetto di tipo GoogleMap pronto all'uso, che viene immediatamente assegnato ad un campo interno della
      * classe.
@@ -481,7 +465,6 @@ public class MapsActivity extends BaseActivity
         googleMap.setOnInfoWindowClickListener(mClusterManager);
         mClusterManager.setMapMarkerList(mapMarkers);
         mClusterManager.cluster();
-        demo();
     }
 
     /**
@@ -526,7 +509,7 @@ public class MapsActivity extends BaseActivity
     @Override
     public boolean onMarkerClick(final Marker marker) {
         marker.showInfoWindow();
-        button_car.setVisibility(View.VISIBLE);
+        /*button_car.setVisibility(View.VISIBLE);
         button_car.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -535,51 +518,10 @@ public class MapsActivity extends BaseActivity
                     navigate(currentPosition, marker.getPosition());
                 }
             }
-        });
+        });*/
         return false;
     }
 
-    /**
-     * Metodo di utilità che permette di posizionare rapidamente sulla mappa una lista di MapItem.
-     * Attenzione: l'oggetto gMap deve essere inizializzato, questo metodo va pertanto chiamato preferibilmente dalla
-     * callback onMapReady().
-     *
-     * @param l   la lista di oggetti di tipo I tale che I sia sottotipo di MapItem.
-     * @param <I> sottotipo di MapItem.
-     * @return ritorna la collection di oggetti Marker aggiunti alla mappa.
-     */
-    @NonNull
-    protected <I extends MapItem> Collection<Marker> putMarkersFromMapItems(List<I> l) {
-        Collection<Marker> r = new ArrayList<>();
-        for (MapItem i : l) {
-            MarkerOptions opts = new MarkerOptions().title(i.getTitle()).position(i.getPosition()).snippet(i.getDescription());
-            r.add(gMap.addMarker(opts));
-        }
-        return r;
-    }
-
-    /**
-     * Metodo proprietario di utilità per popolare la mappa con i dati provenienti da un parser.
-     * Si tratta di un metodo che può essere usato direttamente oppure può fungere da esempio per come
-     * utilizzare i parser con informazioni geolocalizzate.
-     *
-     * @param parser un parser che produca sottotipi di MapItem, con qualunque generic Progress o Input
-     * @param <I>    parametro di tipo che estende MapItem.
-     * @return ritorna una collection di marker se tutto va bene; null altrimenti.
-     */
-    @Nullable
-    /*QUESTO METODO NON CI SERVE*/
-    protected <I extends MapItem> Collection<Marker> putMarkersFromData(@NonNull AsyncParser<I, ?> parser) {
-        try {
-            List<I> l = parser.getAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
-            Log.i(TAG, String.format("parsed %d lines", l.size()));
-            return putMarkersFromMapItems(l);
-        } catch (InterruptedException | ExecutionException e) {
-            Log.e(TAG, String.format("exception caught while parsing: %s", e));
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     /**
      * Controlla lo stato del GPS e dei servizi di localizzazione, comportandosi di conseguenza.
@@ -622,14 +564,8 @@ public class MapsActivity extends BaseActivity
         });
     }
 
-
-    // demo code
-
     @Nullable
     private Collection<Marker> markers;
-
-    private void demo() {
-    }
 
     public void showMarkerInfo(MapMarker mapMarker){
         Intent i = new Intent(this, MarkerInfoActivity.class);
