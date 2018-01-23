@@ -5,47 +5,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="it.unive.dais.bunnyteam.unfinitaly.app.MarkerInfoActivity">
-
     <include
         android:id="@+id/toolbar"
         layout="@xml/toolbar"
         android:layout_width="0dp" />
 
-    <TextView
-        android:id="@+id/tv_markerInfoAcitivity"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="TextView"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.01999998" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
-        android:id="@+id/roundcorner"
-        android:layout_width="0dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_markerInfoAcitivity"
-        app:layout_constraintVertical_bias="0.0"
-        app:rcBackgroundPadding="5dp"
-        app:rcMax="100"
-        app:rcProgress="0"
-        app:rcProgressColor="@color/md_blue_500"
-        app:rcRadius="6dp"
-        app:rcReverse="false"
-        app:rcSecondaryProgress="100"
-        app:rcSecondaryProgressColor="@color/md_red_200" />
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintlayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context="it.unive.dais.bunnyteam.unfinitaly.app.MarkerInfoActivity">
+
+            <TextView
+                android:id="@+id/tv_markerInfoAcitivity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/roundcorner"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_markerInfoAcitivity"
+                app:rcBackgroundPadding="5dp"
+                app:rcMax="100"
+                app:rcProgress="0"
+                app:rcProgressColor="@color/md_blue_500"
+                app:rcRadius="6dp"
+                app:rcReverse="false"
+                app:rcSecondaryProgress="100"
+                app:rcSecondaryProgressColor="@color/md_red_200" />
+
+            <fragment
+                android:id="@+id/streetviewpanorama"
+                android:name="com.google.android.gms.maps.StreetViewPanoramaFragment"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roundcorner" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+
 
 </android.support.constraint.ConstraintLayout>

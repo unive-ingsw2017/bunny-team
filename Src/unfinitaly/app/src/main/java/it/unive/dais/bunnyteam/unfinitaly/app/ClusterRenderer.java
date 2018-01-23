@@ -20,7 +20,6 @@ import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 import com.google.maps.android.ui.IconGenerator;
 import com.google.maps.android.ui.SquareTextView;
 
-import it.unive.dais.bunnyteam.unfinitaly.lib.experimental.TyBundle;
 
 /**
  * Created by giacomo on 08/01/18.
@@ -41,13 +40,7 @@ public class ClusterRenderer<T extends MapMarker> extends DefaultClusterRenderer
         this.mIconGenerator.setContentView(this.makeSquareTextView(context));
         this.mIconGenerator.setTextAppearance(com.google.maps.android.R.style.amu_ClusterIcon_TextAppearance);
     }
-    /*@Override
-    protected int getBucket(Cluster cluster) {
-        return cluster.getSize();
-    }
-    protected String getClusterText(int bucket){
-        return ""+bucket;
-    }*/
+
     public int getMinClusterSize(){
         return mMinClusterSize;
     }
@@ -61,17 +54,17 @@ public class ClusterRenderer<T extends MapMarker> extends DefaultClusterRenderer
             this.mColoredCircleBackground.getPaint().setColor(this.getColor(bucket));
             //descriptor = BitmapDescriptorFactory.fromBitmap(this.mIconGenerator.makeIcon(String.valueOf(cluster.getSize()))); //real numbers
             descriptor = BitmapDescriptorFactory.fromBitmap(this.mIconGenerator.makeIcon(this.getClusterText(bucket))); //number +
-
             this.mIcons.put(bucket, descriptor);
         }
 
         markerOptions.icon(descriptor);
     }
 /*
-    protected void onBeforeClusterItemRendered(MapMarker item,
-                                               MarkerOptions markerOptions) {
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.bunnylogo));
-    }*/
+    protected void onBeforeClusterItemRendered(MapMarker item, MarkerOptions markerOptions) {
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+
+    }
+    */
     private LayerDrawable makeClusterBackground() {
         this.mColoredCircleBackground = new ShapeDrawable(new OvalShape());
         ShapeDrawable outline = new ShapeDrawable(new OvalShape());

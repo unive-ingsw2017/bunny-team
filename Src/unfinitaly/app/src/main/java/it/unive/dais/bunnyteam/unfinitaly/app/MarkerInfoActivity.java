@@ -9,6 +9,10 @@ import android.support.v7.widget.Toolbar;
 
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
+import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
+import com.google.android.gms.maps.StreetViewPanorama;
+import com.google.android.gms.maps.StreetViewPanoramaFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.mikepenz.materialdrawer.Drawer;
 
 
@@ -33,6 +37,7 @@ public class MarkerInfoActivity extends BaseActivity {
         tv.setText(opera);
         rc.setMax(100);
         rc.setProgress((int)thisMapMarker.getPercentage());
+        final LatLng coordMapM = thisMapMarker.getPosition();
         drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawer.setOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
@@ -40,6 +45,15 @@ public class MarkerInfoActivity extends BaseActivity {
             public boolean onNavigationClickListener(View clickedView) {
                 onBackPressed();
                 return false;
+            }
+        });
+        StreetViewPanoramaFragment streetViewPanoramaFragment =
+                (StreetViewPanoramaFragment) getFragmentManager()
+                        .findFragmentById(R.id.streetviewpanorama);
+        streetViewPanoramaFragment.getStreetViewPanoramaAsync(new OnStreetViewPanoramaReadyCallback() {
+            @Override
+            public void onStreetViewPanoramaReady(StreetViewPanorama panorama) {
+                panorama.setPosition(coordMapM);
             }
         });
     }
