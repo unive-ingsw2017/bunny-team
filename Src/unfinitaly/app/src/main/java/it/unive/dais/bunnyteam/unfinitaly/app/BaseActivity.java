@@ -18,6 +18,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected Drawer drawer;
@@ -83,7 +84,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             regione.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                    Toast.makeText(getApplicationContext(), "Pulsante regione", Toast.LENGTH_SHORT).show();
                     /*TO DO: mostrare lista regioni, estrarre regioni selezionate*/
                     showAlertDialogRegions();
                     return false;
@@ -92,7 +92,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             categoria.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                    Toast.makeText(getApplicationContext(), "Pulsante categoria", Toast.LENGTH_SHORT).show();
+                    showAlertDialogCategory();
                     return false;
                 }
             });
@@ -156,12 +156,12 @@ public abstract class BaseActivity extends AppCompatActivity {
             startActivity(maps_info);
         }
     }
-    private void showAlertDialogRegions(){
-        if(thisActivity instanceof MapsActivity) {
+    private void showAlertDialogRegions() {
+        if (thisActivity instanceof MapsActivity) {
             final String[] allRegions = getResources().getStringArray(R.array.regions);
             final String[] allRegionsWithNumbers = new String[allRegions.length];
-            for(int i=0; i<allRegionsWithNumbers.length; i++)
-                allRegionsWithNumbers[i] = allRegions[i]+" ("+((MapsActivity)thisActivity).countMarkerByRegion(allRegions[i])+")";
+            for (int i = 0; i < allRegionsWithNumbers.length; i++)
+                allRegionsWithNumbers[i] = allRegions[i] + " (" + ((MapsActivity) thisActivity).countMarkerByRegion(allRegions[i]) + ")";
             final ArrayList<Integer> selectedItems = new ArrayList<>();
             final ArrayList<String> selectedRegions = new ArrayList<>();
             AlertDialog dialog = new AlertDialog.Builder(this)
@@ -181,7 +181,45 @@ public abstract class BaseActivity extends AppCompatActivity {
                             /*cliccato OK, mi ricavo le regioni salvate.*/
                             for (int number : selectedItems)
                                 selectedRegions.add(allRegions[number]);
-                            ((MapsActivity)thisActivity).showRegions(selectedRegions);
+                            ((MapsActivity) thisActivity).showRegions(selectedRegions);
+
+                        }
+                    }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    }).create();
+            dialog.show();
+        }
+    }
+    private void showAlertDialogCategory(){
+        if(thisActivity instanceof MapsActivity) {
+            final ArrayList<String> allCategory = ((MapsActivity)thisActivity).getAllMarkerCategory();
+            Collections.sort(allCategory);
+            final String[] allCategoryWithNumbers = new String[allCategory.size()];
+            for(int i=0; i<allCategoryWithNumbers.length; i++)
+                allCategoryWithNumbers[i] = allCategory.get(i)+" ("+((MapsActivity)thisActivity).countMarkerByCategory(allCategory.get(i))+")";
+            final ArrayList<Integer> selectedItems = new ArrayList<>();
+            final ArrayList<String> selectedCategory = new ArrayList<>();
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setTitle("Scegli le regioni")
+                    .setMultiChoiceItems(allCategoryWithNumbers, null, new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int indexSelected, boolean isChecked) {
+                            if (isChecked) {
+                                selectedItems.add(indexSelected);
+                            } else if (selectedItems.contains(indexSelected)) {
+                                selectedItems.remove(Integer.valueOf(indexSelected));
+                            }
+                        }
+                    }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            /*cliccato OK, mi ricavo le regioni salvate.*/
+                            for (int number : selectedItems)
+                                selectedCategory.add(allCategory.get(number));
+                            ((MapsActivity)thisActivity).showCategory(selectedCategory);
 
                         }
                     }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {

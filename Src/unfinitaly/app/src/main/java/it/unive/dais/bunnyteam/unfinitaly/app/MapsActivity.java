@@ -713,5 +713,29 @@ public class MapsActivity extends BaseActivity
                 i++;
         return i;
     }
+    protected ArrayList<String> getAllMarkerCategory(){
+        ArrayList<String> allCategory = new ArrayList<>();
+        for(MapMarker mM: mapMarkers.getMapMarkers())
+            if(!allCategory.contains(mM.getCategoria()))
+                allCategory.add(mM.getCategoria());
+        return allCategory;
+    }
+
+    protected int countMarkerByCategory(String category) {
+        int i=0;
+        for(MapMarker mM: mapMarkers.getMapMarkers())
+            if(mM.getCategoria().equals(category))
+                i++;
+        return i;
+    }
+
+    public void showCategory(ArrayList<String> selectedCategory) {
+       /*qui devo far vedere le categorie.*/
+        mClusterManager.clearItems();
+        for(MapMarker mM: mapMarkers.getMapMarkers())
+            if(selectedCategory.contains(mM.getCategoria()))
+                mClusterManager.addItem(mM);
+        mClusterManager.cluster();
+    }
 }
 
