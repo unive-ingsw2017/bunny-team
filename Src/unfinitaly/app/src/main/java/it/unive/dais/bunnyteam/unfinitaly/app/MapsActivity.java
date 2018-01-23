@@ -706,5 +706,12 @@ public class MapsActivity extends BaseActivity
                 mClusterManager.addItem(mM);
         mClusterManager.cluster();
     }
+    protected int countMarkerByRegion(String region){
+        int i=0;
+        for(MapMarker mM: mapMarkers.getMapMarkers())
+            if(mM.getRegione().equals(region))
+                i++;
+        return i;
+    }
 }
 

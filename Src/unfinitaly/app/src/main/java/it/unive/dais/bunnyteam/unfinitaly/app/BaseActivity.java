@@ -159,18 +159,19 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void showAlertDialogRegions(){
         if(thisActivity instanceof MapsActivity) {
             final String[] allRegions = getResources().getStringArray(R.array.regions);
+            final String[] allRegionsWithNumbers = new String[allRegions.length];
+            for(int i=0; i<allRegionsWithNumbers.length; i++)
+                allRegionsWithNumbers[i] = allRegions[i]+" ("+((MapsActivity)thisActivity).countMarkerByRegion(allRegions[i])+")";
             final ArrayList<Integer> selectedItems = new ArrayList<>();
             final ArrayList<String> selectedRegions = new ArrayList<>();
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Scegli le regioni")
-                    .setMultiChoiceItems(allRegions, null, new DialogInterface.OnMultiChoiceClickListener() {
+                    .setMultiChoiceItems(allRegionsWithNumbers, null, new DialogInterface.OnMultiChoiceClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int indexSelected, boolean isChecked) {
                             if (isChecked) {
-                                // If the user checked the item, add it to the selected items
                                 selectedItems.add(indexSelected);
                             } else if (selectedItems.contains(indexSelected)) {
-                                // Else, if the item is already in the array, remove it
                                 selectedItems.remove(Integer.valueOf(indexSelected));
                             }
                         }
