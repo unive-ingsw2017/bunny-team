@@ -56,6 +56,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.ClusterRenderer;
+import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -131,7 +132,7 @@ public class MapsActivity extends BaseActivity
     protected Marker hereMarker = null;
 
 
-    private ClusterManager<MapMarker> mClusterManager;
+    private CustomClusterManager<MapMarker> mClusterManager;
     private MapMarkerList mapMarkers = null;
     /**
      * Questo metodo viene invocato quando viene inizializzata questa activity.
@@ -474,16 +475,11 @@ public class MapsActivity extends BaseActivity
         defaultPosition = new LatLng(41.87, 12.56);
         gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultPosition, 5));
         /*prepare the cluster*/
-        mClusterManager = new ClusterManager<>(this, googleMap);
+        mClusterManager = new CustomClusterManager<>(this, googleMap);
         googleMap.setOnCameraIdleListener(mClusterManager);
         googleMap.setOnMarkerClickListener(mClusterManager);
         googleMap.setOnInfoWindowClickListener(mClusterManager);
-
-        //mClusterManager.setOnClusterClickListener(mClusterManager);
-        //mClusterManager.setOnClusterInfoWindowClickListener(this);
-        //mClusterManager.setOnClusterItemClickListener(this);
-        //mClusterManager.setOnClusterItemInfoWindowClickListener(this);
-        mClusterManager.setRenderer(new it.unive.dais.bunnyteam.unfinitaly.app.ClusterRenderer<>(this, googleMap, mClusterManager));
+        mClusterManager.setMapMarkerList(mapMarkers);
         mClusterManager.cluster();
         demo();
     }
@@ -633,44 +629,9 @@ public class MapsActivity extends BaseActivity
     private Collection<Marker> markers;
 
     private void demo() {
-        mClusterManager.addItems(mapMarkers.getMapMarkers());
-        mClusterManager.setOnClusterItemInfoWindowClickListener(new ClusterManager.OnClusterItemInfoWindowClickListener<MapMarker>() {
-            @Override
-            public void onClusterItemInfoWindowClick(MapMarker mapMarker) {
-                showMarkerInfo(mapMarker);
-            }
-        });
-        mClusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<MapMarker>() {
-            @Override
-            public boolean onClusterClick(Cluster<MapMarker> cluster) {
-                final String[] stringclusterlista = new String[cluster.getSize()];
-                final Collection<MapMarker> clusterlist = cluster.getItems();
-                Log.d("Grandezza",""+cluster.getSize());
-                for(int i=0;i<clusterlist.size();i++){
-                    stringclusterlista[i]= (String)"CUP:"+((MapMarker)clusterlist.toArray()[i]).getCup()+"\n"+((MapMarker)clusterlist.toArray()[i]).getTipologia_cup();
-                }
-                AlertDialog dialog = new AlertDialog.Builder(thisActivity)
-                        .setTitle("Elementi presenti: "+cluster.getSize())
-                        .setSingleChoiceItems(stringclusterlista, 0, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                showMarkerInfo((MapMarker)clusterlist.toArray()[id]);
-                                //Toast.makeText(getApplicationContext(), "cliccato Cluster!"+id, Toast.LENGTH_SHORT).show();
-                            }
-                        }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        }).create();
-                dialog.show();
-                //Toast.makeText(getApplicationContext(), "cliccato Cluster! Elementi nel cluster"+cluster.getSize(), Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
     }
 
-    private void showMarkerInfo(MapMarker mapMarker){
+    public void showMarkerInfo(MapMarker mapMarker){
         Intent i = new Intent(this, MarkerInfoActivity.class);
         i.putExtra("MapMarker", mapMarker);
         startActivity(i);
@@ -706,57 +667,8 @@ public class MapsActivity extends BaseActivity
         }
     }
 
-    /***
-     * mostra tutti i marker
-     */
-    protected void resetMarkers(){
-        mClusterManager.clearItems();
-        mClusterManager.addItems(mapMarkers.getMapMarkers());
-        mClusterManager.cluster();
-    }
-    protected void clearMarkers(){
-        mClusterManager.clearItems();
-        mClusterManager.cluster();
-    }
-
-    protected void showRegions(ArrayList<String> regions) {
-        /*qui devo far vedere le regioni.*/
-        mClusterManager.clearItems();
-        for(MapMarker mM: mapMarkers.getMapMarkers())
-            if(regions.contains(mM.getRegione()))
-                mClusterManager.addItem(mM);
-        mClusterManager.cluster();
-    }
-    protected int countMarkerByRegion(String region){
-        int i=0;
-        for(MapMarker mM: mapMarkers.getMapMarkers())
-            if(mM.getRegione().equals(region))
-                i++;
-        return i;
-    }
-    protected ArrayList<String> getAllMarkerCategory(){
-        ArrayList<String> allCategory = new ArrayList<>();
-        for(MapMarker mM: mapMarkers.getMapMarkers())
-            if(!allCategory.contains(mM.getCategoria()))
-                allCategory.add(mM.getCategoria());
-        return allCategory;
-    }
-
-    protected int countMarkerByCategory(String category) {
-        int i=0;
-        for(MapMarker mM: mapMarkers.getMapMarkers())
-            if(mM.getCategoria().equals(category))
-                i++;
-        return i;
-    }
-
-    public void showCategory(ArrayList<String> selectedCategory) {
-       /*qui devo far vedere le categorie.*/
-        mClusterManager.clearItems();
-        for(MapMarker mM: mapMarkers.getMapMarkers())
-            if(selectedCategory.contains(mM.getCategoria()))
-                mClusterManager.addItem(mM);
-        mClusterManager.cluster();
-    }
+public CustomClusterManager getClusterManager(){
+        return mClusterManager;
+}
 }
 

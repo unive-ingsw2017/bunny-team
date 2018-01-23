@@ -80,7 +80,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             tutte.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                    ((MapsActivity)thisActivity).resetMarkers();
+                    ((MapsActivity)thisActivity).getClusterManager().resetMarkers();
                     return false;
                 }
             });
@@ -167,7 +167,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             final String[] allRegionsWithNumbers = new String[allRegions.length];
             final ArrayList<String> selectedRegions = new ArrayList<>();
             for (int i = 0; i < allRegionsWithNumbers.length; i++)
-                allRegionsWithNumbers[i] = allRegions[i] + " (" + ((MapsActivity) thisActivity).countMarkerByRegion(allRegions[i]) + ")";
+                allRegionsWithNumbers[i] = allRegions[i] + " (" + ((MapsActivity) thisActivity).getClusterManager().countMarkerByRegion(allRegions[i]) + ")";
             final boolean[] selectedReg = new boolean[allRegions.length];
             for(int i : selectedRegionsItems)
                 selectedReg[i] = true;
@@ -189,7 +189,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
                             for (int number : selectedRegionsItems)
                                 selectedRegions.add(allRegions[number]);
-                            ((MapsActivity) thisActivity).showRegions(selectedRegions);
+                            ((MapsActivity) thisActivity).getClusterManager().showRegions(selectedRegions);
 
                         }
                     }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
@@ -203,11 +203,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     private void showAlertDialogCategory(){
         if(thisActivity instanceof MapsActivity) {
-            final ArrayList<String> allCategory = ((MapsActivity)thisActivity).getAllMarkerCategory();
+            final ArrayList<String> allCategory = ((MapsActivity)thisActivity).getClusterManager().getAllMarkerCategory();
             Collections.sort(allCategory);
             final String[] allCategoryWithNumbers = new String[allCategory.size()];
             for(int i=0; i<allCategoryWithNumbers.length; i++)
-                allCategoryWithNumbers[i] = allCategory.get(i)+" ("+((MapsActivity)thisActivity).countMarkerByCategory(allCategory.get(i))+")";
+                allCategoryWithNumbers[i] = allCategory.get(i)+" ("+((MapsActivity)thisActivity).getClusterManager().countMarkerByCategory(allCategory.get(i))+")";
             final ArrayList<String> selectedCategory = new ArrayList<>();
             final boolean[] selectedCat = new boolean[allCategory.size()];
             for(int i : selectedCategoriesItems)
@@ -229,7 +229,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                             /*cliccato OK, mi ricavo le regioni salvate.*/
                             for (int number : selectedCategoriesItems)
                                 selectedCategory.add(allCategory.get(number));
-                            ((MapsActivity)thisActivity).showCategory(selectedCategory);
+                            ((MapsActivity)thisActivity).getClusterManager().showCategory(selectedCategory);
 
                         }
                     }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
