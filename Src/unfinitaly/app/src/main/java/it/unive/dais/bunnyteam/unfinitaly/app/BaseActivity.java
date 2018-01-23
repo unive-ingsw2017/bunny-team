@@ -25,7 +25,8 @@ import java.util.Collections;
 public abstract class BaseActivity extends AppCompatActivity {
     protected Drawer drawer;
     protected Activity thisActivity;
-
+    final ArrayList<Integer> selectedRegionsItems = new ArrayList<>();
+    final ArrayList<Integer> selectedCategoriesItems = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,26 +165,29 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (thisActivity instanceof MapsActivity) {
             final String[] allRegions = getResources().getStringArray(R.array.regions);
             final String[] allRegionsWithNumbers = new String[allRegions.length];
+            final ArrayList<String> selectedRegions = new ArrayList<>();
             for (int i = 0; i < allRegionsWithNumbers.length; i++)
                 allRegionsWithNumbers[i] = allRegions[i] + " (" + ((MapsActivity) thisActivity).countMarkerByRegion(allRegions[i]) + ")";
-            final ArrayList<Integer> selectedItems = new ArrayList<>();
-            final ArrayList<String> selectedRegions = new ArrayList<>();
+            final boolean[] selectedReg = new boolean[allRegions.length];
+            for(int i : selectedRegionsItems)
+                selectedReg[i] = true;
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Scegli le regioni")
-                    .setMultiChoiceItems(allRegionsWithNumbers, null, new DialogInterface.OnMultiChoiceClickListener() {
+                    .setMultiChoiceItems(allRegionsWithNumbers, selectedReg , new DialogInterface.OnMultiChoiceClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int indexSelected, boolean isChecked) {
                             if (isChecked) {
-                                selectedItems.add(indexSelected);
-                            } else if (selectedItems.contains(indexSelected)) {
-                                selectedItems.remove(Integer.valueOf(indexSelected));
+                                selectedRegionsItems.add(indexSelected);
+                            } else if (selectedRegionsItems.contains(indexSelected)) {
+                                selectedRegionsItems.remove(Integer.valueOf(indexSelected));
                             }
                         }
                     }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             /*cliccato OK, mi ricavo le regioni salvate.*/
-                            for (int number : selectedItems)
+
+                            for (int number : selectedRegionsItems)
                                 selectedRegions.add(allRegions[number]);
                             ((MapsActivity) thisActivity).showRegions(selectedRegions);
 
@@ -204,24 +208,26 @@ public abstract class BaseActivity extends AppCompatActivity {
             final String[] allCategoryWithNumbers = new String[allCategory.size()];
             for(int i=0; i<allCategoryWithNumbers.length; i++)
                 allCategoryWithNumbers[i] = allCategory.get(i)+" ("+((MapsActivity)thisActivity).countMarkerByCategory(allCategory.get(i))+")";
-            final ArrayList<Integer> selectedItems = new ArrayList<>();
             final ArrayList<String> selectedCategory = new ArrayList<>();
+            final boolean[] selectedCat = new boolean[allCategory.size()];
+            for(int i : selectedCategoriesItems)
+                selectedCat[i] = true;
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Scegli le categorie")
-                    .setMultiChoiceItems(allCategoryWithNumbers, null, new DialogInterface.OnMultiChoiceClickListener() {
+                    .setMultiChoiceItems(allCategoryWithNumbers, selectedCat, new DialogInterface.OnMultiChoiceClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int indexSelected, boolean isChecked) {
                             if (isChecked) {
-                                selectedItems.add(indexSelected);
-                            } else if (selectedItems.contains(indexSelected)) {
-                                selectedItems.remove(Integer.valueOf(indexSelected));
+                                selectedCategoriesItems.add(indexSelected);
+                            } else if (selectedCategoriesItems.contains(indexSelected)) {
+                                selectedCategoriesItems.remove(Integer.valueOf(indexSelected));
                             }
                         }
                     }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             /*cliccato OK, mi ricavo le regioni salvate.*/
-                            for (int number : selectedItems)
+                            for (int number : selectedCategoriesItems)
                                 selectedCategory.add(allCategory.get(number));
                             ((MapsActivity)thisActivity).showCategory(selectedCategory);
 
