@@ -53,6 +53,8 @@ import com.google.android.gms.maps.model.Marker;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.io.IOException;
+
 /**
  * Questa classe è la componente principale del toolkit: fornisce servizi primari per un'app basata su Google Maps, tra cui localizzazione, pulsanti
  * di navigazione, preferenze ed altro. Essa rappresenta un template che è una buona pratica riusabile per la scrittura di app, fungendo da base
@@ -169,8 +171,10 @@ public class MapsActivity extends BaseActivity
     }
 
     @Override
-    protected void onStop() {
+    protected void onStop()
+    {
         super.onStop();
+        Log.i("Maps", "On Stop");
     }
 
     /**
@@ -179,12 +183,21 @@ public class MapsActivity extends BaseActivity
     @Override
     protected void onResume() {
         super.onResume();
+        Log.i("Maps", "on resume");
+        Log.i("Maps", "size of markers: "+mapMarkers.getMapMarkers().size());
+        if(mapMarkers.getMapMarkers().size()==0)
+            try {
+                mapMarkers.loadFromCache(this);
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         applyMapSettings();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        Log.i("Maps", "OnPause");
     }
 
     /**
@@ -543,7 +556,9 @@ public class MapsActivity extends BaseActivity
         startActivity(i);
     }
     public void onBackPressed(){
-        if(onBackPressed){
+        if(drawer.isDrawerOpen())
+            drawer.closeDrawer();
+        else if(onBackPressed){
             /*è stato premuto una volta. Lo ripremiamo, quindi dovremmo uscire*/
             Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -566,6 +581,13 @@ public class MapsActivity extends BaseActivity
     }
     public GoogleMap getMap(){
         return gMap;
+    }
+
+    @Override
+    protected void onRestart() {
+
+        super.onRestart();
+        Log.i("Maps", "on Restart");
     }
 
 }
