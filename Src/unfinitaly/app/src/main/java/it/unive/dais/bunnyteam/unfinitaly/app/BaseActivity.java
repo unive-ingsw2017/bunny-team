@@ -52,8 +52,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withSelectionListEnabledForSingleProfile(false)
                 .withHeaderBackground(R.drawable.background)
+                .withProfileImagesVisible(false)
+                .withCompactStyle(true)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Bunny Team").withEmail("unfinitaly.app@gmail.com").withIcon(getResources().getDrawable(R.drawable.bunnylogo))
+                        new ProfileDrawerItem().withName("UnfinItaly").withEmail("unfinitaly.app@gmail.com")
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
