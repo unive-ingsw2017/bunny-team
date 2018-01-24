@@ -33,6 +33,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     final ArrayList<Integer> selectedRegionsItems = new ArrayList<>();
     final ArrayList<Integer> selectedCategoriesItems = new ArrayList<>();
     boolean resetfilter;
+    TileOverlay mOverlay;
+    HeatmapTileProvider mProvider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * @author Giacomo
      */
+
     protected void buildDrawer(Toolbar toolbar) {
         thisActivity = this;
         resetfilter = false;
@@ -78,12 +81,13 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         });
         if (this instanceof MapsActivity) {
+            //CREO I PULSANTI
             PrimaryDrawerItem tutte = new PrimaryDrawerItem().withIdentifier(1).withName("Reset filtri").withIcon(R.drawable.unset);
             PrimaryDrawerItem regione = new PrimaryDrawerItem().withIdentifier(2).withName("Filtro per regione").withIcon(R.drawable.regione);
             PrimaryDrawerItem categoria = new PrimaryDrawerItem().withIdentifier(3).withName("Filtro per categoria").withIcon(R.drawable.categoria);
             //PrimaryDrawerItem percentuale = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
             final SwitchDrawerItem percentuale = new SwitchDrawerItem().withIdentifier(4).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
-            PrimaryDrawerItem distribuzione = new PrimaryDrawerItem().withIdentifier(3).withName("Distribuzione").withIcon(R.drawable.categoria);
+            final SwitchDrawerItem distribuzione = new SwitchDrawerItem().withIdentifier(5).withName("Distribuzione").withIcon(R.drawable.distribuzione);
             //Associazione listener alle varie voci
             tutte.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
@@ -94,6 +98,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                         drawer.updateItem(percentuale);
                         ((MapsActivity)thisActivity).getClusterManager().unsetPercentageRender();
                     }
+                    if(distribuzione.isChecked()){
+                        percentuale.withChecked(false);
+                        drawer.updateItem(distribuzione);
+                        mOverlay.setVisible(false);
+                    }
                     resetfilter = true;
                     return false;
                 }
@@ -102,7 +111,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             regione.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                    /*TO DO: mostrare lista regioni, estrarre regioni selezionate*/
                     showAlertDialogRegions();
                     return false;
                 }
@@ -114,13 +122,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                     return false;
                 }
             });
-            percentuale.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+            /*percentuale.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         Toast.makeText(getApplicationContext(), "Pulsante %", Toast.LENGTH_SHORT).show();
                     return false;
                 }
-            });
+            });*/
             percentuale.withOnCheckedChangeListener(new OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
@@ -134,7 +142,28 @@ public abstract class BaseActivity extends AppCompatActivity {
                     }
                 }
             });
-            distribuzione.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+            distribuzione.withOnCheckedChangeListener(new OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
+                    //CREO L'OVERLAY
+                    mProvider = new HeatmapTileProvider.Builder()
+                            .data(((MapsActivity) thisActivity).getClusterManager().getCoordList())
+                            .build();
+                    mOverlay = ((MapsActivity) thisActivity).getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
+                    if(isChecked){
+                        Log.d("overlay","1");
+                        mOverlay.setVisible(true);
+                        drawer.closeDrawer();
+                    }
+                    else{
+
+                        Log.d("overlay","0");
+                        mOverlay.setVisible(false);
+                        drawer.closeDrawer();
+                    }
+                }
+            });
+            /*distribuzione.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                     Toast.makeText(getApplicationContext(), "Pulsante %", Toast.LENGTH_SHORT).show();
@@ -144,7 +173,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     TileOverlay mOverlay = ((MapsActivity) thisActivity).getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
                     return false;
                 }
-            });
+            });*/
             drawer = new com.mikepenz.materialdrawer.DrawerBuilder()
                     .withActivity(this)
                     .withAccountHeader(headerResult)

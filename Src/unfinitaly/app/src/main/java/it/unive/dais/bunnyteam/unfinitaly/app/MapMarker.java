@@ -15,6 +15,7 @@ import it.unive.dais.bunnyteam.unfinitaly.lib.util.MapItem;
  */
 
 public class MapMarker extends MapItem implements ClusterItem, Serializable {
+    //VARIABILI
     private double lat;
     private double lng;
     private double percentage;
@@ -27,6 +28,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     private String tipologia_cup;
     private String cup;
 
+    //COSTRUTTORI
     public MapMarker(){
         this.lat = 0;
         this.lng = 0;
@@ -38,7 +40,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         tipologia_cup = "";
         cup = "";
     }
-    
+
     public MapMarker(double lat, double lng) {
         this.lat = lat;
         this.lng = lng;
@@ -65,31 +67,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         this.cup = cup;
     }
 
-    @Override
-    public LatLng getPosition() {
-        return new LatLng(lat, lng);
-    }
-
-    @Override
-    public String getTitle() { return title; }
-
-    @Override
-    public String getSnippet() { return snippet; }
-
-    /**
-     * Set the title of the marker
-     * @param title string to be set as title
-     */
-    public void setTitle(String title) {this.title = title;
-    }
-
-    /**
-     * Set the description of the marker
-     * @param snippet string to be set as snippet
-     */
-    public void setSnippet(String snippet) {
-        this.snippet = snippet;
-    }
+    //METODI GET
     public String getRegione(){ return this.regione; }
     public double getPercentage(){
         return this.percentage;
@@ -107,4 +85,15 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         return this.tipologia_cup;
     }
     public String getCup(){return this.cup;}
+    public String getTitle() { return this.title; }
+    public LatLng getPosition() {
+        return new LatLng(lat, lng);
+    }
+    public String getSnippet() { return this.snippet; }
+
+    //METODI SET
+    public void setTitle(String title) {this.title = title;}
+    public void setSnippet(String snippet) {
+        this.snippet = snippet;
+    }
 }
