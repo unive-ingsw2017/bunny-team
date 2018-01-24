@@ -145,11 +145,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             distribuzione.withOnCheckedChangeListener(new OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
-                    //CREO L'OVERLAY
-                    mProvider = new HeatmapTileProvider.Builder()
-                            .data(((MapsActivity) thisActivity).getClusterManager().getCoordList())
-                            .build();
-                    mOverlay = ((MapsActivity) thisActivity).getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
+                    createOverlay();
                     if(isChecked){
                         Log.d("overlay","1");
                         mOverlay.setVisible(true);
@@ -203,6 +199,17 @@ public abstract class BaseActivity extends AppCompatActivity {
                     .build();
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
             drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
+        }
+    }
+
+    public void createOverlay(){
+        //Voglio che mProvider sia un sigleto, di conseguenza anche mOverlay sarà singleton
+        if(mProvider == null){
+            //CREO L'OVERLAY
+            mProvider = new HeatmapTileProvider.Builder()
+                    .data(((MapsActivity) thisActivity).getClusterManager().getCoordList())
+                    .build();
+            mOverlay = ((MapsActivity) thisActivity).getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
         }
     }
 
