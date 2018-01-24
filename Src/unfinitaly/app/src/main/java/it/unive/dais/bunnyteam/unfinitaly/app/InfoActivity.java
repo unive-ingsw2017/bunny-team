@@ -39,28 +39,6 @@ public class InfoActivity extends BaseActivity {
      */
     public static String credits(Context ctx) {
         return "Email\nunfinitaly.app@gmail.com\n\nSito web:\nunfinitaly.@altervista.org";
-        /*
-        ApplicationInfo ai = ctx.getApplicationInfo();
-        StringBuffer buf = new StringBuffer();
-        buf.append("\tVERSION.RELEASE {").append(Build.VERSION.RELEASE).append("}");
-        buf.append("\n\tVERSION.INCREMENTAL {").append(Build.VERSION.INCREMENTAL).append("}");
-        buf.append("\n\tVERSION.SDK {").append(Build.VERSION.SDK_INT).append("}");
-        buf.append("\n\tBOARD {").append(Build.BOARD).append("}");
-        buf.append("\n\tBRAND {").append(Build.BRAND).append("}");
-        buf.append("\n\tDEVICE {").append(Build.DEVICE).append("}");
-        buf.append("\n\tFINGERPRINT {").append(Build.FINGERPRINT).append("}");
-        buf.append("\n\tHOST {").append(Build.HOST).append("}");
-        buf.append("\n\tID {").append(Build.ID).append("}");
-        return String.format(
-                "--- APP ---\n" +
-                        "%s v%s [%s]\n" +
-                        "(c) %s %s @ %s - %s \n\n" +
-                        "--- ANDROID ---\n%s\n\n\n",
-                ctx.getString(ai.labelRes),
-                BuildConfig.VERSION_NAME,
-                BuildConfig.BUILD_TYPE,
-                R.string.credits_year, R.string.credits_project, R.string.credits_company, R.string.credits_authors,
-                buf);*/
     }
 
     /**
