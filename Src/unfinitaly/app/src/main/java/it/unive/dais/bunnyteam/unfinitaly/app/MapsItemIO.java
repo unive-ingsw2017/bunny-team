@@ -53,6 +53,7 @@ public class MapsItemIO {
         ObjectInputStream oIs = new ObjectInputStream(is);
         Log.i("ReadFromCache", "reading");
         Object readed = oIs.readObject();
+
         Log.i("ciao", "instance of: "+readed.getClass());
         if (readed instanceof MapMarkerList) {
             MapMarkerList.setInstance((MapMarkerList) readed);
