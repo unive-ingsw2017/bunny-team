@@ -200,6 +200,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     .withActivity(this)
                     .withAccountHeader(headerResult)
                     .withToolbar(toolbar)
+                    .withSelectedItem(-1)
                     .addDrawerItems(
                             mappa, new DividerDrawerItem(), informazioni, impostazioni, new DividerDrawerItem()
                     )
