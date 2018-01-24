@@ -72,6 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             @Override
             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                 startInfoActivity();
+                drawer.setSelection(-1);
                 return false;
             }
         });
@@ -79,6 +80,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             @Override
             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                 startSettingsActivity();
+                drawer.setSelection(-1);
                 return false;
             }
         });
