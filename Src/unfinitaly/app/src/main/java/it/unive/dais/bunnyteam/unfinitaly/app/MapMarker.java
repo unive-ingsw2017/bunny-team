@@ -27,6 +27,18 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     private String tipologia_cup;
     private String cup;
 
+    public MapMarker(){
+        this.lat = 0;
+        this.lng = 0;
+        this.percentage = percentage;
+        title = "";
+        snippet = "";
+        regione = "";
+        causa = "";
+        tipologia_cup = "";
+        cup = "";
+    }
+    
     public MapMarker(double lat, double lng) {
         this.lat = lat;
         this.lng = lng;

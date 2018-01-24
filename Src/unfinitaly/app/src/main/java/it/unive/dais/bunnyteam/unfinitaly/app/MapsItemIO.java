@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
-
+import java.lang.reflect.Field;
 
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -57,6 +57,17 @@ public class MapsItemIO {
         if (readed instanceof MapMarkerList) {
             MapMarkerList.setInstance((MapMarkerList) readed);
             Log.i("ReadFromCache", "readed "+MapMarkerList.getInstance().getMapMarkers().size());
+            /*Controllo che il dato nella cache sia uguale a quello da creare come MapMarker in caso di cambiamenti
+            Campi classe di base MapMarker
+            Field[] nuovo = Class.forName("MapMaker").getDeclaredFields();
+            Campi dell'oggetto MapMarker presente nella cache
+            Field[] esistente = MapMarkerList.getInstance().getMapMarkers().get(0).getClass().getDeclaredFields();
+            if(nuovo.equals(esistente)){
+                Log.d("Controllo campi","ok");
+            }
+            else{
+                Log.d("Controllo campi","non ok");
+            }*/
             return true;
         }
         else
