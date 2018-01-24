@@ -104,6 +104,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                         mOverlay.setVisible(false);
                     }
                     resetfilter = true;
+                    drawer.setSelection(-1);
                     return false;
                 }
             });
@@ -111,6 +112,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             regione.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                    drawer.setSelection(-1);
                     showAlertDialogRegions();
                     return false;
                 }
@@ -118,6 +120,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             categoria.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                    drawer.setSelection(-1);
                     showAlertDialogCategory();
                     return false;
                 }
@@ -140,6 +143,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                         drawer.closeDrawer();
                         ((MapsActivity)thisActivity).getClusterManager().unsetPercentageRender();
                     }
+                    drawer.setSelection(-1);
                 }
             });
             distribuzione.withOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -157,16 +161,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                         mOverlay.setVisible(false);
                         drawer.closeDrawer();
                     }
+                    drawer.setSelection(-1);
                 }
             });
             /*distribuzione.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                    Toast.makeText(getApplicationContext(), "Pulsante %", Toast.LENGTH_SHORT).show();
-                    HeatmapTileProvider mProvider = new HeatmapTileProvider.Builder()
-                            .data(((MapsActivity) thisActivity).getClusterManager().getCoordList())
-                            .build();
-                    TileOverlay mOverlay = ((MapsActivity) thisActivity).getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
+                    drawer.setSelection(-1);
                     return false;
                 }
             });*/
@@ -174,6 +175,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     .withActivity(this)
                     .withAccountHeader(headerResult)
                     .withToolbar(toolbar)
+                    .withSelectedItem(-1)
                     .addDrawerItems(
                            tutte, regione, categoria, percentuale, distribuzione, new DividerDrawerItem(), informazioni, impostazioni, new DividerDrawerItem()
                     )
