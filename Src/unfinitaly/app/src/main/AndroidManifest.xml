@@ -36,6 +36,8 @@
 
         <activity
             android:name=".MapsActivity"
+            android:screenOrientation="portrait"
+
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,6 +47,7 @@
         </activity>
         <activity
             android:name=".InfoActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MapsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -52,13 +55,16 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MapsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity" />
         </activity>
-        <activity android:name=".MarkerInfoActivity" />
-        <activity android:name=".LoadingActivity">
+        <activity android:name=".MarkerInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoadingActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
