@@ -99,7 +99,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                         ((MapsActivity)thisActivity).getClusterManager().unsetPercentageRender();
                     }
                     if(distribuzione.isChecked()){
-                        percentuale.withChecked(false);
+                        distribuzione.withChecked(false);
                         drawer.updateItem(distribuzione);
                         mOverlay.setVisible(false);
                     }
