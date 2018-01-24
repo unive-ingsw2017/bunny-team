@@ -203,7 +203,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void createOverlay(){
-        //Voglio che mProvider sia un sigleto, di conseguenza anche mOverlay sarà singleton
+        //Voglio che mProvider sia un sigleton, di conseguenza anche mOverlay sarà singleton
         if(mProvider == null){
             //CREO L'OVERLAY
             mProvider = new HeatmapTileProvider.Builder()
