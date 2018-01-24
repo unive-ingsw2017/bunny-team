@@ -181,6 +181,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                     .addDrawerItems(
                            tutte, regione, categoria, percentuale, distribuzione, new DividerDrawerItem(), informazioni, impostazioni, new DividerDrawerItem()
                     )
+                    /*.addStickyDrawerItems(
+                            informazioni, impostazioni
+                    )*/
                     .build();
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
             drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
