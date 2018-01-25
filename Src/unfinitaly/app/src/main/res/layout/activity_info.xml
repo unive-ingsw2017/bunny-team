@@ -71,11 +71,16 @@
 
             <TextView
                 android:id="@+id/textViewmail"
+                android:textSize="20dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textViewsite"
+                android:textSize="20dp"
+                android:layout_marginLeft="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />

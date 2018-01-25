@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.coreutils.BuildConfig;
@@ -83,12 +84,10 @@ public class InfoActivity extends BaseActivity {
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("plain/text");
-                i.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"unfinitaly.app@gmail.com"});
+                Intent i = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:unfinitaly.app@gmail.com"));
                 i.putExtra(android.content.Intent.EXTRA_SUBJECT, "[UNFINITALY] info");
                 i.putExtra(android.content.Intent.EXTRA_TEXT, "");
-                startActivity(i);
+                startActivity(Intent.createChooser(i, "Manda una Email"));
             }
         });
         site.setOnClickListener(new View.OnClickListener() {
