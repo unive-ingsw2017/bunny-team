@@ -82,6 +82,7 @@ public class MapsActivity extends BaseActivity
     // alcune costanti
     private static final String TAG = "MapsActivity";
     private boolean onBackPressed = false;
+    protected boolean firstMapTouch = false;
     /**
      * Questo oggetto è la mappa di Google Maps. Viene inizializzato asincronamente dal metodo {@code onMapsReady}.
      */
@@ -142,27 +143,6 @@ public class MapsActivity extends BaseActivity
         // inizializza la mappa asincronamente
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        // quando viene premito il pulsante HERE viene eseguito questo codice
-        /*button_here.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "here button clicked");
-                gpsCheck();
-                updateCurrentPosition();
-                if (hereMarker != null) hereMarker.remove();
-                if (currentPosition != null) {
-                    MarkerOptions opts = new MarkerOptions();
-                    opts.position(currentPosition);
-                    opts.title(getString(R.string.marker_title));
-                    opts.snippet(String.format("lat: %g\nlng: %g", currentPosition.latitude, currentPosition.longitude));
-                    hereMarker = gMap.addMarker(opts);
-                    if (gMap != null)
-                        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPosition, getResources().getInteger(R.integer.zoomFactor_button_here)));
-                } else
-                    Log.d(TAG, "no current position available");
-            }
-        });*/
     }
 
 
@@ -374,7 +354,10 @@ public class MapsActivity extends BaseActivity
      */
     @Override
     public void onMapClick(LatLng latLng) {
-        Toast.makeText(getApplicationContext(),"Tieni premuto sulla mappa per aprire le impostazioni",Toast.LENGTH_SHORT).show();
+        if (!firstMapTouch) {
+            Toast.makeText(getApplicationContext(), "Tieni premuto sulla mappa per aprire le impostazioni", Toast.LENGTH_SHORT).show();
+            firstMapTouch = true;
+        }
     }
 
     /**
