@@ -500,12 +500,6 @@ public class MapsActivity extends BaseActivity
         startActivity(navigation);
     }
 
-    // marker stuff
-    //
-    //
-
-
-
     /**
      * Controlla lo stato del GPS e dei servizi di localizzazione, comportandosi di conseguenza.
      * Viene usata durante l'inizializzazione ed in altri casi speciali.

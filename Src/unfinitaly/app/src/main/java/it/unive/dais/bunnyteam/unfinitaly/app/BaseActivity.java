@@ -140,13 +140,12 @@ public abstract class BaseActivity extends AppCompatActivity {
                 @Override
                 public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
-                        drawer.closeDrawer();
                         ((MapsActivity)thisActivity).getClusterManager().setPercentageRenderer();
                     }
                     else{
-                        drawer.closeDrawer();
                         ((MapsActivity)thisActivity).getClusterManager().unsetPercentageRender();
                     }
+                    //drawer.closeDrawer();
                     drawer.setSelection(-1);
                 }
             });
@@ -157,14 +156,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                     if(isChecked){
                         Log.d("overlay","1");
                         mOverlay.setVisible(true);
-                        drawer.closeDrawer();
                     }
                     else{
 
                         Log.d("overlay","0");
                         mOverlay.setVisible(false);
-                        drawer.closeDrawer();
+
                     }
+                    //drawer.closeDrawer();
                     drawer.setSelection(-1);
                 }
             });

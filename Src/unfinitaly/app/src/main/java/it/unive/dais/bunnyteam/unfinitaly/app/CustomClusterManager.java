@@ -33,7 +33,6 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         this.context=context;
         this.map = map;
         setOnClusterClickListener(getDefaultOnClusterClickListener());
-        setOnClusterItemClickListener(getDefaultOnClusterItemClickListener());
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());
         setRenderer(new it.unive.dais.bunnyteam.unfinitaly.app.ClusterRenderer<>(context, map, this));
     }
@@ -94,7 +93,7 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                 final Collection<MapMarker> clusterlist = cluster.getItems();
                 Log.d("Grandezza",""+cluster.getSize());
                 for(int i=0;i<clusterlist.size();i++){
-                    stringclusterlista[i]= (String)"CUP:"+((MapMarker)clusterlist.toArray()[i]).getCup()+"\n"+((MapMarker)clusterlist.toArray()[i]).getTipologia_cup();
+                    stringclusterlista[i]= (String)"Categoria: "+((MapMarker)clusterlist.toArray()[i]).getCategoria()+"\n"+((MapMarker)clusterlist.toArray()[i]).getTipologia_cup();
                 }
                 AlertDialog dialog = new AlertDialog.Builder(context)
                         .setTitle("Elementi presenti: "+cluster.getSize())
@@ -120,20 +119,6 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
     @Override
     public void setOnClusterItemClickListener(OnClusterItemClickListener<MapMarker> listener) {
         super.setOnClusterItemClickListener(listener);
-    }
-    public OnClusterItemClickListener<MapMarker> getDefaultOnClusterItemClickListener(){
-        return new OnClusterItemClickListener<MapMarker>() {
-            @Override
-            public boolean onClusterItemClick(MapMarker mapMarker) {
-                View v = ((Activity)context).getLayoutInflater().inflate(R.layout.marker_layout,null);
-                TextView titolo = (TextView)v.findViewById(R.id.titleMarker);
-                TextView snippet = (TextView)v.findViewById(R.id.snippetMarker);
-                titolo.setText(mapMarker.getTitle());
-                snippet.setText(mapMarker.getSnippet());
-                Log.d("marker",""+mapMarker.getSnippet());
-                return false;
-            }
-        };
     }
     public OnClusterItemInfoWindowClickListener<MapMarker> getDefaultOnClusterItemInfoWindowClickListener() {
         return new ClusterManager.OnClusterItemInfoWindowClickListener<MapMarker>() {
