@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="250dp"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/titleMarker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:color="@color/black"
+        android:text="Titolo"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/snippetMarker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:color="@color/black"
+        android:text="Descrizione"
+        android:textSize="15sp" />
+
+</LinearLayout>

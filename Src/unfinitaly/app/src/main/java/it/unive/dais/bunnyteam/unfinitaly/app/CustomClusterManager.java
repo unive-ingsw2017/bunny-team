@@ -1,12 +1,16 @@
 package it.unive.dais.bunnyteam.unfinitaly.app;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.MarkerManager;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterItem;
 import com.google.maps.android.clustering.ClusterManager;
@@ -29,6 +33,7 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         this.context=context;
         this.map = map;
         setOnClusterClickListener(getDefaultOnClusterClickListener());
+        setOnClusterItemClickListener(getDefaultOnClusterItemClickListener());
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());
         setRenderer(new it.unive.dais.bunnyteam.unfinitaly.app.ClusterRenderer<>(context, map, this));
     }
@@ -107,6 +112,25 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                             }
                         }).create();
                 dialog.show();
+                return false;
+            }
+        };
+    }
+
+    @Override
+    public void setOnClusterItemClickListener(OnClusterItemClickListener<MapMarker> listener) {
+        super.setOnClusterItemClickListener(listener);
+    }
+    public OnClusterItemClickListener<MapMarker> getDefaultOnClusterItemClickListener(){
+        return new OnClusterItemClickListener<MapMarker>() {
+            @Override
+            public boolean onClusterItemClick(MapMarker mapMarker) {
+                View v = ((Activity)context).getLayoutInflater().inflate(R.layout.marker_layout,null);
+                TextView titolo = (TextView)v.findViewById(R.id.titleMarker);
+                TextView snippet = (TextView)v.findViewById(R.id.snippetMarker);
+                titolo.setText(mapMarker.getTitle());
+                snippet.setText(mapMarker.getSnippet());
+                Log.d("marker",""+mapMarker.getSnippet());
                 return false;
             }
         };
