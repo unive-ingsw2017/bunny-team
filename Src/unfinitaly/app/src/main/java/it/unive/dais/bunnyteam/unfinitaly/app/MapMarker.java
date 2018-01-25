@@ -108,4 +108,24 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     public void setSnippet(String snippet) {
         this.snippet = snippet;
     }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public double getImporto_ultimo_qe() {
+        return importo_ultimo_qe;
+    }
+
+    public double getImporto_ultimo_qe_approvato() {
+        return importo_ultimo_qe_approvato;
+    }
+
+    public double getImporto_sal() {
+        return importo_sal;
+    }
 }
