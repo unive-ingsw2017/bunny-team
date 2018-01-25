@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -60,6 +61,7 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         }
         ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(title);
         ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(snippet);
+        ((MapsActivity)context).getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 13));
         return true;
     }
 
