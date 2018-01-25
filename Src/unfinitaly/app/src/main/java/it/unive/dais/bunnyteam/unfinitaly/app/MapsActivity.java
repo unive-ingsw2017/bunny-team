@@ -355,10 +355,13 @@ public class MapsActivity extends BaseActivity
      */
     @Override
     public void onMapClick(LatLng latLng) {
-        findViewById(R.id.marker_window).setVisibility(View.INVISIBLE);
-        if (!firstMapTouch) {
-            Toast.makeText(getApplicationContext(), "Tieni premuto sulla mappa per aprire le impostazioni", Toast.LENGTH_SHORT).show();
-            firstMapTouch = true;
+        if(findViewById(R.id.marker_window).getVisibility() == View.VISIBLE){
+            findViewById(R.id.marker_window).setVisibility(View.INVISIBLE);
+        }else{
+            if (!firstMapTouch) {
+                Toast.makeText(getApplicationContext(), "Tieni premuto sulla mappa per aprire le impostazioni", Toast.LENGTH_SHORT).show();
+                firstMapTouch = true;
+            }
         }
     }
 
