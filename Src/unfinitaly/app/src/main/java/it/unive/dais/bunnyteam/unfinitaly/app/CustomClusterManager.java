@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -39,7 +40,7 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         setOnClusterClickListener(getDefaultOnClusterClickListener());
         setOnClusterItemClickListener(new OnClusterItemClickListener<MapMarker>() {
             @Override
-            public boolean onClusterItemClick(MapMarker mapMarker) {
+            public boolean onClusterItemClick(final MapMarker mapMarker) {
                 ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
                 String title = mapMarker.getCategoria();
                 String snippet = mapMarker.getTitle();
@@ -52,6 +53,14 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                 ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(title);
                 ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(snippet);
                 ((MapsActivity)context).getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(mapMarker.getPosition(), 13));
+                View info;
+                info = ((Activity)context).findViewById(R.id.marker_window);
+                info.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        ((MapsActivity) context).showMarkerInfo(mapMarker);
+                    }
+                });
                 return true;
         }});
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());

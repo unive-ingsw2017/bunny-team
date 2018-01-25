@@ -114,6 +114,7 @@ public class MapsActivity extends BaseActivity
 
     private CustomClusterManager<MapMarker> mClusterManager;
     private MapMarkerList mapMarkers = null;
+    private View info;
     /**
      * Questo metodo viene invocato quando viene inizializzata questa activity.
      * Si tratta di una sorta di "main" dell'intera activity.
@@ -551,22 +552,26 @@ public class MapsActivity extends BaseActivity
     public void onBackPressed(){
         if(drawer.isDrawerOpen())
             drawer.closeDrawer();
-        else if(onBackPressed){
-            /*è stato premuto una volta. Lo ripremiamo, quindi dovremmo uscire*/
-            Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("EXIT", true);
-            startActivity(intent);
-        }
         else{
-            onBackPressed=true;
-            Toast.makeText(this, "Premi ancora per uscire", Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    onBackPressed=false;
-                }
-            }, 2000);
+            if(findViewById(R.id.marker_window).getVisibility()==View.VISIBLE)
+                findViewById(R.id.marker_window).setVisibility(View.INVISIBLE);
+            else if(onBackPressed){
+            /*è stato premuto una volta. Lo ripremiamo, quindi dovremmo uscire*/
+                Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+                startActivity(intent);
+            }
+            else{
+                onBackPressed=true;
+                Toast.makeText(this, "Premi ancora per uscire", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        onBackPressed=false;
+                    }
+                }, 2000);
+            }
         }
     }
     public CustomClusterManager getClusterManager(){
