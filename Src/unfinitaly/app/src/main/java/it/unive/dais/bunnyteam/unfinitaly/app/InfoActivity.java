@@ -29,9 +29,9 @@ public class InfoActivity extends BaseActivity {
     WebView webview;
     FloatingActionButton fab;
     Toolbar toolbar;
-    TextView tw;
     ImageView imV;
-
+    TextView mail;
+    TextView site;
     /**
      * Produce la stringa completa coi crediti.
      *
@@ -55,7 +55,10 @@ public class InfoActivity extends BaseActivity {
         webview.loadUrl("http://unfinitaly.altervista.org/");
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setWebViewClient(new WebViewClient());
-        tw = (TextView) findViewById(R.id.infoTw);
+        mail = (TextView)findViewById(R.id.textViewmail);
+        site = (TextView)findViewById(R.id.textViewsite);
+        mail.setText("Email\nunfinitaly.app@gmail.com\n");
+        site.setText("Sito web:\nunfinitaly.@altervista.org\n");
         imV = (ImageView) findViewById(R.id.bunnyLogo);
         fab = (FloatingActionButton)findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +70,17 @@ public class InfoActivity extends BaseActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         buildDrawer(toolbar);
         toolbar.setTitle("Informazioni");
-        tw.setText(credits(this));
-        tw.setOnClickListener(new View.OnClickListener() {
+
+        drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        drawer.setOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
+            @Override
+            public boolean onNavigationClickListener(View clickedView) {
+                onBackPressed();
+                return true;
+            }
+        });
+        mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_SEND);
@@ -79,13 +91,10 @@ public class InfoActivity extends BaseActivity {
                 startActivity(i);
             }
         });
-        drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        drawer.setOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
+        site.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationClickListener(View clickedView) {
-                onBackPressed();
-                return true;
+            public void onClick(View view) {
+                showWebView();
             }
         });
     }
@@ -94,14 +103,17 @@ public class InfoActivity extends BaseActivity {
         webview.setVisibility(View.VISIBLE);
         //invisible tutti gli altri, toolbar rimane sempre visibile
         imV.setVisibility(View.INVISIBLE);
-        tw.setVisibility(View.INVISIBLE);
+        mail.setVisibility(View.INVISIBLE);
+        site.setVisibility(View.INVISIBLE);
         fab.setVisibility(View.INVISIBLE);
+
     }
 
     public void unshowWebView() {
         webview.setVisibility(View.INVISIBLE);
         imV.setVisibility(View.VISIBLE);
-        tw.setVisibility(View.VISIBLE);
+        mail.setVisibility(View.VISIBLE);
+        site.setVisibility(View.VISIBLE);
         fab.setVisibility(View.VISIBLE);
     }
 
