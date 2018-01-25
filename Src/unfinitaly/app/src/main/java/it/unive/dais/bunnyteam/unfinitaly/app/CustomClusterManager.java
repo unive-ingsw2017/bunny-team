@@ -51,6 +51,7 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                 }
                 ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(title);
                 ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(snippet);
+                ((MapsActivity)context).getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(mapMarker.getPosition(), 13));
                 return true;
         }});
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());
