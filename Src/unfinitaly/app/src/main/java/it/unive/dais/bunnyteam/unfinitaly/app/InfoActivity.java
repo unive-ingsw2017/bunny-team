@@ -1,6 +1,7 @@
 package it.unive.dais.bunnyteam.unfinitaly.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.media.Image;
 import android.os.Build;
@@ -67,6 +68,17 @@ public class InfoActivity extends BaseActivity {
         buildDrawer(toolbar);
         toolbar.setTitle("Informazioni");
         tw.setText(credits(this));
+        tw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("plain/text");
+                i.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"unfinitaly.app@gmail.com"});
+                i.putExtra(android.content.Intent.EXTRA_SUBJECT, "[UNFINITALY] info");
+                i.putExtra(android.content.Intent.EXTRA_TEXT, "");
+                startActivity(i);
+            }
+        });
         drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawer.setOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
