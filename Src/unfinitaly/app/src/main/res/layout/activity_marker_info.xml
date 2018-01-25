@@ -41,7 +41,7 @@
                 android:src="@drawable/worker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_pubblicata_da" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_categoria" />
 
             <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                 android:id="@+id/roundcorner"
@@ -92,7 +92,7 @@
                 android:text="Sottosettore:"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_categoria" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_pubblicata_da" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -106,25 +106,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/imgmarker" />
 
             <TextView
-                android:id="@+id/tv_pubblicata_da"
+                android:id="@+id/tv_categoria"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="36dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textAlignment="center"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_categoria"
+                android:id="@+id/tv_pubblicata_da"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_marginStart="53dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +143,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/tv_categoria" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_pubblicata_da" />
 
             <TextView
                 android:id="@+id/textView8"

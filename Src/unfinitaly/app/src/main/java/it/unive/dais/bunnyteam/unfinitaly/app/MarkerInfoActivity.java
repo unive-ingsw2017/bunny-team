@@ -29,8 +29,8 @@ public class MarkerInfoActivity extends BaseActivity {
         buildDrawer(toolbar);
         toolbar.setTitle("Informazioni opera");
         thisMapMarker = (MapMarker)getIntent().getSerializableExtra("MapMarker");
-        ((TextView)findViewById(R.id.tv_pubblicata_da)).setText(thisMapMarker.getRegione());
         ((TextView)findViewById(R.id.tv_categoria)).setText(thisMapMarker.getCategoria());
+        ((TextView)findViewById(R.id.tv_pubblicata_da)).setText(thisMapMarker.getRegione());
         ((TextView)findViewById(R.id.tv_sottosettore)).setText(thisMapMarker.getSottosettore());
         ((TextView)findViewById(R.id.tv_cup)).setText(thisMapMarker.getCup());
         ((TextView)findViewById(R.id.tv_tipo_cup)).setText(thisMapMarker.getTipologia_cup());
