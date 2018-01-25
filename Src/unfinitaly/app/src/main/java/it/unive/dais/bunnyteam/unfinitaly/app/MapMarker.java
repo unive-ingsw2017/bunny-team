@@ -124,7 +124,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     public double getImporto_ultimo_qe_approvato() {
         return importo_ultimo_qe_approvato;
     }
-
+    /*stato avanzamento lavori*/
     public double getImporto_sal() {
         return importo_sal;
     }

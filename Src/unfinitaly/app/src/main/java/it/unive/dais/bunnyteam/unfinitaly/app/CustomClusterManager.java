@@ -39,30 +39,24 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         setOnClusterItemClickListener(new OnClusterItemClickListener<MapMarker>() {
             @Override
             public boolean onClusterItemClick(MapMarker mapMarker) {
-                    ((Activity) context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
-                    ((TextView) ((Activity) context).findViewById(R.id.titleMarker)).setText(mapMarker.getTitle());
-                    ((TextView) ((Activity) context).findViewById(R.id.snippetMarker)).setText(mapMarker.getSnippet());
+                ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
+                String title = mapMarker.getCategoria();
+                String snippet = mapMarker.getTitle();
+                if(title.length()>100){
+                    title = title.substring(0,99) + "...";
+                }
+                if(snippet.length()>100){
+                    snippet = snippet.substring(0,99) + "...";
+                }
+                ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(title);
+                ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(snippet);
                 return true;
         }});
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());
         setRenderer(new it.unive.dais.bunnyteam.unfinitaly.app.ClusterRenderer<>(context, map, this));
     }
 
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
-        String title = marker.getTitle();
-        String snippet = marker.getSnippet();
-        if(title.length()>100){
-            title = title.substring(0,99) + "...";
-        }
-        if(snippet.length()>100){
-            snippet = snippet.substring(0,99) + "...";
-        }
-        ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(title);
-        ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(snippet);
-        return true;
-    }
+
 
     protected void resetMarkers(){
         clearItems();
