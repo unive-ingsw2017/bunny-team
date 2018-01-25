@@ -445,7 +445,7 @@ public class MapsActivity extends BaseActivity
         mClusterManager.setMapMarkerList(mapMarkers);
         mClusterManager.cluster();
         gMap.setInfoWindowAdapter(mClusterManager.getMarkerManager());
-        mClusterManager.getMarkerCollection().setOnInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+        /*mClusterManager.getMarkerCollection().setOnInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
             @Override
             public View getInfoWindow(Marker marker) {
                 return null;
@@ -469,7 +469,7 @@ public class MapsActivity extends BaseActivity
                 Log.d("marker",""+marker.getSnippet());
                 return v;
             }
-        });
+        });*/
     }
 
     /**
