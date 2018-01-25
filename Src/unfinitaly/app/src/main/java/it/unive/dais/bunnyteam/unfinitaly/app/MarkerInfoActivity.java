@@ -36,8 +36,8 @@ public class MarkerInfoActivity extends BaseActivity {
         ((TextView)findViewById(R.id.tv_tipo_cup)).setText(thisMapMarker.getTipologia_cup());
         ((TextView)findViewById(R.id.tv_descrizione)).setText(thisMapMarker.getTitle());
         ((TextView)findViewById(R.id.tv_fallimento)).setText(thisMapMarker.getCausa());
-        String sal = thisMapMarker.getImporto_sal()+" $";
-        String qe = thisMapMarker.getImporto_ultimo_qe()+" $";
+        String sal = thisMapMarker.getImporto_sal()+" €";
+        String qe = thisMapMarker.getImporto_ultimo_qe()+" €";
         ((TextView)findViewById(R.id.ImportiSAL)).setText(qe);
         ((TextView)findViewById(R.id.importiQE)).setText(sal);
 
