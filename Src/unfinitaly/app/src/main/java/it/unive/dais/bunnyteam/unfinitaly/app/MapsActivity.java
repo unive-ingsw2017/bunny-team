@@ -466,8 +466,16 @@ public class MapsActivity extends BaseActivity
                 View v = getLayoutInflater().inflate(R.layout.marker_layout,null);
                 TextView titolo = (TextView)v.findViewById(R.id.titleMarker);
                 TextView snippet = (TextView)v.findViewById(R.id.snippetMarker);
-                titolo.setText(marker.getTitle());
-                snippet.setText(marker.getSnippet());
+                String title = marker.getTitle();
+                String snippets = marker.getSnippet();
+                if(title.length()>100){
+                    title = title.substring(0,99)+"...";
+                }
+                if(snippets.length()>100){
+                    snippets = snippets.substring(0,99)+"...";
+                }
+                titolo.setText(title);
+                snippet.setText(snippets);
                 Log.d("marker",""+marker.getSnippet());
                 return v;
             }
