@@ -26,12 +26,13 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected Drawer drawer;
     protected Activity thisActivity;
-    final ArrayList<Integer> selectedRegionsItems = new ArrayList<>();
-    final ArrayList<Integer> selectedCategoriesItems = new ArrayList<>();
+    protected ArrayList<Integer> selectedRegionsItems = new ArrayList<>();
+    protected ArrayList<Integer> selectedCategoriesItems = new ArrayList<>();
     boolean resetfilter;
     TileOverlay mOverlay;
     HeatmapTileProvider mProvider;
@@ -108,6 +109,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                         mOverlay.setVisible(false);
                     }
                     resetfilter = true;
+                    ((MapsActivity)thisActivity).getClusterManager().resetFlags();
                     drawer.setSelection(-1);
                     return false;
                 }
@@ -252,8 +254,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 allRegionsWithNumbers[i] = allRegions[i] + " (" + ((MapsActivity) thisActivity).getClusterManager().countMarkerByRegion(allRegions[i]) + ")";
             final boolean[] selectedReg = new boolean[allRegions.length];
             if(resetfilter){
-                for(int i : selectedRegionsItems)
-                    selectedReg[i] = false;
+                selectedRegionsItems = new ArrayList<>();
                 resetfilter = false;
             }else{
                 for(int i : selectedRegionsItems)
@@ -273,12 +274,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                     }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
-                            /*cliccato OK, mi ricavo le regioni salvate.*/
-
                             for (int number : selectedRegionsItems)
                                 selectedRegions.add(allRegions[number]);
                             ((MapsActivity) thisActivity).getClusterManager().showRegions(selectedRegions);
-
+                            ((MapsActivity)thisActivity).getClusterManager().setFlagRegion(true);
                         }
                     }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
                         @Override
@@ -299,8 +298,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             final ArrayList<String> selectedCategory = new ArrayList<>();
             final boolean[] selectedCat = new boolean[allCategory.size()];
             if (resetfilter){
-                for(int i : selectedCategoriesItems)
-                    selectedCat[i] = false;
+                selectedCategoriesItems = new ArrayList<>();
                 resetfilter = false;
             }else{
                 for(int i : selectedCategoriesItems)
@@ -320,11 +318,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                     }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
-                            /*cliccato OK, mi ricavo le regioni salvate.*/
                             for (int number : selectedCategoriesItems)
                                 selectedCategory.add(allCategory.get(number));
                             ((MapsActivity)thisActivity).getClusterManager().showCategory(selectedCategory);
-
+                            ((MapsActivity)thisActivity).getClusterManager().setFlagTipo(true);
                         }
                     }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
                         @Override

@@ -29,6 +29,8 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
     private MapMarkerList mapMarkers = null;
     private Context context;
     private GoogleMap map;
+    private boolean flagregione = false;
+    private boolean flagtipo = false;
     public CustomClusterManager(final Context context, GoogleMap map) {
         super(context, map);
         this.context=context;
@@ -56,12 +58,26 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         cluster();
     }
 
+    protected void resetFlags(){
+        flagregione = false;
+        flagtipo = false;
+    }
+
+    protected void setFlagRegion(boolean status){
+        flagregione = status;
+    }
+
+    protected void setFlagTipo(boolean status){
+        flagtipo = status;
+    }
+
     protected void showRegions(ArrayList<String> regions) {
         /*qui devo far vedere le regioni.*/
         clearItems();
         for(MapMarker mM: mapMarkers.getMapMarkers())
             if(regions.contains(mM.getRegione()))
                 addItem(mM);
+        flagregione = true;
         cluster();
     }
     protected int countMarkerByRegion(String region){
