@@ -43,8 +43,16 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
     @Override
     public boolean onMarkerClick(Marker marker) {
         ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
-        ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(marker.getTitle());
-        ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(marker.getSnippet());
+        String title = marker.getTitle();
+        String snippet = marker.getSnippet();
+        if(title.length()>100){
+            title = title.substring(0,99) + "...";
+        }
+        if(snippet.length()>100){
+            snippet = snippet.substring(0,99) + "...";
+        }
+        ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(title);
+        ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(snippet);
         return true;
     }
 

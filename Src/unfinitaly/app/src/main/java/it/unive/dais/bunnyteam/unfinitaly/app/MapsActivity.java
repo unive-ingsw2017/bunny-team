@@ -58,6 +58,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Questa classe è la componente principale del toolkit: fornisce servizi primari per un'app basata su Google Maps, tra cui localizzazione, pulsanti
@@ -354,6 +355,7 @@ public class MapsActivity extends BaseActivity
      */
     @Override
     public void onMapClick(LatLng latLng) {
+        findViewById(R.id.marker_window).setVisibility(View.INVISIBLE);
         if (!firstMapTouch) {
             Toast.makeText(getApplicationContext(), "Tieni premuto sulla mappa per aprire le impostazioni", Toast.LENGTH_SHORT).show();
             firstMapTouch = true;
