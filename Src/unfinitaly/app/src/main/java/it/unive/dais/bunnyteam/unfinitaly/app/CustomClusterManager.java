@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +60,19 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                     @Override
                     public void onClick(View view) {
                         ((MapsActivity) context).showMarkerInfo(mapMarker);
+                    }
+                });
+                View navigate;
+                navigate = ((Activity)context).findViewById(R.id.navigate);
+                navigate.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        ((MapsActivity)context).updateCurrentPosition();
+                        LatLng app = ((MapsActivity)context).getCurrentPosition();
+                        if (app != null)
+                            ((MapsActivity)context).navigate(app,mapMarker.getPosition());
+                        else
+                            Toast.makeText(context, "Errore durante la ricezione della posizione.", Toast.LENGTH_SHORT).show();
                     }
                 });
                 return true;

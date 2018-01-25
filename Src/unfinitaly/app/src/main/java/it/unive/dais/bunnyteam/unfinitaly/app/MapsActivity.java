@@ -348,6 +348,14 @@ public class MapsActivity extends BaseActivity
         }
     }
 
+    public LatLng getCurrentPosition(){
+        if(currentPosition==null) {
+            return null;
+        }
+        else
+            return currentPosition;
+    }
+
     /**
      * Viene chiamato quando si clicca sulla mappa.
      * Aggiungere qui codice che si vuole eseguire quando l'utente clicca sulla mappa.
@@ -449,6 +457,7 @@ public class MapsActivity extends BaseActivity
         mClusterManager.setMapMarkerList(mapMarkers);
         mClusterManager.cluster();
         gMap.setInfoWindowAdapter(mClusterManager.getMarkerManager());
+        updateCurrentPosition();
         /*mClusterManager.getMarkerCollection().setOnInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
             @Override
             public View getInfoWindow(Marker marker) {
