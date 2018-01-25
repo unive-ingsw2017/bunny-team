@@ -2,9 +2,11 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/prova"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="it.unive.dais.bunnyteam.unfinitaly.app.MarkerInfoActivity">
+
     <include
         android:id="@+id/toolbar"
         layout="@xml/toolbar"
@@ -28,6 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:context="it.unive.dais.bunnyteam.unfinitaly.app.MarkerInfoActivity">
+
+            <ImageView
+                android:id="@+id/imgmarker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/cantiere"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvPubblciata"
@@ -264,9 +274,6 @@
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
-
-
-
 
 
 </android.support.constraint.ConstraintLayout>
