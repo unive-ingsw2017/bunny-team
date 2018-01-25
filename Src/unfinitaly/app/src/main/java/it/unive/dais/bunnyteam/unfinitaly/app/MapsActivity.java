@@ -374,8 +374,7 @@ public class MapsActivity extends BaseActivity
      */
     @Override
     public void onMapClick(LatLng latLng) {
-        // nascondi il pulsante della navigazione (non quello di google maps, ma il nostro pulsante custom)
-        button_car.setVisibility(View.INVISIBLE);
+        Toast.makeText(getApplicationContext(),"Tieni premuto sulla mappa per aprire le impostazioni",Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -386,7 +385,13 @@ public class MapsActivity extends BaseActivity
      */
     @Override
     public void onMapLongClick(LatLng latLng) {
-
+        Toast.makeText(getApplicationContext(),"Apertura impostazioni...",Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startSettingsActivity();
+            }
+        }, 700);
     }
 
     /**
