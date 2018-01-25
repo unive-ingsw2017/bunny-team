@@ -7,6 +7,7 @@ package it.unive.dais.bunnyteam.unfinitaly.app;
 import android.Manifest;
 import android.app.Activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -29,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -53,6 +55,8 @@ import com.google.android.gms.maps.model.Marker;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 
 /**
@@ -71,7 +75,7 @@ public class MapsActivity extends BaseActivity
         implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnCameraMoveStartedListener, GoogleMap.OnMarkerClickListener {
+        GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnCameraMoveStartedListener {
 
     protected static final int REQUEST_CHECK_SETTINGS = 500;
     protected static final int PERMISSIONS_REQUEST_ACCESS_BOTH_LOCATION = 501;
@@ -421,7 +425,7 @@ public class MapsActivity extends BaseActivity
         gMap.setOnMapClickListener(this);
         gMap.setOnMapLongClickListener(this);
         gMap.setOnCameraMoveStartedListener(this);
-        gMap.setOnMarkerClickListener(this);
+        gMap.setOnMarkerClickListener(mClusterManager);
 
         UiSettings uis = gMap.getUiSettings();
         uis.setZoomGesturesEnabled(true);
@@ -450,6 +454,23 @@ public class MapsActivity extends BaseActivity
         googleMap.setOnInfoWindowClickListener(mClusterManager);
         mClusterManager.setMapMarkerList(mapMarkers);
         mClusterManager.cluster();
+        /*gMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                View v = getLayoutInflater().inflate(R.layout.marker_layout,null);
+                TextView titolo = (TextView)v.findViewById(R.id.titleMarker);
+                TextView snippet = (TextView)v.findViewById(R.id.snippetMarker);
+                titolo.setText(marker.getTitle());
+                snippet.setText(marker.getSnippet());
+                Log.d("marker",""+marker.getSnippet());
+                return v;
+            }
+        });*/
     }
 
     /**
@@ -482,30 +503,6 @@ public class MapsActivity extends BaseActivity
     //
     //
 
-    /**
-     * Callback che viene invocata quando viene cliccato un marker.
-     * Questo metodo viene invocato al click di QUALUNQUE marker nella mappa; pertanto, se è necessario
-     * eseguire comportamenti specifici per un certo marker o gruppo di marker, va modificato questo metodo
-     * con codice che si occupa di discernere tra un marker e l'altro in qualche modo.
-     *
-     * @param marker il marker che è stato cliccato.
-     * @return ritorna true per continuare a chiamare altre callback nella catena di callback per i marker; false altrimenti.
-     */
-    @Override
-    public boolean onMarkerClick(final Marker marker) {
-        marker.showInfoWindow();
-        /*button_car.setVisibility(View.VISIBLE);
-        button_car.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(v, R.string.msg_button_car, Snackbar.LENGTH_SHORT);
-                if (currentPosition != null) {
-                    navigate(currentPosition, marker.getPosition());
-                }
-            }
-        });*/
-        return false;
-    }
 
 
     /**
