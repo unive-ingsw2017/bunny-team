@@ -2,8 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@color/background_2"
     android:gravity="bottom"
     android:orientation="vertical">
+
     <TextView
         android:id="@+id/titleMarker"
         android:layout_width="match_parent"

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.maps.android.MarkerManager;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterItem;
@@ -36,6 +37,15 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());
         setRenderer(new it.unive.dais.bunnyteam.unfinitaly.app.ClusterRenderer<>(context, map, this));
     }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
+        ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(marker.getTitle());
+        ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(marker.getSnippet());
+        return true;
+    }
+
     protected void resetMarkers(){
         clearItems();
         addItems(mapMarkers.getMapMarkers());

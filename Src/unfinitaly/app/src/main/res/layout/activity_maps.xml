@@ -1,55 +1,77 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-    <include layout="@xml/toolbar"/>
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:context="it.unive.dais.bunnyteam.template.MapsActivity">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:weightSum="2"
             android:layout_width="@dimen/linear_layout_width"
             android:layout_height="@dimen/linear_layout_height"
             android:layout_gravity="start|bottom"
             android:layout_marginBottom="@dimen/linear_layout_margin_bottom"
             android:layout_marginLeft="@dimen/linear_layout_margin_left"
             android:gravity="start"
-            >
+            android:orientation="vertical"
+            android:weightSum="2">
 
             <ImageButton
                 android:id="@+id/button_car"
-                android:scaleType="fitStart"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@color/trans"
-                android:src="@drawable/button_car"
-                android:visibility="invisible"
+                android:layout_marginTop="@dimen/button_margin"
                 android:layout_weight="1"
-                android:layout_marginTop="@dimen/button_margin"/>
+                android:background="@color/trans"
+                android:scaleType="fitStart"
+                android:src="@drawable/button_car"
+                android:visibility="invisible" />
 
             <ImageButton
                 android:id="@+id/button_here"
-                android:scaleType="fitStart"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@color/trans"
-                android:src="@drawable/button_here"
-                android:visibility="invisible"
-                android:layout_weight="1"
                 android:layout_marginTop="@dimen/button_margin"
-                />
+                android:layout_weight="1"
+                android:background="@color/trans"
+                android:scaleType="fitStart"
+                android:src="@drawable/button_here"
+                android:visibility="invisible" />
         </LinearLayout>
     </fragment>
-</LinearLayout>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@xml/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/marker_window"
+        layout="@layout/marker_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/map"
+        app:layout_constraintVertical_bias="1.0" />
+
+</android.support.constraint.ConstraintLayout>
 
 
 
