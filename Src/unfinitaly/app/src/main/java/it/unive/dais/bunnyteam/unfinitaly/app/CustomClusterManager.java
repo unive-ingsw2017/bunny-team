@@ -47,7 +47,6 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());
         setRenderer(new it.unive.dais.bunnyteam.unfinitaly.app.ClusterRenderer<>(context, map, this));
     }
-
     @Override
     public boolean onMarkerClick(Marker marker) {
         ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
