@@ -457,6 +457,7 @@ public class MapsActivity extends BaseActivity
         mClusterManager.setMapMarkerList(mapMarkers);
         mClusterManager.cluster();
         gMap.setInfoWindowAdapter(mClusterManager.getMarkerManager());
+        gMap.getUiSettings().setMapToolbarEnabled(false);
         updateCurrentPosition();
         /*mClusterManager.getMarkerCollection().setOnInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
             @Override
