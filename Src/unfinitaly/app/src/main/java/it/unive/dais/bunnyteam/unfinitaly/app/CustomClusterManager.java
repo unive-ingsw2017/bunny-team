@@ -72,7 +72,7 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                         if (app != null)
                             ((MapsActivity)context).navigate(app,mapMarker.getPosition());
                         else
-                            Toast.makeText(context, "Errore durante la ricezione della posizione.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Errore durante la ricezione della posizione. Riprova tra poco.", Toast.LENGTH_SHORT).show();
                     }
                 });
                 return true;

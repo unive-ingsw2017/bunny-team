@@ -260,7 +260,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 for(int i : selectedRegionsItems)
                     selectedReg[i] = true;
             }
-            AlertDialog dialog = new AlertDialog.Builder(this)
+            final AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Scegli le regioni")
                     .setMultiChoiceItems(allRegionsWithNumbers, selectedReg , new DialogInterface.OnMultiChoiceClickListener() {
                         @Override
@@ -271,21 +271,29 @@ public abstract class BaseActivity extends AppCompatActivity {
                                 selectedRegionsItems.remove(Integer.valueOf(indexSelected));
                             }
                         }
-                    }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-                            for (int number : selectedRegionsItems)
-                                selectedRegions.add(allRegions[number]);
-                            ((MapsActivity) thisActivity).getClusterManager().showRegions(selectedRegions);
-                            ((MapsActivity)thisActivity).getClusterManager().setFlagRegion(true);
-                        }
-                    }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
+                    })
+                    .setPositiveButton("OK",null)
+                    .setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
                     }).create();
             dialog.show();
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(selectedRegionsItems.size()==0)
+                        Toast.makeText(getApplicationContext(),"Selezionare almeno un elemento nella lista.",Toast.LENGTH_SHORT).show();
+                    else{
+                        for (int number : selectedRegionsItems)
+                            selectedRegions.add(allRegions[number]);
+                        ((MapsActivity) thisActivity).getClusterManager().showRegions(selectedRegions);
+                        ((MapsActivity)thisActivity).getClusterManager().setFlagRegion(true);
+                        dialog.dismiss();
+                    }
+                }
+            });
         }
     }
     private void showAlertDialogCategory(){
@@ -304,7 +312,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 for(int i : selectedCategoriesItems)
                     selectedCat[i] = true;
             }
-            AlertDialog dialog = new AlertDialog.Builder(this)
+            final AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Scegli le categorie")
                     .setMultiChoiceItems(allCategoryWithNumbers, selectedCat, new DialogInterface.OnMultiChoiceClickListener() {
                         @Override
@@ -315,21 +323,30 @@ public abstract class BaseActivity extends AppCompatActivity {
                                 selectedCategoriesItems.remove(Integer.valueOf(indexSelected));
                             }
                         }
-                    }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int id) {
-                            for (int number : selectedCategoriesItems)
-                                selectedCategory.add(allCategory.get(number));
-                            ((MapsActivity)thisActivity).getClusterManager().showCategory(selectedCategory);
-                            ((MapsActivity)thisActivity).getClusterManager().setFlagTipo(true);
-                        }
-                    }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
+                    })
+                    .setPositiveButton("OK",null)
+                    .setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
-                    }).create();
+                    })
+                    .create();
             dialog.show();
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    if(selectedCategoriesItems.size()==0)
+                        Toast.makeText(getApplicationContext(),"Selezionare almeno un elemento nella lista.",Toast.LENGTH_SHORT).show();
+                    else{
+                        for (int number : selectedCategoriesItems)
+                            selectedCategory.add(allCategory.get(number));
+                        ((MapsActivity)thisActivity).getClusterManager().showCategory(selectedCategory);
+                        ((MapsActivity)thisActivity).getClusterManager().setFlagTipo(true);
+                        dialog.dismiss();
+                    }
+                }
+            });
         }
     }
 }
