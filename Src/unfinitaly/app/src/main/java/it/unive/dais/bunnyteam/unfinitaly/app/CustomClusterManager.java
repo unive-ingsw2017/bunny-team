@@ -36,17 +36,18 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         this.context=context;
         this.map = map;
         setOnClusterClickListener(getDefaultOnClusterClickListener());
+        setOnClusterItemClickListener(new OnClusterItemClickListener<MapMarker>() {
+            @Override
+            public boolean onClusterItemClick(MapMarker mapMarker) {
+                    ((Activity) context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
+                    ((TextView) ((Activity) context).findViewById(R.id.titleMarker)).setText(mapMarker.getTitle());
+                    ((TextView) ((Activity) context).findViewById(R.id.snippetMarker)).setText(mapMarker.getSnippet());
+                return true;
+        }});
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());
         setRenderer(new it.unive.dais.bunnyteam.unfinitaly.app.ClusterRenderer<>(context, map, this));
     }
 
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
-        ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(marker.getTitle());
-        ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(marker.getSnippet());
-        return true;
-    }
 
     protected void resetMarkers(){
         clearItems();
@@ -115,6 +116,8 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         return new ClusterManager.OnClusterClickListener<MapMarker>() {
             @Override
             public boolean onClusterClick(Cluster<MapMarker> cluster) {
+                ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.INVISIBLE);
+                Log.i("CIAO", "CIAO!");
                 final String[] stringclusterlista = new String[cluster.getSize()];
                 final Collection<MapMarker> clusterlist = cluster.getItems();
                 Log.d("Grandezza",""+cluster.getSize());
