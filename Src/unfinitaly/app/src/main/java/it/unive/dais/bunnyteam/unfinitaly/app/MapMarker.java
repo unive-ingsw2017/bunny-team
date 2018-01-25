@@ -19,6 +19,9 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     private double lat;
     private double lng;
     private double percentage;
+    private double importo_ultimo_qe;
+    private double importo_ultimo_qe_approvato;
+    private double importo_sal;
     private String regione;
     private String title;
     private String snippet;
@@ -32,7 +35,10 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     public MapMarker(){
         this.lat = 0;
         this.lng = 0;
-        this.percentage = percentage;
+        this.percentage = 0;
+        this.importo_ultimo_qe = 0;
+        this.importo_ultimo_qe_approvato = 0;
+        this.importo_sal = 0;
         title = "";
         snippet = "";
         regione = "";
@@ -44,7 +50,10 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     public MapMarker(double lat, double lng) {
         this.lat = lat;
         this.lng = lng;
-        this.percentage = percentage;
+        this.percentage = 0;
+        this.importo_ultimo_qe = 0;
+        this.importo_ultimo_qe_approvato = 0;
+        this.importo_sal = 0;
         title = "";
         snippet = "";
         regione = "";
@@ -53,10 +62,13 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         cup = "";
     }
 
-    public MapMarker(double lat, double lng, double percentage, String title, String snippet, String categoria, String sottosettore, String regione, String causa, String tipologia_cup, String cup) {
+    public MapMarker(double lat, double lng, double percentage, double qe, double qe_approvato, double sal, String title, String snippet, String categoria, String sottosettore, String regione, String causa, String tipologia_cup, String cup) {
         this.lat = lat;
         this.lng = lng;
         this.percentage = percentage;
+        this.importo_ultimo_qe = qe;
+        this.importo_ultimo_qe_approvato = qe_approvato;
+        this.importo_sal = sal;
         this.title = title;
         this.snippet = snippet;
         this.categoria = categoria;

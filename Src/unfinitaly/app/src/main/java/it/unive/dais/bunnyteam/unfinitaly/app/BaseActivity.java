@@ -318,7 +318,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                     }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
-                            /*cliccato OK, mi ricavo le regioni salvate.*/
                             for (int number : selectedCategoriesItems)
                                 selectedCategory.add(allCategory.get(number));
                             ((MapsActivity)thisActivity).getClusterManager().showCategory(selectedCategory);
