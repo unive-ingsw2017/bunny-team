@@ -286,6 +286,8 @@ public abstract class BaseActivity extends AppCompatActivity {
                     if(selectedRegionsItems.size()==0)
                         Toast.makeText(getApplicationContext(),"Selezionare almeno un elemento nella lista.",Toast.LENGTH_SHORT).show();
                     else{
+                        //DISABILITO I FILTRI COMBINATI
+                        selectedCategoriesItems = new ArrayList<>();
                         for (int number : selectedRegionsItems)
                             selectedRegions.add(allRegions[number]);
                         ((MapsActivity) thisActivity).getClusterManager().showRegions(selectedRegions);
@@ -339,6 +341,8 @@ public abstract class BaseActivity extends AppCompatActivity {
                     if(selectedCategoriesItems.size()==0)
                         Toast.makeText(getApplicationContext(),"Selezionare almeno un elemento nella lista.",Toast.LENGTH_SHORT).show();
                     else{
+                        //DISABILITO I FILTRI COMBINATI
+                        selectedRegionsItems = new ArrayList<>();
                         for (int number : selectedCategoriesItems)
                             selectedCategory.add(allCategory.get(number));
                         ((MapsActivity)thisActivity).getClusterManager().showCategory(selectedCategory);
