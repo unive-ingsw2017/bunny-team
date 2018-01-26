@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -76,7 +77,7 @@ public class MapsActivity extends BaseActivity
         implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnCameraMoveStartedListener {
+        GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnCameraMoveStartedListener{
 
     protected static final int REQUEST_CHECK_SETTINGS = 500;
     protected static final int PERMISSIONS_REQUEST_ACCESS_BOTH_LOCATION = 501;
@@ -374,6 +375,7 @@ public class MapsActivity extends BaseActivity
         }
     }
 
+
     /**
      * Viene chiamato quando si clicca a lungo sulla mappa (long click).
      * Aggiungere qui codice che si vuole eseguire quando l'utente clicca a lungo sulla mappa.
@@ -428,7 +430,16 @@ public class MapsActivity extends BaseActivity
         gMap.setOnMapLongClickListener(this);
         gMap.setOnCameraMoveStartedListener(this);
         gMap.setOnMarkerClickListener(mClusterManager);
-
+        gMap.setOnCameraMoveListener(new GoogleMap.OnCameraMoveListener(){
+            @Override
+            public void onCameraMove() {
+                //Toast.makeText(getApplicationContext(),"aaa",Toast.LENGTH_SHORT).show();
+                Log.d("zoom",""+gMap.getCameraPosition().zoom);
+                if(findViewById(R.id.marker_window).getVisibility() == View.VISIBLE && gMap.getCameraPosition().zoom < 8.2){
+                    findViewById(R.id.marker_window).setVisibility(View.INVISIBLE);
+                }
+            }
+        });
         UiSettings uis = gMap.getUiSettings();
         uis.setZoomGesturesEnabled(true);
         uis.setMyLocationButtonEnabled(true);
@@ -593,10 +604,8 @@ public class MapsActivity extends BaseActivity
 
     @Override
     protected void onRestart() {
-
         super.onRestart();
         Log.i("Maps", "on Restart");
     }
-
 }
 

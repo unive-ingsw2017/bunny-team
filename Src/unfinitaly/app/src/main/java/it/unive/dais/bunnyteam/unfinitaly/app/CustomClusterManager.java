@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -42,39 +43,44 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         setOnClusterItemClickListener(new OnClusterItemClickListener<MapMarker>() {
             @Override
             public boolean onClusterItemClick(final MapMarker mapMarker) {
-                ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
-                String title = mapMarker.getCategoria();
-                String snippet = mapMarker.getTitle();
-                if(title.length()>100){
-                    title = title.substring(0,99) + "...";
-                }
-                if(snippet.length()>100){
-                    snippet = snippet.substring(0,99) + "...";
-                }
-                ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(title);
-                ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(snippet);
                 ((MapsActivity)context).getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(mapMarker.getPosition(), 13));
-                View info;
-                info = ((Activity)context).findViewById(R.id.marker_window);
-                info.setOnClickListener(new View.OnClickListener(){
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void onClick(View view) {
-                        ((MapsActivity) context).showMarkerInfo(mapMarker);
+                    public void run() {
+                        ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
+                        String title = mapMarker.getCategoria();
+                        String snippet = mapMarker.getTitle();
+                        if(title.length()>100){
+                            title = title.substring(0,99) + "...";
+                        }
+                        if(snippet.length()>100){
+                            snippet = snippet.substring(0,99) + "...";
+                        }
+                        ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(title);
+                        ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(snippet);
+                        View info;
+                        info = ((Activity)context).findViewById(R.id.marker_window);
+                        info.setOnClickListener(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View view) {
+                                ((MapsActivity) context).showMarkerInfo(mapMarker);
+                            }
+                        });
+                        View navigate;
+                        navigate = ((Activity)context).findViewById(R.id.navigate);
+                        navigate.setOnClickListener(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View view) {
+                                ((MapsActivity)context).updateCurrentPosition();
+                                LatLng app = ((MapsActivity)context).getCurrentPosition();
+                                if (app != null)
+                                    ((MapsActivity)context).navigate(app,mapMarker.getPosition());
+                                else
+                                    Toast.makeText(context, "Errore durante la ricezione della posizione. Riprova tra poco.", Toast.LENGTH_SHORT).show();
+                            }
+                        });;
                     }
-                });
-                View navigate;
-                navigate = ((Activity)context).findViewById(R.id.navigate);
-                navigate.setOnClickListener(new View.OnClickListener(){
-                    @Override
-                    public void onClick(View view) {
-                        ((MapsActivity)context).updateCurrentPosition();
-                        LatLng app = ((MapsActivity)context).getCurrentPosition();
-                        if (app != null)
-                            ((MapsActivity)context).navigate(app,mapMarker.getPosition());
-                        else
-                            Toast.makeText(context, "Errore durante la ricezione della posizione. Riprova tra poco.", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                }, 1000);
                 return true;
         }});
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());
