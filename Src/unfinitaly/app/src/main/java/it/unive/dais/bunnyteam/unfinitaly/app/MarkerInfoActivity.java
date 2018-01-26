@@ -52,7 +52,7 @@ public class MarkerInfoActivity extends BaseActivity {
             @Override
             public boolean onNavigationClickListener(View clickedView) {
                 onBackPressed();
-                return false;
+                return true;
             }
         });
         final StreetViewPanoramaFragment streetViewPanoramaFragment =
