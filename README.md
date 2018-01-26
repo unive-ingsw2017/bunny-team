@@ -15,3 +15,7 @@ Si vuole sviluppare unâ€™applicazione per la piattaforma Android che informi lâ€
 - [Elena Rossetto](https://github.com/elenaross)
 
 
+#
+#
+
+Google Play and the Google Play logo are trademarks of Google LLC.
