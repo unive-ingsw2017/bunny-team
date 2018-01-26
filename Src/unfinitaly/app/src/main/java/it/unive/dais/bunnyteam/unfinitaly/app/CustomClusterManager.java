@@ -63,6 +63,16 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
 
                     @Override
                     public void onCancel() {
+                        String title = mapMarker.getCategoria();
+                        String snippet = mapMarker.getTitle();
+                        if(title.length()>100){
+                            title = title.substring(0,99) + "...";
+                        }
+                        if(snippet.length()>100){
+                            snippet = snippet.substring(0,99) + "...";
+                        }
+                        ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(title);
+                        ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(snippet);
                         ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
                     }
                 });
