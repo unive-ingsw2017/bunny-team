@@ -43,11 +43,11 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         setOnClusterItemClickListener(new OnClusterItemClickListener<MapMarker>() {
             @Override
             public boolean onClusterItemClick(final MapMarker mapMarker) {
-                ((MapsActivity)context).getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(mapMarker.getPosition(), 13));
-                new Handler().postDelayed(new Runnable() {
+                if(((Activity)context).findViewById(R.id.marker_window).getVisibility()==View.VISIBLE)
+                    ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.INVISIBLE);
+                ((MapsActivity)context).getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(mapMarker.getPosition(), 13), new GoogleMap.CancelableCallback() {
                     @Override
-                    public void run() {
-                        ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
+                    public void onFinish() {
                         String title = mapMarker.getCategoria();
                         String snippet = mapMarker.getTitle();
                         if(title.length()>100){
@@ -58,6 +58,15 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                         }
                         ((TextView)((Activity)context).findViewById(R.id.titleMarker)).setText(title);
                         ((TextView)((Activity)context).findViewById(R.id.snippetMarker)).setText(snippet);
+                        ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.VISIBLE);
+                    }
+                });
+
                         View info;
                         info = ((Activity)context).findViewById(R.id.marker_window);
                         info.setOnClickListener(new View.OnClickListener(){
@@ -78,11 +87,10 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                                 else
                                     Toast.makeText(context, "Errore durante la ricezione della posizione. Riprova tra poco.", Toast.LENGTH_SHORT).show();
                             }
-                        });;
-                    }
-                }, 1000);
+                        });
                 return true;
-        }});
+            };
+            });
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());
         setRenderer(new it.unive.dais.bunnyteam.unfinitaly.app.ClusterRenderer<>(context, map, this));
     }
