@@ -98,6 +98,12 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                                     Toast.makeText(context, "Errore durante la ricezione della posizione. Riprova tra poco.", Toast.LENGTH_SHORT).show();
                             }
                         });
+                ((Activity)context).findViewById(R.id.position).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ((MapsActivity)context).getMap().animateCamera(CameraUpdateFactory.newLatLngZoom(mapMarker.getPosition(), 13));
+                    }
+                });
                 return true;
             };
             });
