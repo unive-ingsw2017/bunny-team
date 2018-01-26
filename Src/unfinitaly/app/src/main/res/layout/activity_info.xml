@@ -100,6 +100,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+            <TextView
+                android:id="@+id/tvCredits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\tEnrico Vettori\n\tGiacomo Zanatta\n\tElena Rossetto\n\tFatjona Ismailaj\n"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\tQuesta applicazione è stata sviluppata usando Datadroid" />
         </LinearLayout>
     </ScrollView>
 
