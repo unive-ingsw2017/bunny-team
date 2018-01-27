@@ -15,15 +15,16 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
+import it.unive.dais.bunnyteam.unfinitaly.app.memory.MapsItemIO;
 
 
 public class LoadingActivity extends AppCompatActivity {
-    WebView webview;
-    TextView tv_status;
-    TextView tvCountLoad;
-    ProgressBar progressBar;
+    private WebView webview;
+    private TextView tv_status;
+    private TextView tvCountLoad;
+    private ProgressBar progressBar;
     int status = 0;
-    FloatingActionButton fab;
+    private FloatingActionButton fab;
 
     @Override
     public void onBackPressed() {
@@ -97,5 +98,8 @@ public class LoadingActivity extends AppCompatActivity {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+    public WebView getWebview(){
+        return webview;
     }
 }

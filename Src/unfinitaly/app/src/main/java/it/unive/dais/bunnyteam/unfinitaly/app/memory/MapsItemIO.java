@@ -1,4 +1,4 @@
-package it.unive.dais.bunnyteam.unfinitaly.app;
+package it.unive.dais.bunnyteam.unfinitaly.app.memory;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import it.unive.dais.bunnyteam.unfinitaly.app.LoadingActivity;
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
 
 /**

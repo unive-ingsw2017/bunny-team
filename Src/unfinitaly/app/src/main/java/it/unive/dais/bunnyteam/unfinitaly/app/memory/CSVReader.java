@@ -1,4 +1,4 @@
-package it.unive.dais.bunnyteam.unfinitaly.app;
+package it.unive.dais.bunnyteam.unfinitaly.app.memory;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import it.unive.dais.bunnyteam.unfinitaly.app.LoadingActivity;
+import it.unive.dais.bunnyteam.unfinitaly.app.R;
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
 import it.unive.dais.bunnyteam.unfinitaly.lib.parser.CsvRowParser;
@@ -82,7 +84,7 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(loadingAct.webview.getVisibility()== View.INVISIBLE)
+        if(loadingAct.getWebview().getVisibility()== View.INVISIBLE)
             loadingAct.startMapsActivity();
         else
             loadingAct.setStatus(1);

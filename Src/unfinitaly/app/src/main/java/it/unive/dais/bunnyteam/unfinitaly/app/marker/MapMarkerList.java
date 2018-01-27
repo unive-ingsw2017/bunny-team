@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import it.unive.dais.bunnyteam.unfinitaly.app.LoadingActivity;
-import it.unive.dais.bunnyteam.unfinitaly.app.MapsItemIO;
+import it.unive.dais.bunnyteam.unfinitaly.app.memory.MapsItemIO;
 
 
 /**
