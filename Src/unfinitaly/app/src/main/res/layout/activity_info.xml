@@ -105,7 +105,8 @@
                 android:id="@+id/tvCredits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="\tEnrico Vettori\n\tGiacomo Zanatta\n\tElena Rossetto\n\tFatjona Ismailaj\n"
+                android:layout_marginLeft="40dp"
+                android:text="Sviluppatori:\n\nEnrico Vettori\nGiacomo Zanatta\nElena Rossetto\nFatjona Ismailaj\n"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -113,7 +114,8 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="\tQuesta applicazione è stata sviluppata usando Datadroid" />
+                android:layout_marginLeft="40dp"
+                android:text="Questa applicazione è stata sviluppata usando il toolkit Datadroid." />
         </LinearLayout>
     </ScrollView>
 
