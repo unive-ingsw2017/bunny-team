@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":10},"path":"app-release.apk","properties":{"packageId":"it.unive.dais.bunnyteam.unfinitaly.app","split":"","minSdkVersion":"21"}}]
-=======
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":11},"path":"app-release.apk","properties":{"packageId":"it.unive.dais.bunnyteam.unfinitaly.app","split":"","minSdkVersion":"21"}}]
->>>>>>> 750717943af18fc1910c67c493fbeb02337d7f84
+[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":14},"path":"app-release.apk","properties":{"packageId":"it.unive.dais.bunnyteam.unfinitaly.app","split":"","minSdkVersion":"21"}}]
