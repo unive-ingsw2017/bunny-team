@@ -16,6 +16,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.StreetViewPanoramaLocation;
 import com.mikepenz.materialdrawer.Drawer;
 
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
+import it.unive.dais.bunnyteam.unfinitaly.app.view.ProgressBarAnimation;
+
 
 public class MarkerInfoActivity extends BaseActivity {
     MapMarker thisMapMarker;

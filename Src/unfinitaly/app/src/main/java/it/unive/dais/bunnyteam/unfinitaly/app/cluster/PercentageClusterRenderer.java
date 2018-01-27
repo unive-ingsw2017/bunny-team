@@ -1,15 +1,13 @@
-package it.unive.dais.bunnyteam.unfinitaly.app;
+package it.unive.dais.bunnyteam.unfinitaly.app.cluster;
 
 import android.content.Context;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
 
-import java.util.Collection;
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
 
 /**
  * Created by giacomo on 23/01/18.

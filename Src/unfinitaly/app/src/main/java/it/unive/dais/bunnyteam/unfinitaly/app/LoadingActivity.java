@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
 
 
 public class LoadingActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package it.unive.dais.bunnyteam.unfinitaly.app;
+package it.unive.dais.bunnyteam.unfinitaly.app.cluster;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -18,6 +18,8 @@ import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 import com.google.maps.android.ui.IconGenerator;
 import com.google.maps.android.ui.SquareTextView;
+
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
 
 
 /**

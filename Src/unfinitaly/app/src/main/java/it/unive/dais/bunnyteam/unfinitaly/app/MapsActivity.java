@@ -7,7 +7,6 @@ package it.unive.dais.bunnyteam.unfinitaly.app;
 import android.Manifest;
 import android.app.Activity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -27,11 +26,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -56,10 +53,11 @@ import com.google.android.gms.maps.model.Marker;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
-import java.util.Map;
+
+import it.unive.dais.bunnyteam.unfinitaly.app.cluster.CustomClusterManager;
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
 
 /**
  * Questa classe è la componente principale del toolkit: fornisce servizi primari per un'app basata su Google Maps, tra cui localizzazione, pulsanti
@@ -514,7 +512,7 @@ public class MapsActivity extends BaseActivity
      * @param from posizione iniziale.
      * @param to   posizione finale.
      */
-    protected void navigate(@NonNull LatLng from, @NonNull LatLng to) {
+    public void navigate(@NonNull LatLng from, @NonNull LatLng to) {
         Intent navigation = new Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("http://maps.google.com/maps?saddr=" + from.latitude + "," + from.longitude + "&daddr=" + to.latitude + "," + to.longitude + ""));

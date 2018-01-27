@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
 import it.unive.dais.bunnyteam.unfinitaly.lib.parser.CsvRowParser;
 
 /**

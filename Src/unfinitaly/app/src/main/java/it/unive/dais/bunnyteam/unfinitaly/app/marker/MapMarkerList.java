@@ -1,12 +1,14 @@
-package it.unive.dais.bunnyteam.unfinitaly.app;
+package it.unive.dais.bunnyteam.unfinitaly.app.marker;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
+
+import it.unive.dais.bunnyteam.unfinitaly.app.LoadingActivity;
+import it.unive.dais.bunnyteam.unfinitaly.app.MapsItemIO;
 
 
 /**

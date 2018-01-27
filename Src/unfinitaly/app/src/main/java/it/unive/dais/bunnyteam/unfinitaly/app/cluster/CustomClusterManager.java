@@ -1,21 +1,17 @@
-package it.unive.dais.bunnyteam.unfinitaly.app;
+package it.unive.dais.bunnyteam.unfinitaly.app.cluster;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.maps.android.MarkerManager;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterItem;
 import com.google.maps.android.clustering.ClusterManager;
@@ -23,6 +19,11 @@ import com.google.maps.android.clustering.ClusterManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
+import it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity;
+import it.unive.dais.bunnyteam.unfinitaly.app.R;
 
 /**
  * Created by giacomo on 23/01/18.
@@ -108,11 +109,11 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
             };
             });
         setOnClusterItemInfoWindowClickListener(getDefaultOnClusterItemInfoWindowClickListener());
-        setRenderer(new it.unive.dais.bunnyteam.unfinitaly.app.ClusterRenderer<>(context, map, this));
+        setRenderer(new ClusterRenderer<>(context, map, this));
     }
 
 
-    protected void resetMarkers(){
+    public void resetMarkers(){
         clearItems();
         addItems(mapMarkers.getMapMarkers());
         cluster();
@@ -122,20 +123,20 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         cluster();
     }
 
-    protected void resetFlags(){
+    public void resetFlags(){
         flagregione = false;
         flagtipo = false;
     }
 
-    protected void setFlagRegion(boolean status){
+    public void setFlagRegion(boolean status){
         flagregione = status;
     }
 
-    protected void setFlagTipo(boolean status){
+    public void setFlagTipo(boolean status){
         flagtipo = status;
     }
 
-    protected void showRegions(ArrayList<String> regions) {
+    public void showRegions(ArrayList<String> regions) {
         /*qui devo far vedere le regioni.*/
         clearItems();
         for(MapMarker mM: mapMarkers.getMapMarkers())
@@ -144,14 +145,14 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         flagregione = true;
         cluster();
     }
-    protected int countMarkerByRegion(String region){
+    public int countMarkerByRegion(String region){
         int i=0;
         for(MapMarker mM: mapMarkers.getMapMarkers())
             if(mM.getRegione().equals(region))
                 i++;
         return i;
     }
-    protected ArrayList<String> getAllMarkerCategory(){
+    public ArrayList<String> getAllMarkerCategory(){
         ArrayList<String> allCategory = new ArrayList<>();
         for(MapMarker mM: mapMarkers.getMapMarkers())
             if(!allCategory.contains(mM.getCategoria()))
@@ -159,7 +160,7 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         return allCategory;
     }
 
-    protected int countMarkerByCategory(String category) {
+    public int countMarkerByCategory(String category) {
         int i=0;
         for(MapMarker mM: mapMarkers.getMapMarkers())
             if(mM.getCategoria().equals(category))

@@ -1,4 +1,4 @@
-package it.unive.dais.bunnyteam.unfinitaly.app;
+package it.unive.dais.bunnyteam.unfinitaly.app.view;
 
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
@@ -15,15 +15,11 @@ public class ProgressBarAnimation extends Animation {
     private int from;
     private long stepDuration;
 
-    /**
-     * @param fullDuration - time required to fill progress from 0% to 100%
-     */
     public ProgressBarAnimation(RoundCornerProgressBar progressBar, long fullDuration) {
         super();
         this.progressBar = progressBar;
         stepDuration = (long)(fullDuration / progressBar.getMax());
     }
-
 
     public void setProgress(int progress) {
         if (progress < 0) {
