@@ -43,8 +43,10 @@ public class MarkerInfoActivity extends BaseActivity {
 
         String percentage = thisMapMarker.getPercentage()+"%";
         ((TextView)findViewById(R.id.tv_percentuale)).setText(percentage);
+        ProgressBarAnimation mProgressAnimation = new ProgressBarAnimation(rc, 1500);
+
         rc.setMax(100);
-        rc.setProgress((int)thisMapMarker.getPercentage());
+        mProgressAnimation.setProgress((int)thisMapMarker.getPercentage());
         final LatLng coordMapM = thisMapMarker.getPosition();
         drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
