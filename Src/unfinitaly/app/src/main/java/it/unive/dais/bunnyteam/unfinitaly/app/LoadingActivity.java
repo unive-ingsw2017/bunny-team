@@ -37,6 +37,7 @@ public class LoadingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getIntent().getBooleanExtra("EXIT", false)) {
             finish();
             System.exit(0);
@@ -51,6 +52,7 @@ public class LoadingActivity extends AppCompatActivity {
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setWebViewClient(new WebViewClient());
         fab = (FloatingActionButton)findViewById(R.id.floatingActionButton);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,5 +103,8 @@ public class LoadingActivity extends AppCompatActivity {
     }
     public WebView getWebview(){
         return webview;
+    }
+    public void startHelpActivity(){
+        startActivity(new Intent(this, HelpActivity.class));
     }
 }

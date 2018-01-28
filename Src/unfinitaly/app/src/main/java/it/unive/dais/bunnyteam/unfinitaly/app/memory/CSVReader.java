@@ -85,7 +85,7 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
             e.printStackTrace();
         }
         if(loadingAct.getWebview().getVisibility()== View.INVISIBLE)
-            loadingAct.startMapsActivity();
+            loadingAct.startHelpActivity();
         else
             loadingAct.setStatus(1);
     }
