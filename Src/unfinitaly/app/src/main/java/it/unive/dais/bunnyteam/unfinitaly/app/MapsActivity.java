@@ -456,8 +456,7 @@ public class MapsActivity extends BaseActivity
         applyMapSettings();
 
         //sposto la telecamera sopra l'italia
-        defaultPosition = new LatLng(41.87, 12.56);
-        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultPosition, 5));
+        animateOnItaly();
         /*prepare the cluster*/
         mClusterManager = new CustomClusterManager<>(this, googleMap);
         googleMap.setOnCameraIdleListener(mClusterManager);
@@ -504,6 +503,11 @@ public class MapsActivity extends BaseActivity
             gMap.setMapType(SettingsActivity.getMapStyle(this));
         }
         //setHereButtonVisibility();
+    }
+
+    public void animateOnItaly(){
+        defaultPosition = new LatLng(41.87, 12.56);
+        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultPosition, 5));
     }
 
     /**

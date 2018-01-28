@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.maps.android.heatmaps.HeatmapTileProvider;
@@ -292,6 +294,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                             selectedRegions.add(allRegions[number]);
                         ((MapsActivity) thisActivity).getClusterManager().showRegions(selectedRegions);
                         ((MapsActivity)thisActivity).getClusterManager().setFlagRegion(true);
+                        ((MapsActivity)thisActivity).animateOnItaly();
                         dialog.dismiss();
                     }
                 }
@@ -347,6 +350,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                             selectedCategory.add(allCategory.get(number));
                         ((MapsActivity)thisActivity).getClusterManager().showCategory(selectedCategory);
                         ((MapsActivity)thisActivity).getClusterManager().setFlagTipo(true);
+                        ((MapsActivity)thisActivity).animateOnItaly();
                         dialog.dismiss();
                     }
                 }
