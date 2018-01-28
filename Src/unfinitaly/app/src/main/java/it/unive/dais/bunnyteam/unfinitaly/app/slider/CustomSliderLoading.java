@@ -49,7 +49,6 @@ public class CustomSliderLoading extends CustomSlider {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         if (v == null) {
             v = view;
-            loadAct.setLoadingView(v);
             Log.d("CIAO", "ON VIEW CREATED!!!!");
             super.onViewCreated(view, savedInstanceState);
             //qui possiamo inserire i metodi del loading.

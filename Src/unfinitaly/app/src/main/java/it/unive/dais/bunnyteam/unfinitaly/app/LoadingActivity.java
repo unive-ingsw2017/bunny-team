@@ -84,7 +84,6 @@ public class LoadingActivity extends AppIntro {
         curFragment = fragments.get(0);
         setProgressButtonEnabled(true);
         showSkipButton(false);
-        showDoneButton(true);
         setZoomAnimation();
         //setContentView(R.layout.activity_loading);
         /*tv_status = (TextView)loadingView.findViewById(R.id.tv_status);
@@ -148,16 +147,7 @@ public class LoadingActivity extends AppIntro {
         return webview;
     }
 
-    public View getLoadingView() {
-        return loadingView;
-    }
-    /*public void startHelpActivity(){
-        startActivity(new Intent(this, HelpActivity.class));
-    }*/
-    public void setLoadingView(View v){
-        Log.i("CIAOO", "SET V");
-        this.v = v;
-    }
+
     @Override
     public void onSkipPressed(Fragment currentFragment) {
         startMapsActivity();

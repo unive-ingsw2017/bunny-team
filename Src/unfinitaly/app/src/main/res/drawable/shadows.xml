@@ -3,7 +3,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle"
     android:elevation="6dp">
-    <solid android:color="@color/md_white_1000" />
+    <solid android:color="#FFFFFF" /> <!--COLORI: Specificando 2 numeri HEX prima del colore, si specifica l'opacità -->
     <corners android:topLeftRadius="15dp" android:topRightRadius="15dp"
         android:bottomLeftRadius="0.1dp" android:bottomRightRadius="0.1dp"/>
 </shape>
