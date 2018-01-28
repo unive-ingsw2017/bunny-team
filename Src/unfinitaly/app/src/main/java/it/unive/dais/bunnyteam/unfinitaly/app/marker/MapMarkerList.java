@@ -1,6 +1,9 @@
 package it.unive.dais.bunnyteam.unfinitaly.app.marker;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -36,9 +39,9 @@ public class MapMarkerList implements Serializable{
     public boolean loadFromCache(Context context) throws IOException, ClassNotFoundException {
         return MapsItemIO.readFromCache(context);
     }
-    public void loadFromCsv(LoadingActivity loadAct) throws InterruptedException, ExecutionException, IOException {
+    public void loadFromCsv(LoadingActivity loadAct, TextView tv_status, TextView tvCountLoad, ProgressBar progressBar) throws InterruptedException, ExecutionException, IOException {
         //instance.setMapMarkers(MapsItemIO.readFromCsvAsync(loadAct));
-        new MapsItemIO().loadFromCsv(loadAct);
+        new MapsItemIO().loadFromCsv(loadAct, tv_status, tvCountLoad, progressBar);
     }
     public static void setInstance(MapMarkerList instance){
         MapMarkerList.instance = instance;

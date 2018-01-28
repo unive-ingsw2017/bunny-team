@@ -65,6 +65,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LoadingActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,6 +74,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HelpActivity"></activity>
+
     </application>
 
 </manifest>

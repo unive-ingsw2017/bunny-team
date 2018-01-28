@@ -1,6 +1,7 @@
 package it.unive.dais.bunnyteam.unfinitaly.app.memory;
 
 import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -30,7 +31,13 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
     ArrayList<MapMarker> items;
     List<CsvRowParser.Row> rows;
     InputStream is;
-    public CSVReader(LoadingActivity loadingAct) {
+    private TextView tv_status;
+    private TextView tvCountLoad;
+    private ProgressBar progressBar;
+    public CSVReader(LoadingActivity loadingAct,TextView tv_status,TextView tvCountLoad, ProgressBar progressBar) {
+        this.tv_status = tv_status;
+        this.tvCountLoad = tvCountLoad;
+        this.progressBar = progressBar;
         this.loadingAct = loadingAct;
         items = new ArrayList<>();
         is = loadingAct.getResources().openRawResource(R.raw.csv_ok);
@@ -39,9 +46,8 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
     protected void onPreExecute() {
             /*qui dobbiamo mostrare la progress bar */
         Log.i("CIAO", "SHOWING PROGRESS BAR!");
-        ((AVLoadingIndicatorView)loadingAct.findViewById(R.id.avi)).smoothToShow();
-        ((ProgressBar)loadingAct.findViewById(R.id.progressBar)).setMax(100);
-        ((TextView)loadingAct.findViewById(R.id.tv_status)).setText("Parsing del CSV...");
+        progressBar.setMax(100);
+        tv_status.setText("Parsing del CSV...");
         super.onPreExecute();
     }
 
@@ -70,23 +76,28 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
         int max = ints[0].intValue();
         int cur = ints[1].intValue();
         String count = (cur * 100 / max) + "/100%";
-        ((TextView)loadingAct.findViewById(R.id.tv_status)).setText("Creazione Markers...");
-        ((TextView) loadingAct.findViewById(R.id.tvCountLoad)).setText(count);
-        ((ProgressBar) loadingAct.findViewById(R.id.progressBar)).setProgress(cur * 100 / max);
+        tv_status.setText("Creazione Markers...");
+        tvCountLoad.setText(count);
+        progressBar.setProgress(cur * 100 / max);
     }
     @Override
     protected void onPostExecute(Void v) {
             /*terminiamo la LoadingActivity*/
             /*aggiorniamo i marker e salviamoli in cache -> va fatto qui perchè devono essere salvati quando ho finito di leggerli*/
         MapMarkerList.getInstance().setMapMarkers(items);
+        progressBar.setProgress(100);
+        Log.d("CIAO", "DONE!");
         try {
-            MapsItemIO.saveToCache(MapMarkerList.getInstance(),loadingAct);
+            MapsItemIO.saveToCache(MapMarkerList.getInstance(), loadingAct);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(loadingAct.getWebview().getVisibility()== View.INVISIBLE)
+        /*if(loadingAct.getWebview().getVisibility()== View.INVISIBLE)
             loadingAct.startHelpActivity();
-        else
-            loadingAct.setStatus(1);
+        else*/
+        //loadingAct.setStatus(1);
+        Log.d("CIAO", "showing skip button!");
+        loadingAct.setReady(true);
+        loadingAct.showFinishSnackbar();
     }
 }

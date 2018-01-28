@@ -5,7 +5,7 @@
     android:id="@+id/textLoading"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loading_activity_background"
+    android:background="@drawable/loading_activity_background2"
     tools:context="it.unive.dais.bunnyteam.unfinitaly.app.LoadingActivity">
 
     <com.wang.avi.AVLoadingIndicatorView

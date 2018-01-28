@@ -2,6 +2,9 @@ package it.unive.dais.bunnyteam.unfinitaly.app.memory;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,8 +33,8 @@ public class MapsItemIO {
             return false;
     }
 
-    public void loadFromCsv(LoadingActivity loadingActivity){
-        new CSVReader(loadingActivity).execute();
+    public void loadFromCsv(LoadingActivity loadingActivity, TextView tv_status,TextView tvCountLoad, ProgressBar progressBar){
+        new CSVReader(loadingActivity, tv_status, tvCountLoad, progressBar).execute();
     }
     public static boolean readFromCache(Context context) throws IOException, ClassNotFoundException {
         File cacheDir = new File(context.getCacheDir(), "files");
