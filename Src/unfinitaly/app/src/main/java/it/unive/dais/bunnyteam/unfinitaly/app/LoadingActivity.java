@@ -37,7 +37,8 @@ public class LoadingActivity extends AppIntro {
     private TextView tvCountLoad;
     private ProgressBar progressBar;
     CustomSliderLoading csl;
-
+    Fragment curFragment;
+    private View v;
     public boolean isReady() {
         return ready;
     }
@@ -80,7 +81,7 @@ public class LoadingActivity extends AppIntro {
         addSlide(CustomSlider.newInstance(R.layout.fragmentinfo5));
         setBarColor(Color.parseColor("#66000000"));
         setSeparatorColor(Color.parseColor("#66000000"));
-
+        curFragment = fragments.get(0);
         setProgressButtonEnabled(true);
         showSkipButton(false);
         showDoneButton(true);
@@ -153,7 +154,10 @@ public class LoadingActivity extends AppIntro {
     /*public void startHelpActivity(){
         startActivity(new Intent(this, HelpActivity.class));
     }*/
-
+    public void setLoadingView(View v){
+        Log.i("CIAOO", "SET V");
+        this.v = v;
+    }
     @Override
     public void onSkipPressed(Fragment currentFragment) {
         startMapsActivity();
@@ -173,16 +177,25 @@ public class LoadingActivity extends AppIntro {
         }
     }
 
+    @Override
+    public void onSlideChanged(@Nullable Fragment oldFragment, @Nullable Fragment newFragment) {
+        super.onSlideChanged(oldFragment, newFragment);
+        Log.d("CIAOO", "set new Fragment");
+        curFragment = newFragment;
+
+    }
+
     public void showSkip(){
         showSkipButton(true);
     }
 
 
     public void showFinishSnackbar() {
-        Snackbar snack = Snackbar.make(csl.getView().getRootView(), "Mappa disponibile!", Snackbar.LENGTH_SHORT);
+        Snackbar snack = Snackbar.make(curFragment.getView(), "Mappa disponibile!", Snackbar.LENGTH_SHORT);
         View view = snack.getView();
         view.setBackgroundColor(getResources().getColor(R.color.md_green_700));
         snack.show();
+        snack.setActionTextColor(getResources().getColor(R.color.md_white_1000));
         snack.setAction("CONTINUA", new View.OnClickListener(){
 
             @Override
