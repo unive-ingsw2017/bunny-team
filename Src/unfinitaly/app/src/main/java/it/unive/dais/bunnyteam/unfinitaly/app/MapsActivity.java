@@ -48,10 +48,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.mikepenz.materialdrawer.model.ContainerDrawerItem;
 
 import java.io.IOException;
 
@@ -69,18 +71,19 @@ import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
  * e gli standard qualitativi.
  * Per scrivere una propria app è necessario modificare questa classe, aggiungendo campi, metodi e codice che svolge le funzionalità richieste.
  *
- * @author Alvise Spanò, Università Ca' Foscari
+ * @author BunnyTeam, Università Ca' Foscari
  */
 public class MapsActivity extends BaseActivity
         implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnCameraMoveStartedListener{
+        GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnCameraMoveStartedListener, GoogleMap.OnCameraIdleListener{
 
     protected static final int REQUEST_CHECK_SETTINGS = 500;
     protected static final int PERMISSIONS_REQUEST_ACCESS_BOTH_LOCATION = 501;
     // alcune costanti
     private static final String TAG = "MapsActivity";
+    private LatLng posItaly;
     private boolean onBackPressed = false;
     protected boolean firstMapTouch = false;
     /**
@@ -109,8 +112,6 @@ public class MapsActivity extends BaseActivity
      */
     @Nullable
     protected Marker hereMarker = null;
-
-
     private CustomClusterManager<MapMarker> mClusterManager;
     private MapMarkerList mapMarkers = null;
     private View info;
@@ -126,21 +127,16 @@ public class MapsActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         mapMarkers = MapMarkerList.getInstance();
-        /*
-            qui vanno letti i marker. Prima di creare la mappa.
-         */
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         buildDrawer(toolbar);
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
-
+        //Inizializzo la posizione dell'italia
+        posItaly = new LatLng(41.87, 12.56);
         // trova gli oggetti che rappresentano i bottoni e li salva come campi d'istanza
         //button_here = (ImageButton) findViewById(R.id.button_here);
         button_car = (ImageButton) findViewById(R.id.button_car);
-
         // API per i servizi di localizzazione
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
         // inizializza la mappa asincronamente
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -192,6 +188,12 @@ public class MapsActivity extends BaseActivity
     protected void onDestroy() {
         super.onDestroy();
         gMap.clear();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("Maps", "on Restart");
     }
 
     /**
@@ -319,10 +321,6 @@ public class MapsActivity extends BaseActivity
         Toast.makeText(this, R.string.conn_failed, Toast.LENGTH_LONG).show();
     }
 
-    // maps callbacks
-    //
-    //
-
     /**
      * Chiamare questo metodo per aggiornare la posizione corrente del GPS.
      * Si tratta di un metodo proprietario, che non ridefinisce alcun metodo della superclasse né implementa alcuna interfaccia: un metodo
@@ -398,8 +396,32 @@ public class MapsActivity extends BaseActivity
      * @param reason
      */
     @Override
-    public void onCameraMoveStarted(int reason) {
-        //setHereButtonVisibility();
+    public void onCameraMoveStarted(int reason) {}
+
+    /**
+     * Metodo che viene chiamato a fine del movimento della camera secondo le API di google.
+     * Ma non so perchè non viene chiamato
+     * https://developers.google.com/android/reference/com/google/android/gms/maps/GoogleMap.OnCameraIdleListener
+     */
+    @Override
+    public void onCameraIdle() {
+        Log.d("Positione",""+gMap.getCameraPosition());
+        float[] result;
+        result = checkBounds(gMap.getCameraPosition());
+        Log.d("Distanza dall'italia",""+result[0]);
+        if (result[0] > 1000000){
+            animateOnItaly();
+            //Toast.makeText(getApplicationContext(),"Posizionamento telecamera sopra l'Italia.",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /*
+     * Metodo per controllare la distanza tra la camera e l'italia
+     */
+    private float[] checkBounds(CameraPosition posCamera){
+        float[] results = new float[1];
+        Location.distanceBetween(posItaly.latitude,posItaly.longitude,posCamera.target.latitude,posCamera.target.longitude,results);
+        return results;
     }
 
     /**
@@ -425,6 +447,7 @@ public class MapsActivity extends BaseActivity
         }
 
         gMap.setOnMapClickListener(this);
+        gMap.setOnCameraIdleListener(this);
         gMap.setOnMapLongClickListener(this);
         gMap.setOnCameraMoveStartedListener(this);
         gMap.setOnMarkerClickListener(mClusterManager);
@@ -506,8 +529,8 @@ public class MapsActivity extends BaseActivity
     }
 
     public void animateOnItaly(){
-        defaultPosition = new LatLng(41.87, 12.56);
-        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultPosition, 5));
+        Log.d("Animazione camera","ITALY");
+        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(posItaly, 5));
     }
 
     /**
@@ -602,12 +625,6 @@ public class MapsActivity extends BaseActivity
     }
     public GoogleMap getMap(){
         return gMap;
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i("Maps", "on Restart");
     }
 }
 
