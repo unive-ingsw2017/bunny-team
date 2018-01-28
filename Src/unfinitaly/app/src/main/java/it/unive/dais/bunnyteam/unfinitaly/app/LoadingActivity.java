@@ -42,7 +42,7 @@ public class LoadingActivity extends AppCompatActivity {
             finish();
             System.exit(0);
         }
-
+        startHelpActivity();
         setContentView(R.layout.activity_loading);
         tv_status = (TextView)findViewById(R.id.tv_status);
         tvCountLoad =(TextView)findViewById(R.id.tvCountLoad);

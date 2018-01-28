@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment android:id="@+id/fagmentInfo1"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:name="com.github.paolorotolo.appintro.AppIntro2Fragment">
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_blue_800">
+    android:background="@color/colorPrimaryDark">
 
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/avi2"
@@ -27,18 +23,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_status2" />
 
-    <it.unive.dais.bunnyteam.unfinitaly.app.view.TextViewApp
+    <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Caricamento..."
+        android:layout_marginTop="20dp"
+        android:text="Caricamento"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="38sp"
-        android:textStyle="bold"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -59,7 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avi2" />
 
-    <it.unive.dais.bunnyteam.unfinitaly.app.view.TextViewApp
+    <TextView
         android:id="@+id/textView11"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -70,12 +65,12 @@
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <it.unive.dais.bunnyteam.unfinitaly.app.view.TextViewApp
+    <TextView
         android:id="@+id/tvCountLoad2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/progressBar2"
         app:layout_constraintVertical_bias="0.0" />
 
-    <it.unive.dais.bunnyteam.unfinitaly.app.view.TextViewApp
+    <TextView
         android:id="@+id/tv_status2"
         android:layout_width="7dp"
         android:layout_height="wrap_content"
@@ -103,5 +98,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Prima di iniziare, vogliamo spiegarti in breve il funzionamento di UnfinItaly"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCountLoad2"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>
-</fragment>
