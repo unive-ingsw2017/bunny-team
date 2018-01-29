@@ -105,7 +105,6 @@ public class MapsActivity extends BaseActivity
      */
     @Nullable
     protected LatLng currentPosition = null;
-    protected LatLng defaultPosition = null;
     /**
      * Il marker che viene creato premendo il pulsante button_here (cioè quello dell'app, non quello di Google Maps).
      * E' utile avere un campo d'istanza che tiene il puntatore a questo marker perché così è possibile rimuoverlo se necessario.
@@ -408,7 +407,7 @@ public class MapsActivity extends BaseActivity
     public void onCameraIdle() {
         Log.d("Positione",""+gMap.getCameraPosition());
         float[] result;
-        result = checkBounds(gMap.getCameraPosition());
+        result = checkDistanceCamera(gMap.getCameraPosition());
         Log.d("Distanza dall'italia",""+result[0]);
         if (result[0] > 1000000){
             animateOnItaly();
@@ -419,7 +418,7 @@ public class MapsActivity extends BaseActivity
     /*
      * Metodo per controllare la distanza tra la camera e l'italia
      */
-    private float[] checkBounds(CameraPosition posCamera){
+    private float[] checkDistanceCamera(CameraPosition posCamera){
         float[] results = new float[1];
         Location.distanceBetween(posItaly.latitude,posItaly.longitude,posCamera.target.latitude,posCamera.target.longitude,results);
         return results;
