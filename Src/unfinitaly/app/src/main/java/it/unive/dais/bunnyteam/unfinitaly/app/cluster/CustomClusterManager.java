@@ -19,6 +19,7 @@ import com.google.maps.android.clustering.ClusterManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
@@ -30,7 +31,7 @@ import it.unive.dais.bunnyteam.unfinitaly.app.R;
  * @author BunnyTeam, Università Ca' Foscari
  */
 
-public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<MapMarker>{
+public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<MapMarker> implements GoogleMap.OnCameraIdleListener{
 
     private MapMarkerList mapMarkers = null;
     private Context context;
@@ -214,6 +215,20 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
     public void setOnClusterItemClickListener(OnClusterItemClickListener<MapMarker> listener) {
         super.setOnClusterItemClickListener(listener);
     }
+
+    @Override
+    public void onCameraIdle() {
+        Log.d("Positione",""+((MapsActivity)context).getMap().getCameraPosition());
+        float[] result;
+        result = ((MapsActivity)context).checkDistanceCamera(((MapsActivity)context).getMap().getCameraPosition());
+        Log.d("Distanza dall'italia",""+result[0]);
+        if (result[0] > 1000000){
+            ((MapsActivity)context).animateOnItaly();
+            //Toast.makeText(getApplicationContext(),"Posizionamento telecamera sopra l'Italia.",Toast.LENGTH_SHORT).show();
+        }
+        cluster();
+    }
+
     public OnClusterItemInfoWindowClickListener<MapMarker> getDefaultOnClusterItemInfoWindowClickListener() {
         return new ClusterManager.OnClusterItemInfoWindowClickListener<MapMarker>() {
             @Override

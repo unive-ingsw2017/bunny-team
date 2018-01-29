@@ -418,7 +418,7 @@ public class MapsActivity extends BaseActivity
     /*
      * Metodo per controllare la distanza tra la camera e l'italia
      */
-    private float[] checkDistanceCamera(CameraPosition posCamera){
+    public float[] checkDistanceCamera(CameraPosition posCamera){
         float[] results = new float[1];
         Location.distanceBetween(posItaly.latitude,posItaly.longitude,posCamera.target.latitude,posCamera.target.longitude,results);
         return results;
@@ -447,7 +447,7 @@ public class MapsActivity extends BaseActivity
         }
 
         gMap.setOnMapClickListener(this);
-        gMap.setOnCameraIdleListener(this);
+        //gMap.setOnCameraIdleListener(this);
         gMap.setOnMapLongClickListener(this);
         gMap.setOnCameraMoveStartedListener(this);
         gMap.setOnMarkerClickListener(mClusterManager);
