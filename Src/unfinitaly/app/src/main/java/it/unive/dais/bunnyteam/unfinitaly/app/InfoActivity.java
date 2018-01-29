@@ -24,7 +24,7 @@ import com.mikepenz.materialdrawer.Drawer;
 /**
  * Activity per la schermata di crediti e about.
  *
- * @author Alvise Spanò, Università Ca' Foscari
+ * @author BunnyTeam, Università Ca' Foscari
  */
 public class InfoActivity extends BaseActivity {
     WebView webview;
