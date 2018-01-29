@@ -29,7 +29,10 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
-
+/**
+ *
+ * @author BunnyTeam, Università Ca' Foscari
+ */
 public abstract class BaseActivity extends AppCompatActivity {
     protected Drawer drawer;
     protected Activity thisActivity;
@@ -43,9 +46,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
-    /**
-     * @author Giacomo
-     */
 
     protected void buildDrawer(Toolbar toolbar) {
         thisActivity = this;

@@ -15,10 +15,11 @@ import java.io.ObjectOutputStream;
 
 import it.unive.dais.bunnyteam.unfinitaly.app.LoadingActivity;
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
+import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerListVersioningHelper;
 
 /**
- * Created by giacomo on 06/01/18.
  *
+ * @author BunnyTeam, Università Ca' Foscari
  */
 
 public class MapsItemIO {
@@ -26,7 +27,7 @@ public class MapsItemIO {
     public static boolean isCached(Context context) {
         File cacheDir = new File(context.getCacheDir(), "files");
         cacheDir.mkdirs();
-        File cacheFile = new File(cacheDir, "mapMarkers.obj");
+        File cacheFile = new File(cacheDir, "mapMarkers1.obj");
         if (cacheFile.exists())
             return true;
         else
@@ -41,18 +42,18 @@ public class MapsItemIO {
         Log.i("ReadFromCache", "start");
         if (!cacheDir.exists())
             throw new IOException();
-        File cachedFile = new File(cacheDir, "mapMarkers.obj");
+        File cachedFile = new File(cacheDir, "mapMarkers1.obj");
         FileInputStream is = new FileInputStream(cachedFile);
         ObjectInputStream oIs = new ObjectInputStream(is);
         Log.i("ReadFromCache", "reading");
         Object readed = oIs.readObject();
-        if (readed instanceof MapMarkerList) {
-            /*if(((MapMarkerList)readed).getVersionId()!=MapMarkerList.getStaticVersionId()){
-                Log.i("CIAO", "Differenti!");
-                return false;
-            }*/
+        Log.i("ReadFromCache", ""+((MapMarkerListVersioningHelper)readed).getIdVersion());
+        Log.i("ReadFromCache", ""+MapMarkerList.getStaticIdVersion());
+        if(((MapMarkerListVersioningHelper)readed).getIdVersion()!=MapMarkerList.getStaticIdVersion())
+            return false;
+        else if(readed instanceof MapMarkerList) {
             MapMarkerList.setInstance((MapMarkerList) readed);
-            Log.i("ReadFromCache", "readed "+MapMarkerList.getInstance().getMapMarkers().size());
+            Log.i("ReadFromCache", "readed " + MapMarkerList.getInstance().getMapMarkers().size());
             /*Controllo che il dato nella cache sia uguale a quello da creare come MapMarker in caso di cambiamenti
             Campi classe di base MapMarker
             Field[] nuovo = Class.forName("MapMaker").getDeclaredFields();
@@ -65,10 +66,9 @@ public class MapsItemIO {
                 Log.d("Controllo campi","non ok");
             }*/
             return true;
-        }
-        else
+        }else
             return false;
-        }
+    }
 
     public static void saveToCache(MapMarkerList mmL, Context context) throws IOException {
         Log.i("Save to Cache", "start: size = " + mmL.getMapMarkers().size());
@@ -77,7 +77,7 @@ public class MapsItemIO {
             if (!cacheDir.exists())
                 cacheDir.mkdir();
             Log.i("Save to Cache", "saving");
-            File cachedFile = new File(cacheDir, "mapMarkers.obj");
+            File cachedFile = new File(cacheDir, "mapMarkers1.obj");
             ObjectOutputStream Oos = new ObjectOutputStream(new FileOutputStream(cachedFile));
             Oos.writeObject(mmL);
         }

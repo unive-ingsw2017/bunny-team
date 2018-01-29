@@ -69,6 +69,10 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
                 return GoogleMap.MAP_TYPE_TERRAIN;
             case 3:
                 return GoogleMap.MAP_TYPE_HYBRID;
+            /*case 5:
+                return 5; /*BUNNYTEAM MAP 1
+            case 6:
+                return 6; /*BUNNYTEAM MAP 2*/
             default:
                 throw new UnexpectedException(String.format("undefined map style value: %d", n));
         }
@@ -201,6 +205,12 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
                     case GoogleMap.MAP_TYPE_HYBRID:
                         s = getString(R.string.menu_mapStyle_hybrid);
                         break;
+                    /*case 5:
+                        s = "Bunny Team Map 1";
+                        break;
+                    case 6:
+                        s = "Bunny Team Map 2";
+                        break;*/
                     default:
                         throw new UnexpectedException(String.format("undefined map style value: %d", n));
                 }

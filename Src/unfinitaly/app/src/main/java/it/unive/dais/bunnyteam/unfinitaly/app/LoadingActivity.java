@@ -30,7 +30,10 @@ import it.unive.dais.bunnyteam.unfinitaly.app.memory.MapsItemIO;
 import it.unive.dais.bunnyteam.unfinitaly.app.slider.CustomSlider;
 import it.unive.dais.bunnyteam.unfinitaly.app.slider.CustomSliderLoading;
 
-
+/**
+ *
+ * @author BunnyTeam, Università Ca' Foscari
+ */
 public class LoadingActivity extends AppIntro {
     private WebView webview;
     private TextView tv_status;

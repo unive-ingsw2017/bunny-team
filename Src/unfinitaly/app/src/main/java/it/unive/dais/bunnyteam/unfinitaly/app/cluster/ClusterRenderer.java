@@ -23,7 +23,8 @@ import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
 
 
 /**
- * Created by giacomo on 08/01/18.
+ *
+ * @author BunnyTeam, Università Ca' Foscari
  */
 
 public class ClusterRenderer<T extends MapMarker> extends DefaultClusterRenderer<MapMarker> {

@@ -6,7 +6,7 @@ import android.view.animation.Transformation;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
 /**
- * Created by giacomo on 27/01/18.
+ * Created by BunnyTeam on 27/01/18.
  */
 
 public class ProgressBarAnimation extends Animation {

@@ -19,7 +19,10 @@ import com.mikepenz.materialdrawer.Drawer;
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
 import it.unive.dais.bunnyteam.unfinitaly.app.view.ProgressBarAnimation;
 
-
+/**
+ *
+ * @author BunnyTeam, Università Ca' Foscari
+ */
 public class MarkerInfoActivity extends BaseActivity {
     MapMarker thisMapMarker;
     @Override

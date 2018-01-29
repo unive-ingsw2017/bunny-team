@@ -1,7 +1,8 @@
 package it.unive.dais.bunnyteam.unfinitaly.app.view;
 
 /**
- * Created by giacomo on 17/01/18.
+ *
+ * @author BunnyTeam, Università Ca' Foscari
  */
 
 import android.content.Context;
@@ -10,9 +11,6 @@ import android.util.AttributeSet;
 import android.support.v7.widget.AppCompatTextView;
 
 
-/**
- * Created by giaco on 8/23/2017.
- */
 
 public class TextViewApp extends AppCompatTextView {
     public TextViewApp(Context context, AttributeSet attrs, int defStyle) {

@@ -23,7 +23,8 @@ import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
 import it.unive.dais.bunnyteam.unfinitaly.lib.parser.CsvRowParser;
 
 /**
- * Created by giacomo on 17/01/18.
+ *
+ * @author BunnyTeam, Università Ca' Foscari
  */
 
 public class CSVReader extends AsyncTask<Void, Integer, Void> {

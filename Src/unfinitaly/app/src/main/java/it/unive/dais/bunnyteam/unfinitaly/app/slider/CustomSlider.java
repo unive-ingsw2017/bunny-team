@@ -5,7 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+/**
+ *
+ * @author BunnyTeam, Università Ca' Foscari
+ */
 public class CustomSlider extends Fragment {
 
     protected static final String ARG_LAYOUT_RES_ID = "layoutResId";

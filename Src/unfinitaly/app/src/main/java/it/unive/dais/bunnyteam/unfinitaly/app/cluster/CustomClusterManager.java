@@ -26,7 +26,8 @@ import it.unive.dais.bunnyteam.unfinitaly.app.MapsActivity;
 import it.unive.dais.bunnyteam.unfinitaly.app.R;
 
 /**
- * Created by giacomo on 23/01/18.
+ *
+ * @author BunnyTeam, Università Ca' Foscari
  */
 
 public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<MapMarker>{

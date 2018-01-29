@@ -10,7 +10,8 @@ import com.google.maps.android.clustering.ClusterManager;
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
 
 /**
- * Created by giacomo on 23/01/18.
+ *
+ * @author BunnyTeam, Università Ca' Foscari
  */
 
 public class PercentageClusterRenderer<T extends MapMarker> extends ClusterRenderer {

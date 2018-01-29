@@ -11,7 +11,8 @@ import java.io.Serializable;
 import it.unive.dais.bunnyteam.unfinitaly.lib.util.MapItem;
 
 /**
- * Created by giacomo on 06/01/18.
+ *
+ * @author BunnyTeam, Università Ca' Foscari
  */
 
 public class MapMarker extends MapItem implements ClusterItem, Serializable {

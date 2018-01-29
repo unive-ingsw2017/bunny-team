@@ -50,6 +50,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -71,7 +72,7 @@ import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
  * e gli standard qualitativi.
  * Per scrivere una propria app è necessario modificare questa classe, aggiungendo campi, metodi e codice che svolge le funzionalità richieste.
  *
- * @author BunnyTeam, Università Ca' Foscari
+ * @author BunnyTeam and Alvise Spanò, Università Ca' Foscari
  */
 public class MapsActivity extends BaseActivity
         implements OnMapReadyCallback,
@@ -477,7 +478,7 @@ public class MapsActivity extends BaseActivity
         uis.setMapToolbarEnabled(true);
 
         applyMapSettings();
-
+        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.bunnyteam2_map));
         //sposto la telecamera sopra l'italia
         animateOnItaly();
         /*prepare the cluster*/

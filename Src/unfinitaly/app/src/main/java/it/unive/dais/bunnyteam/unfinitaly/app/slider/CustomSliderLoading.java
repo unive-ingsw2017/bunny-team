@@ -18,7 +18,8 @@ import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
 import it.unive.dais.bunnyteam.unfinitaly.app.memory.MapsItemIO;
 
 /**
- * Created by giacomo on 28/01/18.
+ *
+ * @author BunnyTeam, Università Ca' Foscari
  */
 
 public class CustomSliderLoading extends CustomSlider {

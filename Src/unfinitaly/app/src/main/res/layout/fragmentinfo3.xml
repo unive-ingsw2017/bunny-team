@@ -32,7 +32,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        android:text="Se vuoi vedere le informazioni di un'opera incompiute, prima devi selezionarla dalla mappa, e in seguito cliccare sulla finestra in sovraimpressione."
+        android:text="Se vuoi vedere le informazioni di un'opera incompiuta, prima devi selezionarla dalla mappa, e in seguito cliccare sulla finestra in sovraimpressione."
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
