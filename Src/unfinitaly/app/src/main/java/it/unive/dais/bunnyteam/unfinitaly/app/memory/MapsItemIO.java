@@ -46,9 +46,11 @@ public class MapsItemIO {
         ObjectInputStream oIs = new ObjectInputStream(is);
         Log.i("ReadFromCache", "reading");
         Object readed = oIs.readObject();
-
-        Log.i("ciao", "instance of: "+readed.getClass());
         if (readed instanceof MapMarkerList) {
+            /*if(((MapMarkerList)readed).getVersionId()!=MapMarkerList.getStaticVersionId()){
+                Log.i("CIAO", "Differenti!");
+                return false;
+            }*/
             MapMarkerList.setInstance((MapMarkerList) readed);
             Log.i("ReadFromCache", "readed "+MapMarkerList.getInstance().getMapMarkers().size());
             /*Controllo che il dato nella cache sia uguale a quello da creare come MapMarker in caso di cambiamenti
