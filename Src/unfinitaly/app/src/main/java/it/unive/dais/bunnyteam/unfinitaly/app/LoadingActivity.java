@@ -187,6 +187,7 @@ public class LoadingActivity extends AppIntro {
         Snackbar snack = Snackbar.make(curFragment.getView(), "Mappa disponibile!", Snackbar.LENGTH_SHORT);
         View view = snack.getView();
         view.setBackgroundColor(getResources().getColor(R.color.md_green_700));
+
         snack.show();
         snack.setActionTextColor(getResources().getColor(R.color.md_white_1000));
         snack.setAction("CONTINUA", new View.OnClickListener(){
