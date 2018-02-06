@@ -32,6 +32,9 @@ import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
 import it.unive.dais.bunnyteam.unfinitaly.app.memory.JsonIO;
 
+/*Si potrebbe anche fare un controllo sul valore di ritorno; se ad esempio il database non è raggiungibile
+    si legge il json su res, e si salva quello in cache
+ */
 public class TestingActivity extends AppCompatActivity {
     String versionLocal = "0";
     boolean outdated = false;
@@ -41,7 +44,7 @@ public class TestingActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_testing);
         if (!isOnline()) {
             setContentView(R.layout.error_layout);
-            ((Button) findViewById(R.id.buttonExit)).setOnClickListener(new View.OnClickListener() {
+            findViewById(R.id.buttonExit).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     finish();
@@ -123,14 +126,16 @@ public class TestingActivity extends AppCompatActivity {
                         String versionServer = jObj.getString("version");
                         Log.i("CIAO", "Online version: "+versionServer);
                         String localVersion = JsonIO.readVersion(getApplicationContext());
-                        Log.i("CIAO", "Local version: "+versionServer);
+                        Log.i("CIAO", "Local version: "+localVersion);
                         if(versionServer.equals(localVersion) && JsonIO.isVersionCached(getApplicationContext())){
                             Log.i("CIAO", "version is the same. Reading from JSON");
+
                             JsonIO.readJSON(getApplicationContext());
                             startMapsActivity();
                         }
                         else{
-                            Log.i("CIAO", "outdated :( reading from URL");
+                            Log.i("CIAO", "outdated :( reading from URL and updating local version number");
+                            JsonIO.saveVersionJSON(getApplicationContext(), result);
                             requestJSON();
                         }
                     }
