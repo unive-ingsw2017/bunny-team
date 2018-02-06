@@ -95,11 +95,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             //PrimaryDrawerItem percentuale = new PrimaryDrawerItem().withIdentifier(1).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
             final SwitchDrawerItem percentuale = new SwitchDrawerItem().withIdentifier(4).withName("Filtro per percentuale").withIcon(R.drawable.percentage);
             final SwitchDrawerItem distribuzione = new SwitchDrawerItem().withIdentifier(5).withName("Distribuzione").withIcon(R.drawable.distribuzione);
+            final SwitchDrawerItem hidedistribution = new SwitchDrawerItem().withIdentifier(6).withName("Nascondi pins").withIcon(R.drawable.distribuzione);
+            hidedistribution.withEnabled(false);
+            hidedistribution.withChecked(false);
             //Associazione listener alle varie voci
             tutte.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                 @Override
                 public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                     ((MapsActivity)thisActivity).getClusterManager().resetMarkers();
+                    resetfilter = true;
                     if(percentuale.isChecked()){
                         percentuale.withChecked(false);
                         drawer.updateItem(percentuale);
@@ -110,7 +114,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                         drawer.updateItem(distribuzione);
                         mOverlay.setVisible(false);
                     }
-                    resetfilter = true;
                     ((MapsActivity)thisActivity).getClusterManager().resetFlags();
                     drawer.setSelection(-1);
                     return false;
@@ -133,15 +136,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     return false;
                 }
             });
-            /*percentuale.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                @Override
-                public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        Toast.makeText(getApplicationContext(), "Pulsante %", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            });*/
             percentuale.withOnCheckedChangeListener(new OnCheckedChangeListener() {
-                @Override
                 public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
                         ((MapsActivity)thisActivity).getClusterManager().setPercentageRenderer();
@@ -149,8 +144,25 @@ public abstract class BaseActivity extends AppCompatActivity {
                     else{
                         ((MapsActivity)thisActivity).getClusterManager().unsetPercentageRender();
                     }
-                    //drawer.closeDrawer();
                     drawer.setSelection(-1);
+                }
+            });
+            hidedistribution.withOnCheckedChangeListener(new OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
+                    if(hidedistribution.isEnabled()){
+                        if(hidedistribution.isChecked()){
+                            Log.d("AAA","BBB");
+                            ((MapsActivity)thisActivity).getClusterManager().clearItems();
+                            ((MapsActivity)thisActivity).animateOnItaly();
+                            hidedistribution.withChecked(false);
+                        }
+                        else{
+                            Log.d("CCC","DDD");
+                            ((MapsActivity)thisActivity).getClusterManager().resetMarkers();
+                            hidedistribution.withChecked(true);
+                        }
+                    }
                 }
             });
             distribuzione.withOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -159,36 +171,27 @@ public abstract class BaseActivity extends AppCompatActivity {
                     createOverlay();
                     if(isChecked){
                         Log.d("overlay","1");
+                        hidedistribution.isEnabled();
                         mOverlay.setVisible(true);
+                        hidedistribution.withEnabled(true);
                     }
                     else{
 
                         Log.d("overlay","0");
                         mOverlay.setVisible(false);
-
+                        hidedistribution.withEnabled(false);
                     }
-                    //drawer.closeDrawer();
                     drawer.setSelection(-1);
                 }
             });
-            /*distribuzione.withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                @Override
-                public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                    drawer.setSelection(-1);
-                    return false;
-                }
-            });*/
             drawer = new com.mikepenz.materialdrawer.DrawerBuilder()
                     .withActivity(this)
                     .withAccountHeader(headerResult)
                     .withToolbar(toolbar)
                     .withSelectedItem(-1)
                     .addDrawerItems(
-                           tutte, regione, categoria, percentuale, distribuzione, new DividerDrawerItem(), informazioni, impostazioni, new DividerDrawerItem()
+                           tutte, regione, categoria, percentuale, distribuzione, hidedistribution, new DividerDrawerItem(), informazioni, impostazioni, new DividerDrawerItem()
                     )
-                    /*.addStickyDrawerItems(
-                            informazioni, impostazioni
-                    )*/
                     .build();
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
             drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
