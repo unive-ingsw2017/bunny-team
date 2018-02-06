@@ -63,7 +63,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         cup = "";
     }
 
-    public MapMarker(double lat, double lng, double percentage, double qe, double qe_approvato, double sal, String title, String snippet, String categoria, String sottosettore, String regione, String causa, String tipologia_cup, String cup) {
+   /* public MapMarker(double lat, double lng, double percentage, double qe, double qe_approvato, double sal, String title, String snippet, String categoria, String sottosettore, String regione, String causa, String tipologia_cup, String cup) {
         this.lat = lat;
         this.lng = lng;
         this.percentage = percentage;
@@ -78,8 +78,25 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
         this.causa = causa;
         this.tipologia_cup = tipologia_cup;
         this.cup = cup;
-    }
+    }*/
 
+
+    public MapMarker(double lat, double lng, double percentage, double qe, double qe_approvato, double sal, String title, String categoria, String sottosettore, String regione, String causa, String tipologia_cup, String cup) {
+        this.lat = lat;
+        this.lng = lng;
+        this.percentage = percentage;
+        this.importo_ultimo_qe = qe;
+        this.importo_ultimo_qe_approvato = qe_approvato;
+        this.importo_sal = sal;
+        this.title = title;
+        this.snippet = title;
+        this.categoria = categoria;
+        this.sottosettore = sottosettore;
+        this.regione = regione;
+        this.causa = causa;
+        this.tipologia_cup = tipologia_cup;
+        this.cup = cup;
+    }
     //METODI GET
     public String getRegione(){ return this.regione; }
     public double getPercentage(){
@@ -102,7 +119,7 @@ public class MapMarker extends MapItem implements ClusterItem, Serializable {
     public LatLng getPosition() {
         return new LatLng(lat, lng);
     }
-    public String getSnippet() { return this.snippet; }
+    public String getSnippet() { return this.title; }
 
     //METODI SET
     public void setTitle(String title) {this.title = title;}

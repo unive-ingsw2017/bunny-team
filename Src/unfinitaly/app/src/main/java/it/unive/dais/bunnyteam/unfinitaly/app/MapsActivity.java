@@ -583,7 +583,7 @@ public class MapsActivity extends BaseActivity
                 findViewById(R.id.marker_window).setVisibility(View.INVISIBLE);
             else if(onBackPressed){
             /*è stato premuto una volta. Lo ripremiamo, quindi dovremmo uscire*/
-                Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
+                Intent intent = new Intent(getApplicationContext(), TestingActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("EXIT", true);
                 startActivity(intent);

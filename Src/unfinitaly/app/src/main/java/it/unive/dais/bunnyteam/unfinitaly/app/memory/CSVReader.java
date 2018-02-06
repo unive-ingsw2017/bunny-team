@@ -66,7 +66,7 @@ public class CSVReader extends AsyncTask<Void, Integer, Void> {
         int i = 0;
         for (final CsvRowParser.Row r : rows) {
             Log.i("ItemReader", "adding elements");
-            items.add(new MapMarker(Double.parseDouble(r.get("lat")), Double.parseDouble(r.get("lon")), Double.parseDouble(r.get("perc_avanzamento")),Double.parseDouble(r.get("importo_complessivo_intervento_aggiornato_ultimo_qe")),Double.parseDouble(r.get("importo_lavori_aggiornato_ultimo_qe_approvato")),Double.parseDouble(r.get("importo_complessivo_lavori_aggiornato_ultimo_sal")), r.get("titolo"), r.get("descrizione"), r.get("categoria"), r.get("sottosettore"), r.get("pubblicata_da"),r.get("causa"),r.get("tipologia_cup"),r.get("cup")));
+            //items.add(new MapMarker(Double.parseDouble(r.get("lat")), Double.parseDouble(r.get("lon")), Double.parseDouble(r.get("perc_avanzamento")),Double.parseDouble(r.get("importo_complessivo_intervento_aggiornato_ultimo_qe")),Double.parseDouble(r.get("importo_lavori_aggiornato_ultimo_qe_approvato")),Double.parseDouble(r.get("importo_complessivo_lavori_aggiornato_ultimo_sal")), r.get("titolo"), r.get("descrizione"), r.get("categoria"), r.get("sottosettore"), r.get("pubblicata_da"),r.get("causa"),r.get("tipologia_cup"),r.get("cup")));
             i++;
             publishProgress(rows.size(), i);
         }
