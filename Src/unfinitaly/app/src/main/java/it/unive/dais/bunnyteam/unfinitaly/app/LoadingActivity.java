@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.paolorotolo.appintro.AppIntro;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import org.w3c.dom.Text;
 
@@ -75,7 +76,7 @@ public class LoadingActivity extends AppIntro {
         csl = CustomSliderLoading.newInstance(R.layout.fragmentinfo1, this);
 
         addSlide(csl);
-        ((TextView)findViewById(com.github.paolorotolo.appintro.R.id.done)).setText("CONTINUA");
+        ((TextView)findViewById(com.github.paolorotolo.appintro.R.id.done)).setText("CARICAMENTO..");
         if(getSlides().get(0) instanceof CustomSliderLoading)
             Log.d("CIAO", "È un customsliderloading!!!");
         addSlide(CustomSlider.newInstance(R.layout.fragmentinfo2));
@@ -88,40 +89,6 @@ public class LoadingActivity extends AppIntro {
         setProgressButtonEnabled(true);
         showSkipButton(false);
         setZoomAnimation();
-        //setContentView(R.layout.activity_loading);
-        /*tv_status = (TextView)loadingView.findViewById(R.id.tv_status);
-        tvCountLoad =(TextView)loadingView.findViewById(R.id.tvCountLoad);
-        progressBar = (ProgressBar)loadingView.findViewById(R.id.progressBar);*/
-       /*webview = (WebView)loadingView.findViewById(R.id.webview);
-        webview.loadUrl("http://unfinitaly.altervista.org/");
-        webview.getSettings().setJavaScriptEnabled(true);
-        webview.setWebViewClient(new WebViewClient());
-        fab = (FloatingActionButton)loadingView.findViewById(R.id.floatingActionButton);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showWebView();
-            }
-        });*/
-        /*if(MapMarkerList.getInstance().getMapMarkers().size() == 0) {
-            /*non ci sono markers
-            try {
-            if (MapsItemIO.isCached(this)) {
-
-                    Log.i("loading", "is on cache!");
-                    if(!(MapMarkerList.getInstance().loadFromCache(this)))
-                        MapMarkerList.getInstance().loadFromCsv(this);
-                    else{
-                        Log.i("loading", "starting app!");
-                        startMapsActivity();
-                    }
-            }else
-                MapMarkerList.getInstance().loadFromCsv(this);
-            } catch (InterruptedException | IOException | ExecutionException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        }*/
     }
     public void showWebView(){
         webview.setVisibility(View.VISIBLE);
@@ -164,7 +131,6 @@ public class LoadingActivity extends AppIntro {
         else {
             Snackbar snack = Snackbar.make(currentFragment.getView(), "Mappa non ancora pronta. Attendi!", Snackbar.LENGTH_SHORT);
             View view = snack.getView();
-
             view.setBackgroundColor(getResources().getColor(R.color.md_red_900));
             snack.show();
         }
@@ -173,9 +139,8 @@ public class LoadingActivity extends AppIntro {
     @Override
     public void onSlideChanged(@Nullable Fragment oldFragment, @Nullable Fragment newFragment) {
         super.onSlideChanged(oldFragment, newFragment);
-        Log.d("CIAOO", "set new Fragment");
+        Log.d("Change fragment", "set new Fragment");
         curFragment = newFragment;
-
     }
 
     public void showSkip(){
@@ -184,19 +149,20 @@ public class LoadingActivity extends AppIntro {
 
 
     public void showFinishSnackbar() {
-        Snackbar snack = Snackbar.make(curFragment.getView(), "Mappa disponibile!", Snackbar.LENGTH_SHORT);
-        View view = snack.getView();
-        view.setBackgroundColor(getResources().getColor(R.color.md_green_700));
-
-        snack.show();
-        snack.setActionTextColor(getResources().getColor(R.color.md_white_1000));
-        snack.setAction("CONTINUA", new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                startMapsActivity();
-            }
-        });
+        ((TextView)findViewById(com.github.paolorotolo.appintro.R.id.done)).setText("CONTINUA");
+        if(curFragment.getView() != null){
+            Snackbar snack = Snackbar.make(curFragment.getView(), "Mappa disponibile!", Snackbar.LENGTH_SHORT);
+            View view = snack.getView();
+            view.setBackgroundColor(getResources().getColor(R.color.md_green_700));
+            snack.show();
+            snack.setActionTextColor(getResources().getColor(R.color.md_white_1000));
+            snack.setAction("CONTINUA", new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    startMapsActivity();
+                }
+            });
+        }
     }
 }
 

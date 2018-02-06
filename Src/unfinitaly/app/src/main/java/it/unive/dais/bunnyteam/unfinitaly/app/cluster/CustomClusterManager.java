@@ -183,7 +183,6 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
             @Override
             public boolean onClusterClick(Cluster<MapMarker> cluster) {
                 ((Activity)context).findViewById(R.id.marker_window).setVisibility(View.INVISIBLE);
-                Log.i("CIAO", "CIAO!");
                 final String[] stringclusterlista = new String[cluster.getSize()];
                 final Collection<MapMarker> clusterlist = cluster.getItems();
                 Log.d("Grandezza",""+cluster.getSize());
@@ -191,13 +190,12 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
                     stringclusterlista[i]= (String)"Categoria: "+((MapMarker)clusterlist.toArray()[i]).getCategoria()+"\n"+((MapMarker)clusterlist.toArray()[i]).getTipologia_cup();
                 }
                 AlertDialog dialog = new AlertDialog.Builder(context)
-                        .setTitle("Elementi presenti: "+cluster.getSize())
+                        .setTitle("Elementi presenti")
                         .setSingleChoiceItems(stringclusterlista, 0, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
                                 if(context instanceof MapsActivity)
                                     ((MapsActivity)context).showMarkerInfo((MapMarker)clusterlist.toArray()[id]);
-                                //Toast.makeText(getApplicationContext(), "cliccato Cluster!"+id, Toast.LENGTH_SHORT).show();
                             }
                         }).setNegativeButton("Indietro", new DialogInterface.OnClickListener() {
                             @Override
@@ -224,7 +222,6 @@ public class CustomClusterManager<T extends ClusterItem> extends ClusterManager<
         Log.d("Distanza dall'italia",""+result[0]);
         if (result[0] > 1000000){
             ((MapsActivity)context).animateOnItaly();
-            //Toast.makeText(getApplicationContext(),"Posizionamento telecamera sopra l'Italia.",Toast.LENGTH_SHORT).show();
         }
         cluster();
     }

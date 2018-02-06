@@ -3,6 +3,7 @@ package it.unive.dais.bunnyteam.unfinitaly.app;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.support.coreutils.BuildConfig;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -33,6 +35,7 @@ public class InfoActivity extends BaseActivity {
     ImageView imV;
     TextView mail;
     TextView site;
+    TextView credits;
     /**
      * Produce la stringa completa coi crediti.
      *
@@ -58,6 +61,14 @@ public class InfoActivity extends BaseActivity {
         webview.setWebViewClient(new WebViewClient());
         mail = (TextView)findViewById(R.id.textViewmail);
         site = (TextView)findViewById(R.id.textViewsite);
+        credits = (TextView)findViewById(R.id.textView9);
+        try {
+            credits.setText("Questa applicazione è stata sviluppata usando il toolkit Datadroid.\n\nVersione app: "+getApplicationContext().getPackageManager()
+                    .getPackageInfo(getApplicationContext().getPackageName(), 0).versionName);
+        } catch (PackageManager.NameNotFoundException e) {
+            credits.setText("Questa applicazione è stata sviluppata usando il toolkit Datadroid.");
+            Log.e("Version","Error injecting versione");
+        };
         mail.setText("Email\nunfinitaly.app@gmail.com\n");
         site.setText("Sito web:\nunfinitaly.@altervista.org\n");
         imV = (ImageView) findViewById(R.id.bunnyLogo);

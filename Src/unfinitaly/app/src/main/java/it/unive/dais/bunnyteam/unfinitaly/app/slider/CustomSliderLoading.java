@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.wang.avi.AVLoadingIndicatorView;
+
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
@@ -27,6 +29,7 @@ public class CustomSliderLoading extends CustomSlider {
     private TextView tvCountLoad;
     private ProgressBar progressBar;
     private LoadingActivity loadAct;
+    private AVLoadingIndicatorView loadinggif;
     private static final String ARG_LAYOUT_RES_ID = "layoutResId";
     private View v;
 
@@ -54,9 +57,10 @@ public class CustomSliderLoading extends CustomSlider {
             super.onViewCreated(view, savedInstanceState);
             //qui possiamo inserire i metodi del loading.
             tv_status = (TextView) view.findViewById(R.id.tv_status2);
-            tv_status.setText("Parsing del CSV");
+            tv_status.setText("Apertura file...");
             tvCountLoad = (TextView) view.findViewById(R.id.tvCountLoad2);
             progressBar = (ProgressBar) view.findViewById(R.id.progressBar2);
+            loadinggif = (AVLoadingIndicatorView) view.findViewById(R.id.avi2);
             if (MapMarkerList.getInstance().getMapMarkers().size() == 0) {
                 /*non ci sono markers*/
                 try {
@@ -64,13 +68,13 @@ public class CustomSliderLoading extends CustomSlider {
 
                         Log.i("loading", "is on cache!");
                         if (!(MapMarkerList.getInstance().loadFromCache(loadAct)))
-                            MapMarkerList.getInstance().loadFromCsv(loadAct, tv_status, tvCountLoad, progressBar);
+                            MapMarkerList.getInstance().loadFromCsv(loadAct, tv_status, tvCountLoad, progressBar,loadinggif);
                         else {
                             Log.i("loading", "starting app!");
                             loadAct.startMapsActivity();
                         }
                     } else
-                        MapMarkerList.getInstance().loadFromCsv(loadAct, tv_status, tvCountLoad, progressBar);
+                        MapMarkerList.getInstance().loadFromCsv(loadAct, tv_status, tvCountLoad, progressBar, loadinggif);
                 } catch (InterruptedException | IOException | ExecutionException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }

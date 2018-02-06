@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.wang.avi.AVLoadingIndicatorView;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -52,9 +54,9 @@ public class MapMarkerList extends MapMarkerListVersioningHelper implements Seri
     public boolean loadFromCache(Context context) throws IOException, ClassNotFoundException {
         return MapsItemIO.readFromCache(context);
     }
-    public void loadFromCsv(LoadingActivity loadAct, TextView tv_status, TextView tvCountLoad, ProgressBar progressBar) throws InterruptedException, ExecutionException, IOException {
+    public void loadFromCsv(LoadingActivity loadAct, TextView tv_status, TextView tvCountLoad, ProgressBar progressBar, AVLoadingIndicatorView loadinggif) throws InterruptedException, ExecutionException, IOException {
         //instance.setMapMarkers(MapsItemIO.readFromCsvAsync(loadAct));
-        new MapsItemIO().loadFromCsv(loadAct, tv_status, tvCountLoad, progressBar);
+        new MapsItemIO().loadFromCsv(loadAct, tv_status, tvCountLoad, progressBar,loadinggif);
     }
     public static void setInstance(MapMarkerList instance){
         MapMarkerList.instance = instance;

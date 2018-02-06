@@ -490,31 +490,6 @@ public class MapsActivity extends BaseActivity
         gMap.setInfoWindowAdapter(mClusterManager.getMarkerManager());
         gMap.getUiSettings().setMapToolbarEnabled(false);
         updateCurrentPosition();
-        /*mClusterManager.getMarkerCollection().setOnInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
-            @Override
-            public View getInfoWindow(Marker marker) {
-                return null;
-            }
-
-            @Override
-            public View getInfoContents(Marker marker) {
-                View v = getLayoutInflater().inflate(R.layout.marker_layout,null);
-                TextView titolo = (TextView)v.findViewById(R.id.titleMarker);
-                TextView snippet = (TextView)v.findViewById(R.id.snippetMarker);
-                String title = marker.getTitle();
-                String snippets = marker.getSnippet();
-                if(title.length()>100){
-                    title = title.substring(0,99)+"...";
-                }
-                if(snippets.length()>100){
-                    snippets = snippets.substring(0,99)+"...";
-                }
-                titolo.setText(title);
-                snippet.setText(snippets);
-                Log.d("marker",""+marker.getSnippet());
-                return v;
-            }
-        });*/
     }
 
     /**

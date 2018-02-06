@@ -114,8 +114,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:text="Questa applicazione è stata sviluppata usando il toolkit Datadroid." />
+                android:layout_marginLeft="40dp"/>
         </LinearLayout>
     </ScrollView>
 
