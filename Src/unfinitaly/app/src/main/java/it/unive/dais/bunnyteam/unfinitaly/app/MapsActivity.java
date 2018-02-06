@@ -494,6 +494,7 @@ public class MapsActivity extends BaseActivity
 
     /**
      * Metodo proprietario che forza l'applicazione le impostazioni (o preferenze) che riguardano la mappa.
+     * prova push
      */
     protected void applyMapSettings() {
         if (gMap != null) {
