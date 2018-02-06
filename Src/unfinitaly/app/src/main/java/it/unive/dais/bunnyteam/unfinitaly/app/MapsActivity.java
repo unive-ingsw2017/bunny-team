@@ -74,6 +74,10 @@ import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
  *
  * @author BunnyTeam and Alvise Spanò, Università Ca' Foscari
  */
+
+/**
+ * prova testing!
+ */
 public class MapsActivity extends BaseActivity
         implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
