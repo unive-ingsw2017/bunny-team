@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarker;
 import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
+import it.unive.dais.bunnyteam.unfinitaly.app.memory.JsonIO;
 
 /**
  * Created by Enrico on 30/01/2018.
@@ -29,7 +30,6 @@ public class RequestData extends AsyncTask<Void, Void, String>{
         }
 
         protected void onPreExecute() {
-            Log.i("CIAO", "SHOWING PROGRESS BAR!");
             super.onPreExecute();
 
         }
@@ -38,13 +38,14 @@ public class RequestData extends AsyncTask<Void, Void, String>{
         protected String doInBackground(Void... type) {
             StringBuffer htmlCode = new StringBuffer();
             try {
+                Log.i("CIAO","Readding opere from URL");
                 URL url = new URL("http://unfinitaly.altervista.org/api/get_opere.php");
                 BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
                 Log.i("CIAO", "url -> "+url.toString());
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
                     htmlCode.append(inputLine);
-                    Log.d("CIAO", "html: " + inputLine);
+                    //Log.d("CIAO", "html: " + inputLine);
                 }
                 in.close();
             } catch (Exception e) {
@@ -57,23 +58,15 @@ public class RequestData extends AsyncTask<Void, Void, String>{
         }
     protected void onPostExecute(String result) {
         ArrayList<MapMarker> mmList;
-        //result contiene il JSON delle domande.
-        //bisogna estrarre domanda e risposta e salvarle su questions
         if(!result.equals("")) {
             Gson gson = new Gson();
-            Type type = new TypeToken<ArrayList<MapMarker>>() {
-            }.getType();
-            Log.i("CIAO", "JSOOON" + result);
+            Type type = new TypeToken<ArrayList<MapMarker>>() {}.getType();
             mmList = gson.fromJson(result, type);
-            Log.i("CIAO", "SIZE -> "+mmList.size());
-            Log.i("CIAO",mmList.get(0).getCup());
-            for(MapMarker marker : mmList){
-                Log.i("CIAO", marker.getSnippet());
-            }
+            Log.i("CIAO","Readed opere From URL, save to JSON");
+            JsonIO.saveJSON(requested.getApplicationContext(), result);
             MapMarkerList.getInstance().setMapMarkers(mmList);
             ((TestingActivity)requested).startMapsActivity();
-        //updateServerGroup();
-        //progressDialog.dismiss();
+
         super.onPostExecute(result);
     }
 }
