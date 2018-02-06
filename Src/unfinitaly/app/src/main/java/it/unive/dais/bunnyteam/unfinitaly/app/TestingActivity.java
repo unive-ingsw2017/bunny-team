@@ -33,15 +33,12 @@ import it.unive.dais.bunnyteam.unfinitaly.app.marker.MapMarkerList;
 import it.unive.dais.bunnyteam.unfinitaly.app.memory.JsonIO;
 
 /*Si potrebbe anche fare un controllo sul valore di ritorno; se ad esempio il database non è raggiungibile
-    si legge il json su res, e si salva quello in cache
+    si legge il json su raw, e si salva quello in cache
  */
 public class TestingActivity extends AppCompatActivity {
-    String versionLocal = "0";
-    boolean outdated = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_testing);
         if (!isOnline()) {
             setContentView(R.layout.error_layout);
             findViewById(R.id.buttonExit).setOnClickListener(new View.OnClickListener() {
@@ -98,14 +95,12 @@ public class TestingActivity extends AppCompatActivity {
                 Log.d("CIAO", "Error: " + e.getMessage());
                 Log.d("CIAO", "HTML CODE: " + htmlCode);
                 Log.i("CIAO", "Errore: non posso ricevere il file!");
+                /*qui ad esempio possiamo leggere il file locale situato in raw.*/
             }
             return htmlCode.toString();
         }
 
         protected void onPostExecute(String result) {
-            ArrayList<MapMarker> mmList;
-            //result contiene il JSON delle domande.
-            //bisogna estrarre domanda e risposta e salvarle su questions
             if (!result.equals("")) {
 
                 try {
@@ -139,9 +134,7 @@ public class TestingActivity extends AppCompatActivity {
                             requestJSON();
                         }
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
+                } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
 
@@ -153,5 +146,4 @@ public class TestingActivity extends AppCompatActivity {
     private void requestJSON() {
         new RequestData(this).execute();
     }
-
 }
