@@ -38,5 +38,6 @@
     <string name="msg_button_car">Pulsante premuto</string>
     <string name="msg_permissions_not_granted">I permessi appena negati dall\'utente sono necessari per alcune funzionalità dell\'app. Il supporto delle funzionalità sarà ridotto.</string>
     <string name="marker_title">You are HERE</string>
+    <string name="title_activity_comments">CommentsActivity</string>
 
 </resources>

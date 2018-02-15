@@ -1,6 +1,7 @@
 package it.unive.dais.bunnyteam.unfinitaly.app;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
@@ -46,7 +47,12 @@ public class MarkerInfoActivity extends BaseActivity {
         String qe = String.format("%.2f €",thisMapMarker.getImporto_ultimo_qe());
         ((TextView)findViewById(R.id.ImportiSAL)).setText(qe);
         ((TextView)findViewById(R.id.importiQE)).setText(sal);
-
+        findViewById(R.id.comments_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startCommentsActivity();
+            }
+        });
         String percentage = thisMapMarker.getPercentage()+"%";
         ((TextView)findViewById(R.id.tv_percentuale)).setText(percentage);
         ProgressBarAnimation mProgressAnimation = new ProgressBarAnimation(rc, 1500);
@@ -82,6 +88,11 @@ public class MarkerInfoActivity extends BaseActivity {
                 }
         });
 
+    }
+    public void startCommentsActivity(){
+        Intent i = new Intent(this, CommentsActivity.class);
+        i.putExtra("MapMarker", thisMapMarker);
+        startActivity(i);
     }
 
 }
